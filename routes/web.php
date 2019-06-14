@@ -11,6 +11,9 @@
 |
 */
 
-Route::get('/', function () {
+Route::get('/s', function () {
     return view('welcome');
 });
+
+
+Route::get('/d','admin\AdminController@login');
