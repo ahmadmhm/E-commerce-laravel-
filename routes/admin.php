@@ -6,7 +6,15 @@
  * Time: 23:20
  */
 
-Route::view('/', 'admin.admin_login');
+/*Route::middleware(['auth'])->group(function () {
+
+
+
+
+});//end of route group*/
 
 //Route::get('/','admin\AdminController@login');
 
+Route::match(['get' , 'post'],'/', 'admin\AdminController@login')->name('admin.login');
+
+Route::get('dashboard','admin\AdminController@dashboard')->name('admin.dashboard');
