@@ -11,9 +11,12 @@
 |
 */
 
-Route::get('/s', function () {
+Route::get('/', function () {
     return view('welcome');
 });
 
 
 Route::get('/d','admin\AdminController@login');
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
