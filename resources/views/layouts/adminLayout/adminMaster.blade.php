@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 @include('layouts.adminLayout.adminHead')
+@yield('css')
 <body>
 @include('layouts.adminLayout.adminHeader')
 @include('layouts.adminLayout.adminSidebar')
@@ -8,7 +9,7 @@
 @yield('content')
 
 @include('layouts.adminLayout.adminTail')
-
+@yield('js')
 <script type="text/javascript">
     // This function is called from the pop-up menus to transfer to
     // a different page. Ignore if the value returned is a null string:
@@ -33,5 +34,7 @@
         document.gomenu.selector.selectedIndex = 2;
     }
 </script>
+@include('common.message')
+@include('common.errors')
 </body>
 </html>

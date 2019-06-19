@@ -16,7 +16,8 @@ class AdminController extends Controller
             if(Auth::attempt(['email'=>$request->email,'password'=>$request->password ,'user_type'=>1])){
                 return  redirect()->route('admin.dashboard');
             }else{
-                dd('you fucked');
+                return back()->with('flash_message_error','Invalid username and password');
+//                dd('you fucked');
             }
 
         }
