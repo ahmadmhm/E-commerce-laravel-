@@ -19,6 +19,8 @@ class RedirectIfAuthenticated
     {
         if (Auth::guard($guard)->check()) {
             return redirect('/home');
+        }else{
+            return redirect()->action('admin\AdminController@login')->with('flash_message_success','Please login to access');
         }
 
         return $next($request);

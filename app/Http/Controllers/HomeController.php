@@ -32,7 +32,7 @@ class HomeController extends Controller
         $user_type = Auth::guard()->user()->user_type;
         if($user_type === 1){
             Auth::logout();
-            return  redirect()->route('admin.login');
+            return  redirect()->route('admin.login')->with('flash_message_success','logged out successful');
         }
 
     }
