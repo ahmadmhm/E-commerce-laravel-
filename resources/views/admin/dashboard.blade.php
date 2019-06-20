@@ -301,3 +301,6 @@
 <!--end-main-container-part-->
 
 @endsection
+@section('js')
+    <script src="{{asset('js/backend_js/matrix.dashboard.js')}}"></script>
+    @endsection
