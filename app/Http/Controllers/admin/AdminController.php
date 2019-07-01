@@ -16,7 +16,7 @@ class AdminController extends Controller
         if($request->isMethod('post')){
 //            $data = $request->input();
             if(Auth::attempt(['email'=>$request->email,'password'=>$request->password ,'user_type'=>1])){
-                return  redirect()->route('admin.dashboard');
+                return redirect()->route('admin.dashboard');
             }else{
                 return back()->with('flash_message_error','Invalid username and password');
 //                dd('you fucked');
@@ -47,6 +47,23 @@ class AdminController extends Controller
             return json_encode('error');
         }else{
             return json_encode('error');
+        }
+    }
+
+    public function updatePassword(Request $request){
+        if($request->isMethod('post')) {
+            if(isset($request->current_pwd)){
+                $result = User::where(['user_type'=>1,'email'=>Auth::user()->email])->first();
+                if(Hash::check($request->current_pwd , $result->password)){
+                    $newPassword = bcrypt($request->new_pwd);
+                    User::where('id',Auth::user()->id)->update(['password'=>$newPassword]);
+
+                    return back()->with('flash_message_success','password changed successfully');
+                }
+            }
+            return back()->with('flash_message_error','password not changed successfully');
+        }else{
+            return back()->with('flash_message_error','password not changed successfully');
         }
     }
 }

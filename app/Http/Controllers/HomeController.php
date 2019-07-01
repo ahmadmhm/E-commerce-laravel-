@@ -27,6 +27,11 @@ class HomeController extends Controller
         return view('home');
     }
 
+    public function login()
+    {
+        return view('home');
+    }
+
     public function logout()
     {
         $user_type = Auth::guard()->user()->user_type;

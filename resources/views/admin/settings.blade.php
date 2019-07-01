@@ -2,6 +2,7 @@
 @section('css')
     <link rel="stylesheet" href="{{asset('css/backend_css/uniform.css')}}" />
     <link rel="stylesheet" href="{{asset('css/backend_css/select2.css')}}" />
+    <link rel="stylesheet" href="{{asset('css/frontend_css/sweetalert2.min.css')}}" />
 @endsection
 @section('content')
     <div id="content">
@@ -20,7 +21,8 @@
                                 <h5>Update Password</h5>
                             </div>
                             <div class="widget-content nopadding">
-                                <form class="form-horizontal" method="post" action="#" name="password_validate" id="password_validate" novalidate="novalidate">
+                                <form class="form-horizontal" method="post" action="{{route('admin.update_password')}}" name="password_validate" id="password_validate" novalidate="novalidate">
+                                    @csrf
                                     <div class="control-group">
                                         <label class="control-label">Current Password</label>
                                         <div class="controls">
@@ -53,12 +55,13 @@
     </div>
 @endsection
 @section('js')
-    <script src="{{asset('js/backend_js/matrix.form_validation.js')}}"></script>
+
     <script src="{{asset('js/backend_js/select2.min.js')}}"></script>
     <script src="{{asset('js/backend_js/jquery.validate.js')}}"></script>
+    <script src="{{asset('js/frontend_js/sweetalert2.min.js')}}"></script>
     <script>
         //ajax for checking current password
-        $("#new_pwd").click(function () {
+        $("#new_pwd").bind('click focus',function () {
             var current_pwd = $("#current_pwd").val();
             if (current_pwd.length != 0) {
                 $.ajax({
@@ -82,6 +85,7 @@
                 });
             }
         });
+
     </script>
 
 @endsection
