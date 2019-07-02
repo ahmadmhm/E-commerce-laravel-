@@ -102,6 +102,32 @@ $(document).ready(function(){
 		}
 	});
 
+	//add category validation
+	$("#add_category").validate({
+		rules:{
+			category_name:{
+				required:true
+			},
+			description:{
+				required:true,
+			},
+			url:{
+				required:true,
+				//url: true
+			}
+		},
+		errorClass: "help-inline",
+		errorElement: "span",
+		highlight:function(element, errorClass, validClass) {
+			$(element).parents('.control-group').addClass('error');
+		},
+		unhighlight: function(element, errorClass, validClass) {
+			$(element).parents('.control-group').removeClass('error');
+			$(element).parents('.control-group').addClass('success');
+		}
+	});
+
+
 	//ajax functions
 
 });
