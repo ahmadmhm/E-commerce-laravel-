@@ -23,6 +23,7 @@ Route::middleware(['auth'])->group(function () {
 
     //categories
     Route::match(['get','post'],'add-category','admin\CategoryController@addCategory')->name('admin.add_category');
+    Route::get('view-categories','admin\CategoryController@viewCategories')->name('admin.view_categories');
 
 });//end of route group
 
