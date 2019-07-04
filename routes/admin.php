@@ -24,6 +24,9 @@ Route::middleware(['auth'])->group(function () {
     //categories
     Route::match(['get','post'],'add-category','admin\CategoryController@addCategory')->name('admin.add_category');
     Route::get('view-categories','admin\CategoryController@viewCategories')->name('admin.view_categories');
+    Route::get('view-categories','admin\CategoryController@viewCategories')->name('admin.view_categories');
+    Route::match(['get','post'],'edit-category/{id}','admin\CategoryController@editCategory')->name('admin.edit_category');
+    Route::match(['get','post'],'delete-category/{id}','admin\CategoryController@deleteCategory')->name('admin.delete_category');
 
 });//end of route group
 

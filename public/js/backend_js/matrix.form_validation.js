@@ -128,6 +128,12 @@ $(document).ready(function(){
 	});
 
 
-	//ajax functions
+	//delete category alarm
+	$('#deleteCategory').click(function () {
+		if(confirm('are you sure for delete this category?')){
+			return true;
+		}
+		return false;
+	});
 
 });

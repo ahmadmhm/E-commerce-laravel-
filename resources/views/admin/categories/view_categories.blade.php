@@ -33,8 +33,8 @@
                         <td>{{$category->id}}</td>
                         <td>{{$category->name}}</td>
                         <td>{{$category->url}}</td>
-                        <td class="center"><a href="#" class="btn btn-primary btn-mini">Edit</a>
-                            <a href="#" class="btn btn-danger btn-mini">Delete</a></td>
+                        <td class="center"><a href="{{route('admin.edit_category', ['id'=>$category->id])}}" class="btn btn-primary btn-mini">Edit</a>
+                            <a id="deleteCategory" data-confirm="ahmad" href="{{route('admin.delete_category', ['id'=>$category->id])}}" class="btn btn-danger btn-mini">Delete</a></td>
                     </tr>
                     @endforeach
                     </tbody>
