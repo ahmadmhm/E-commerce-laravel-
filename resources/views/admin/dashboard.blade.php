@@ -303,4 +303,6 @@
 @endsection
 @section('js')
     <script src="{{asset('js/backend_js/matrix.dashboard.js')}}"></script>
+    <script src="{{asset('js/backend_js/jquery.dataTables.min.js')}}"></script>
+    <script src="{{asset('js/backend_js/select2.min.js')}}"></script>
     @endsection

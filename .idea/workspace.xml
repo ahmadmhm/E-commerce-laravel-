@@ -2,13 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4d23e414-c951-4cb6-9755-629d89c1ae0d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/admin/CategoryController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/2019_07_02_145751_create_category_table.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/admin/categories/edit_category.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/backend_js/matrix.form_validation.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/backend_js/matrix.form_validation.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/admin/CategoryController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/admin/CategoryController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/categories/add_category.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/categories/add_category.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/categories/edit_category.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/categories/edit_category.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/admin/categories/view_categories.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/categories/view_categories.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/admin.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/admin.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/dashboard.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/dashboard.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/adminLayout/adminTail.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/adminLayout/adminTail.blade.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -41,12 +41,20 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/admin/CategoryController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="356">
-              <caret line="50" column="34" selection-start-line="50" selection-start-column="34" selection-end-line="50" selection-end-column="34" />
+            <state relative-caret-position="396">
+              <caret line="56" column="8" selection-start-line="56" selection-start-column="8" selection-end-line="56" selection-end-column="8" />
               <folding>
                 <element signature="e#46#63#0#PHP" expanded="true" />
-                <element signature="e#929#1678#0#PHP" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/resources/views/admin/categories/edit_category.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="337">
+              <caret line="31" column="65" lean-forward="true" selection-start-line="31" selection-start-column="65" selection-end-line="31" selection-end-column="65" />
             </state>
           </provider>
         </entry>
@@ -54,22 +62,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/admin/categories/view_categories.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="282">
-              <caret line="36" column="70" selection-start-line="36" selection-start-column="70" selection-end-line="36" selection-end-column="70" />
+            <state relative-caret-position="277">
+              <caret line="35" column="50" selection-start-line="35" selection-start-column="50" selection-end-line="35" selection-end-column="50" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/public/js/backend_js/matrix.form_validation.js">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/views/admin/categories/add_category.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="296">
-              <caret line="127" column="4" selection-start-line="127" selection-start-column="4" selection-end-line="127" selection-end-column="4" />
-              <folding>
-                <element signature="e#188#753#0" />
-                <element signature="e#790#1311#0" />
-                <element signature="e#1350#2136#0" />
-              </folding>
+            <state relative-caret-position="327">
+              <caret line="38" column="38" lean-forward="true" selection-start-line="28" selection-start-column="32" selection-end-line="38" selection-end-column="38" />
             </state>
           </provider>
         </entry>
@@ -102,6 +105,8 @@
       <find>das</find>
       <find>if(G&lt;=0||I</find>
       <find>dash</find>
+      <find>entries</find>
+      <find>data-</find>
     </findStrings>
     <dirStrings>
       <dir>$PROJECT_DIR$</dir>
@@ -135,8 +140,6 @@
         <option value="$PROJECT_DIR$/resources/views/common/message.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/admin/setting.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/layouts/adminLayout/adminHead.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/layouts/adminLayout/adminTail.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/admin/dashboard.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/layouts/adminLayout/adminHeader.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Middleware/Authenticate.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" />
@@ -144,15 +147,17 @@
         <option value="$PROJECT_DIR$/app/Http/Middleware/RedirectIfAuthenticated.php" />
         <option value="$PROJECT_DIR$/resources/views/admin/settings.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/admin/AdminController.php" />
-        <option value="$PROJECT_DIR$/resources/views/admin/categories/add_category.blade.php" />
         <option value="$PROJECT_DIR$/app/Category.php" />
         <option value="$PROJECT_DIR$/resources/views/layouts/adminLayout/adminSidebar.blade.php" />
         <option value="$PROJECT_DIR$/database/migrations/2019_07_02_145751_create_category_table.php" />
-        <option value="$PROJECT_DIR$/resources/views/admin/categories/edit_category.blade.php" />
         <option value="$PROJECT_DIR$/routes/admin.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/admin/CategoryController.php" />
-        <option value="$PROJECT_DIR$/resources/views/admin/categories/view_categories.blade.php" />
         <option value="$PROJECT_DIR$/public/js/backend_js/matrix.form_validation.js" />
+        <option value="$PROJECT_DIR$/resources/views/layouts/adminLayout/adminTail.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/admin/dashboard.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/admin/categories/add_category.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/admin/categories/view_categories.blade.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/admin/CategoryController.php" />
+        <option value="$PROJECT_DIR$/resources/views/admin/categories/edit_category.blade.php" />
       </list>
     </option>
   </component>
@@ -384,7 +389,8 @@
       <workItem from="1561039632695" duration="11281000" />
       <workItem from="1561992588250" duration="8042000" />
       <workItem from="1562078366994" duration="11308000" />
-      <workItem from="1562261860551" duration="6056000" />
+      <workItem from="1562261860551" duration="6154000" />
+      <workItem from="1562693523296" duration="5505000" />
     </task>
     <task id="LOCAL-00001" summary="first initial for running">
       <created>1560535490318</created>
@@ -463,17 +469,24 @@
       <option name="project" value="LOCAL" />
       <updated>1562094345744</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="edit and delete categories (3,4)">
+      <created>1562268126697</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1562268126697</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="70043000" />
+    <option name="totallyTimeSpent" value="75646000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="63" y="27" width="1303" height="741" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24502784" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24900557" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -510,10 +523,10 @@
     <MESSAGE value="updating admin password and it's messages" />
     <MESSAGE value="add category form and its route, controller, migration" />
     <MESSAGE value="view category and its view search and table" />
-    <option name="LAST_COMMIT_MESSAGE" value="view category and its view search and table" />
+    <MESSAGE value="edit and delete categories (3,4)" />
+    <option name="LAST_COMMIT_MESSAGE" value="edit and delete categories (3,4)" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/resources/views/admin/layouts/master.blade.php" />
     <entry file="file://$PROJECT_DIR$/.env">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="195">
@@ -675,13 +688,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/layouts/adminLayout/adminTail.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" selection-start-line="9" selection-end-line="9" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/layouts/adminLayout/adminHead.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
@@ -762,13 +768,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/layouts/adminLayout/adminMaster.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="446">
-          <caret line="37" column="25" selection-start-line="37" selection-start-column="25" selection-end-line="37" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="225">
@@ -809,13 +808,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/admin/dashboard.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="472">
-          <caret line="304" column="74" selection-start-line="304" selection-start-column="74" selection-end-line="304" selection-end-column="74" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/admin/AdminController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="356">
@@ -826,13 +818,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/admin/categories/add_category.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" column="26" selection-end-line="54" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/database/migrations/2019_07_02_145751_create_category_table.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="285">
@@ -840,35 +825,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/admin/categories/edit_category.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="487">
-          <caret line="41" column="70" selection-start-line="41" selection-start-column="70" selection-end-line="41" selection-end-column="70" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/routes/admin.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="345">
           <caret line="28" column="117" selection-start-line="28" selection-start-column="117" selection-end-line="28" selection-end-column="117" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/admin/CategoryController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="356">
-          <caret line="50" column="34" selection-start-line="50" selection-start-column="34" selection-end-line="50" selection-end-column="34" />
-          <folding>
-            <element signature="e#46#63#0#PHP" expanded="true" />
-            <element signature="e#929#1678#0#PHP" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/admin/categories/view_categories.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="282">
-          <caret line="36" column="70" selection-start-line="36" selection-start-column="70" selection-end-line="36" selection-end-column="70" />
         </state>
       </provider>
     </entry>
@@ -881,6 +841,65 @@
             <element signature="e#790#1311#0" />
             <element signature="e#1350#2136#0" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/js/backend_js/jquery.dataTables.min.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="178">
+          <caret line="9414" column="43" selection-start-line="9414" selection-start-column="39" selection-end-line="9414" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/layouts/adminLayout/adminMaster.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="555">
+          <caret line="37" column="25" selection-start-line="37" selection-start-column="25" selection-end-line="37" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/layouts/adminLayout/adminTail.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="17" selection-start-line="17" selection-end-line="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/admin/dashboard.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="476">
+          <caret line="306" column="69" selection-start-line="306" selection-start-column="69" selection-end-line="306" selection-end-column="69" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/admin/categories/view_categories.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="277">
+          <caret line="35" column="50" selection-start-line="35" selection-start-column="50" selection-end-line="35" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/admin/categories/add_category.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="327">
+          <caret line="38" column="38" lean-forward="true" selection-start-line="28" selection-start-column="32" selection-end-line="38" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/admin/CategoryController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="396">
+          <caret line="56" column="8" selection-start-line="56" selection-start-column="8" selection-end-line="56" selection-end-column="8" />
+          <folding>
+            <element signature="e#46#63#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/admin/categories/edit_category.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="337">
+          <caret line="31" column="65" lean-forward="true" selection-start-line="31" selection-start-column="65" selection-end-line="31" selection-end-column="65" />
         </state>
       </provider>
     </entry>
