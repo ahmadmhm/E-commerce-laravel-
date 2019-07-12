@@ -28,6 +28,10 @@ Route::middleware(['auth'])->group(function () {
     Route::match(['get','post'],'edit-category/{id}','admin\CategoryController@editCategory')->name('admin.edit_category');
     Route::match(['get','post'],'delete-category/{id}','admin\CategoryController@deleteCategory')->name('admin.delete_category');
 
+
+    //products
+    Route::match(['get','post'],'add-product','admin\ProductsController@addProduct')->name('admin.add_product');
+
 });//end of route group
 
 //Route::get('/','admin\AdminController@login');
