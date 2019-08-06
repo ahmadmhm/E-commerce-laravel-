@@ -8,7 +8,7 @@ class Helpers
 {
 
     public static function make_category_dropdown_menu($categories){
-        $menu ="";
+        $menu ="<option value='' selected disabled>Select</option>";
         foreach ($categories as $category){
             if($category->parent_id == 0){
                 $menu .='<option value="'.$category->id.'">'. $category->name .'</option>';

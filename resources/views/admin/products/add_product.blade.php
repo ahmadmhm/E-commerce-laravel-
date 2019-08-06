@@ -2,6 +2,7 @@
 
 @section('css')
     <link rel="stylesheet" href="{{asset('css/backend_css/uniform.css')}}" />
+    <link rel="stylesheet" href="{{asset('css/frontend_css/sweetalert2.min.css')}}" />
 @endsection
 @section('content')
     <div id="content">
@@ -19,12 +20,13 @@
                             <h5>Add Product</h5>
                         </div>
                         <div class="widget-content nopadding">
-                            <form class="form-horizontal" method="post" action="{{route('admin.add_product')}}" name="add_product" id="add_product" novalidate="novalidate">
+                            <form class="form-horizontal" method="post" action="{{route('admin.add_product')}}" name="add_product"
+                                  id="add_product" novalidate="novalidate" enctype="multipart/form-data">
                                 @csrf
-                                <div class="control-group">
+                                 <div class="control-group">
                                     <label class="control-label">Under Category</label>
                                     <div class="controls">
-                                        <select name="category_id">
+                                        <select name="category_id" id="category_id" style="width: 220px">
                                         {!! $levels !!}
                                         </select>
                                     </div>
@@ -44,7 +46,7 @@
                                 <div class="control-group">
                                     <label class="control-label">Product Color</label>
                                     <div class="controls">
-                                        <input type="text" name="product_code" id="product_code">
+                                        <input type="text" name="product_color" id="product_color">
                                     </div>
                                 </div>
                                 <div class="control-group">
@@ -54,9 +56,15 @@
                                     </div>
                                 </div>
                                 <div class="control-group">
+                                    <label class="control-label">Price</label>
+                                    <div class="controls">
+                                        <input type="text" name="price" id="price">
+                                    </div>
+                                </div>
+                                <div class="control-group">
                                     <label class="control-label">File upload input</label>
                                     <div class="controls">
-                                        <input type="file" />
+                                        <input name="product_image" id="product_image" type="file" />
                                     </div>
                                 </div>
 
@@ -73,4 +81,6 @@
 @endsection
 @section('js')
     <script src="{{asset('js/backend_js/jquery.validate.js')}}"></script>
+    <script src="{{asset('js/frontend_js/sweetalert2.min.js')}}"></script>
+{{--    <script src="{{asset('js/backend_js/select2.min.js')}}"></script>--}}
 @endsection
