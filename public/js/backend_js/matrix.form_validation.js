@@ -141,6 +141,9 @@ $(document).ready(function(){
 			product_color:{
 				required:true
 			},
+			product_image:{
+				required:true
+			},
 			price:{
 				required:true,
 				number:true
