@@ -20,4 +20,8 @@ class Helpers
         }
         return $menu;
     }
+
+    public static function product_small_image_asset($image_name){
+        return public_path().'/images/products/small/'.$image_name;
+    }
 }
