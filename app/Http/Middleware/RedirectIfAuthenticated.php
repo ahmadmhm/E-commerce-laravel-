@@ -18,9 +18,11 @@ class RedirectIfAuthenticated
     public function handle($request, Closure $next, $guard = null)
     {
         if (Auth::guard($guard)->check()) {
+            if(Auth::user()->user_type == 1){
+                return redirect()->route('admin.dashboard');
+            }
             return redirect('/home');
         }else{
-//            return redirect()->action('admin\AdminController@login')->with('flash_message_error','Please login to access');
             return redirect()->route('admin.login')->with('flash_message_error','Please login to access');
         }
 

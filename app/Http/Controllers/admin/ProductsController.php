@@ -44,7 +44,7 @@ class ProductsController extends Controller
 
 //                    $file->move($large_destinationPath, $fileName);
 //                    $uploaded_file_dir = 'images/products/'.$fileName;
-
+//                    dd(public_path());
                     Image::make($file)->save($large_destinationPath);
                     Image::make($file)->resize(600,600)->save($medium_destinationPath);
                     Image::make($file)->resize(300,300)->save($small_destinationPath);
@@ -53,7 +53,7 @@ class ProductsController extends Controller
                 }
                 $product->save() ;
             }
-            redirect()->route('admin.add_product',compact('levels'))->with('flash_message_success','product added successfully');
+            return redirect()->route('admin.view_products',compact('levels'))->with('flash_message_success','product added successfully');
         }
 
         return view('admin.products.add_product',compact('levels'));
@@ -63,5 +63,15 @@ class ProductsController extends Controller
         $products = Product::where('id','<>', null)->with('Category')->get();
 //        dd($categories);
         return view('admin.products.view_products',compact('products'));
+    }
+
+    public function getProducts(Request $request){
+        if(isset($request->id)){
+            $product = Product::where('id', $request->id)->with('Category')->first();
+            return $product;
+        }else{
+            return 'error';
+        }
+
     }
 }
