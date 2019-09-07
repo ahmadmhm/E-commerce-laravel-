@@ -74,4 +74,54 @@ class ProductsController extends Controller
         }
 
     }
+
+    public function editProduct(Request $request,$id =null)
+    {
+        $levels = Category::all();
+        $product = null;
+        if ($id != null) {
+
+            $product = Product::where('id', $id)->first();
+            if ($request->isMethod('post')) {
+
+                $product->category_id = $request->category_id;
+                $product->product_name = $request->product_name;
+                $product->product_code = $request->product_code;
+                $product->product_color = $request->product_color;
+                $product->description = $request->description;
+                $product->price = $request->price;
+
+
+                //saving the image
+                $file = null;
+                if ($request->product_image != Null)
+                    $file = $request->file('product_image');
+                if ($file) {
+                    if ($file->isValid()) {
+                        $fileName = time() . '_' . $product->id . '_' . $file->getClientOriginalName();
+                        $large_destinationPath = public_path() . '/images/products/large/' . $fileName;
+                        $medium_destinationPath = public_path() . '/images/products/medium/' . $fileName;
+                        $small_destinationPath = public_path() . '/images/products/small/' . $fileName;
+
+//                    $file->move($large_destinationPath, $fileName);
+//                    $uploaded_file_dir = 'images/products/'.$fileName;
+//                    dd(public_path());
+                        Image::make($file)->save($large_destinationPath);
+                        Image::make($file)->resize(600, 600)->save($medium_destinationPath);
+                        Image::make($file)->resize(300, 300)->save($small_destinationPath);
+
+                        $product->product_image = $fileName;
+                    }
+                }
+                $product->update();
+                return redirect()->route('admin.view_products')->with('flash_message_success', 'product updated successfully');
+            }
+            if ($product) {
+                $levels = Helpers::make_product_dropdown_menu($levels, $product->category_id);
+                return view('admin.products.edit_product', compact('product', 'levels'));
+            }
+            return redirect()->back();
+//        return view('admin.categories.edit_category');
+        }
+    }
 }

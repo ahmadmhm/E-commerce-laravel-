@@ -47,7 +47,7 @@
                         </th>
                         <td class="center">
                             <a href="#myModal" data-toggle="modal" data-id="{{$product->id}}" class="btn btn-success btn-mini viewProduct">View</a>
-                            <a href="{{route('admin.edit_category', ['id'=>$product->id])}}" class="btn btn-primary btn-mini">Edit</a>
+                            <a href="{{route('admin.edit_product', ['id'=>$product->id])}}" class="btn btn-primary btn-mini">Edit</a>
                             <a id="deleteCategory" data-confirm="ahmad" href="{{route('admin.delete_category', ['id'=>$product->id])}}" class="btn btn-danger btn-mini">Delete</a></td>
                     </tr>
                     @endforeach

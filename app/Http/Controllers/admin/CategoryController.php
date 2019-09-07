@@ -50,7 +50,8 @@ class CategoryController extends Controller
             }
 
         }
-        return view('admin.categories.edit_category');
+        return redirect()->back();
+//        return view('admin.categories.edit_category');
     }
 
     public function deleteCategory($id =null){

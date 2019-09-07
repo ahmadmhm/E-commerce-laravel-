@@ -32,6 +32,7 @@ Route::middleware(['auth'])->group(function () {
     Route::match(['get','post'],'add-product','admin\ProductsController@addProduct')->name('admin.add_product');
     Route::get('view-products','admin\ProductsController@viewProducts')->name('admin.view_products');
     Route::get('get-products','admin\ProductsController@getProducts')->name('admin.get_products');
+    Route::match(['get','post'],'edit-product/{id}','admin\ProductsController@editProduct')->name('admin.edit_product');
 
 });//end of route group
 
