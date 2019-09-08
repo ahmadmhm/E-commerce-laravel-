@@ -33,6 +33,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('view-products','admin\ProductsController@viewProducts')->name('admin.view_products');
     Route::get('get-products','admin\ProductsController@getProducts')->name('admin.get_products');
     Route::match(['get','post'],'edit-product/{id}','admin\ProductsController@editProduct')->name('admin.edit_product');
+    Route::match(['get','post'],'delete-product/{id}','admin\ProductsController@deleteProduct')->name('admin.delete_product');
+    Route::get('delete-product-image/{id}','admin\ProductsController@deleteProductImage')->name('admin.delete_product_image');
 
 });//end of route group
 

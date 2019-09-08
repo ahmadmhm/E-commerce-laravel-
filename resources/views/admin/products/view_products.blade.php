@@ -43,7 +43,7 @@
                         <td>{{$product->product_color}}</td>
                         <td>{{$product->price}}</td>
                         <th>
-                            <img style="width: 100px" src="{{\App\Helpers\Helpers::product_small_image_asset($product->product_image)}}">
+                            <img style="width: 100px" src="{{ $product->product_image? \App\Helpers\Helpers::product_small_image_asset($product->product_image):''}}">
                         </th>
                         <td class="center">
                             <a href="#myModal" data-toggle="modal" data-id="{{$product->id}}" class="btn btn-success btn-mini viewProduct">View</a>

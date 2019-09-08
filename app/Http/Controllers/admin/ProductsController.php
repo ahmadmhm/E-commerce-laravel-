@@ -8,6 +8,7 @@ use App\Product;
 use App\ProductImage;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Facades\Image;
 
 class ProductsController extends Controller
@@ -121,7 +122,28 @@ class ProductsController extends Controller
                 return view('admin.products.edit_product', compact('product', 'levels'));
             }
             return redirect()->back();
-//        return view('admin.categories.edit_category');
         }
+    }
+
+    public function deleteProduct($id =null){
+        if($id != null)
+            Product::destroy($id);
+        return redirect()->back()->with('flash_message_success','product deleted successfully');
+    }
+
+    public function deleteProductImage($id =null){
+        if($id != null){
+            $product = Product::where('id', $id)->first();
+            if($product){
+//                if(file_exists(Helpers::product_medium_image_asset($product->product_image))) {
+//                    unlink(Helpers::product_medium_image_asset($product->product_image));
+//                }
+//                Storage::disk('public')->delete('/images/products/small/'.$product->product_image);
+//                Storage::delete(Helpers::product_medium_image_asset($product->product_image));
+//                Storage::delete(Helpers::product_large_image_asset($product->product_image));
+                $product ->update(['product_image' => '']);
+            }
+        }
+        return redirect()->back()->with('flash_message_success','product image deleted successfully');
     }
 }

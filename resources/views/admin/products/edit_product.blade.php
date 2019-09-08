@@ -61,12 +61,14 @@
                                         <input value="{{ old('price',isset($product->price) ? $product->price : '') }}" type="text" name="price" id="price">
                                     </div>
                                 </div>
-                                {{--<div class="control-group">--}}
-                                    {{--<label class="control-label">File upload input</label>--}}
-                                    {{--<div class="controls">--}}
-                                        {{--<input value="{{ old('product_image',isset($product->product_image) ? $product->product_image : '') }}" name="product_image" id="product_image" type="file" />--}}
-                                    {{--</div>--}}
-                                {{--</div>--}}
+                                <div class="control-group">
+                                    <label class="control-label">File upload input</label>
+                                    <div class="controls">
+                                        <input value="{{ old('product_image',isset($product->product_image) ? $product->product_image : '') }}" name="product_image" id="product_image" type="file" />
+                                        <img style="width: 100px" src="{{ $product->product_image? \App\Helpers\Helpers::product_small_image_asset($product->product_image):''}}">
+                                        | <a href="{{route('admin.delete_product_image',['id'=>$product->id])}}">Delete</a>
+                                    </div>
+                                </div>
 
                                 <div class="form-actions">
                                     <input type="submit" value="Udate Product" class="btn btn-success">

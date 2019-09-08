@@ -49,4 +49,12 @@ class Helpers
         return 'http://localhost/first/E-commerce/public/images/products/small/'.$image_name;
 //        return public_path().'/images/products/small/'.$image_name;
     }
+    public static function product_medium_image_asset($image_name){
+        return 'http://localhost/first/E-commerce/public/images/products/medium/'.$image_name;
+//        return public_path().'/images/products/small/'.$image_name;
+    }
+    public static function product_large_image_asset($image_name){
+        return 'http://localhost/first/E-commerce/public/images/products/large/'.$image_name;
+//        return public_path().'/images/products/small/'.$image_name;
+    }
 }
