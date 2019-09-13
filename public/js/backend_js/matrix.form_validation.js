@@ -198,4 +198,29 @@ $(document).ready(function(){
 		return false;
 	});
 
+	//delete product alarm
+	$('#deleteProduct').click(function () {
+		var product_id = $(this).data('pid');
+		var pd_link = $(this).data('link');
+		alert(pd_link);
+		swal({
+			title: 'are you sure?',
+			text: 'you done',
+			type: 'warning',
+			showCloseButton: false,
+			showCancelButton: false,
+			focusConfirm: false,
+			confirmButtonColor: '#00b0ff',
+			confirmButtonText: 'ادامه و حذف'
+		},
+			function () {
+				window.location.href=pd_link;
+			}
+		);
+		/*if(confirm('are you sure for delete this product?')){
+			return true;
+		}
+		return false;*/
+	});
+
 });
