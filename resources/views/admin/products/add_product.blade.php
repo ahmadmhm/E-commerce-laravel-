@@ -10,7 +10,7 @@
             <div id="breadcrumb"> <a href="{{route('admin.dashboard')}}" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a>
                 <a href="#">Products</a>
                 <a href="#" class="current">Add Product</a> </div>
-            <h1>Form validation</h1>
+            <h1>Product</h1>
         </div>
         <div class="container-fluid"><hr>
             <div class="row-fluid">

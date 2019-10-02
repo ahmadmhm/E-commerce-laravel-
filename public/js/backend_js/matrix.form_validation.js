@@ -199,18 +199,19 @@ $(document).ready(function(){
 	});
 
 	//delete product alarm
-	$('#deleteProduct').click(function () {
+	$('.deleteProduct').click(function () {
 		var product_id = $(this).data('pid');
 		var pd_link = $(this).data('link');
-		alert(pd_link);
+		// alert(pd_link);
 		swal({
 			title: 'are you sure?',
 			text: 'you done',
 			type: 'warning',
 			showCloseButton: false,
-			showCancelButton: false,
+			showCancelButton: true,
 			focusConfirm: false,
 			confirmButtonColor: '#00b0ff',
+			cancelButtonText: 'انصراف',
 			confirmButtonText: 'ادامه و حذف'
 		},
 			function () {

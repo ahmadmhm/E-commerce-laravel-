@@ -36,6 +36,9 @@ Route::middleware(['auth'])->group(function () {
     Route::match(['get','post'],'delete-product/{id}','admin\ProductsController@deleteProduct')->name('admin.delete_product');
     Route::get('delete-product-image/{id}','admin\ProductsController@deleteProductImage')->name('admin.delete_product_image');
 
+    //products attributes
+    Route::match(['get','post'],'add-attributes/{id}','admin\ProductsController@addAttributes')->name('admin.add_attributes');
+
 });//end of route group
 
 //Route::get('/','admin\AdminController@login');

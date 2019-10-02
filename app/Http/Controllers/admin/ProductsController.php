@@ -146,4 +146,8 @@ class ProductsController extends Controller
         }
         return redirect()->back()->with('flash_message_success','product image deleted successfully');
     }
+
+    public function addAttributes($id = null){
+        return view('admin.products.add_attributes');
+    }
 }
