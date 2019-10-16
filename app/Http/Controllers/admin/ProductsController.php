@@ -147,7 +147,17 @@ class ProductsController extends Controller
         return redirect()->back()->with('flash_message_success','product image deleted successfully');
     }
 
-    public function addAttributes($id = null){
-        return view('admin.products.add_attributes');
+    public function addAttributes(Request $request, $id = null){
+        if($request->isMethod('post')){
+            dd($request->sku);
+        }else{
+            $productDetails = Product::where(['id'=>$id])->first();
+            if($productDetails != null){
+                return view('admin.products.add_attributes', compact('productDetails'));
+            }
+        }
+
+        return redirect()->back();
+
     }
 }

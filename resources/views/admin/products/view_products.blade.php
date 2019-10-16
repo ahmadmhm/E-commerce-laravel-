@@ -48,6 +48,7 @@
                         <td class="center">
                             <a href="#myModal" data-toggle="modal" data-id="{{$product->id}}" class="btn btn-success btn-mini viewProduct">View</a>
                             <a href="{{route('admin.edit_product', ['id'=>$product->id])}}" class="btn btn-primary btn-mini">Edit</a>
+                            <a href="{{route('admin.add_attributes', ['id'=>$product->id])}}" class="btn btn-success btn-mini">Add</a>
                             <a data-pid="{{$product->id}}" data-link="{{route('admin.delete_product', ['id'=>$product->id])}}" data-confirm="ahmad" href="javascript:" <?php /*href="{{route('admin.delete_product', ['id'=>$product->id])}}"*/?>
 
                             class="btn btn-danger btn-mini deleteProduct">Delete</a></td>
@@ -96,7 +97,8 @@
                     success: function (response) {
 
                         if(response != 'error'){
-                            console.log(response.category);
+                            // console.log(response.category);
+                            // resetModal();
                             $("#title").html(response.product_name);
                             $("#pid").html("Product ID :"+response.id);
                             $("#catid").html("Category ID :"+response.category.id);
@@ -109,12 +111,22 @@
                         }
                     },
                     error: function (data) {
-                        console.log(data);
+                        // console.log(data);
                     }
                 });
             }
         });
 
+    function resetModal() {
+        $("#title").html('');
+        $("#pid").html("Product ID :");
+        $("#catid").html("Category ID :");
+        $("#catname").html("Category Name :");
+        $("#pcode").html("Product Code :");
+        $("#pcolor").html("Product Color :");
 
+        $("#pdes").html("Product Description :");
+        $("#pprice").html("Product Price :");
+    }
     </script>
 @endsection
