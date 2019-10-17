@@ -4,9 +4,6 @@
     <list default="true" id="4d23e414-c951-4cb6-9755-629d89c1ae0d" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/admin/ProductsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/admin/ProductsController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/backend_js/matrix.form_validation.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/backend_js/matrix.form_validation.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/products/add_attributes.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/products/add_attributes.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/products/view_products.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/products/view_products.blade.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -33,11 +30,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/admin/ProductsController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="379">
-              <caret line="151" column="30" selection-start-line="151" selection-start-column="30" selection-end-line="151" selection-end-column="30" />
+            <state relative-caret-position="260">
+              <caret line="164" column="130" selection-start-line="164" selection-start-column="130" selection-end-line="164" selection-end-column="130" />
               <folding>
                 <element signature="e#46#63#0#PHP" expanded="true" />
                 <element signature="e#2901#5208#0#PHP" />
@@ -47,17 +44,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/admin/products/add_attributes.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="413">
-              <caret line="45" column="40" lean-forward="true" selection-start-line="45" selection-start-column="40" selection-end-line="45" selection-end-column="40" />
-              <folding>
-                <element signature="e#2646#2664#0#HTML" expanded="true" />
-                <element signature="e#2773#2791#0#HTML" expanded="true" />
-                <element signature="e#2903#2921#0#HTML" expanded="true" />
-                <element signature="e#3033#3051#0#HTML" expanded="true" />
-              </folding>
+            <state relative-caret-position="226">
+              <caret line="22" column="139" selection-start-line="22" selection-start-column="110" selection-end-line="22" selection-end-column="139" />
             </state>
           </provider>
         </entry>
@@ -65,7 +56,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/admin/products/view_products.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
+            <state relative-caret-position="850">
               <caret line="50" column="125" selection-start-line="50" selection-start-column="125" selection-end-line="50" selection-end-column="125" />
             </state>
           </provider>
@@ -284,6 +275,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -350,7 +342,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -432,7 +423,8 @@
       <workItem from="1568570217814" duration="2055000" />
       <workItem from="1570036574745" duration="4454000" />
       <workItem from="1571162531723" duration="2010000" />
-      <workItem from="1571245706657" duration="9109000" />
+      <workItem from="1571245706657" duration="9198000" />
+      <workItem from="1571329278925" duration="4064000" />
     </task>
     <task id="LOCAL-00001" summary="first initial for running">
       <created>1560535490318</created>
@@ -588,17 +580,24 @@
       <option name="project" value="LOCAL" />
       <updated>1570042837013</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="product add attributes fields(w - 16)">
+      <created>1571257733076</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1571257733076</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="161382000" />
+    <option name="totallyTimeSpent" value="165535000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49838188" visible="true" weight="0.22541603" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49838188" visible="true" weight="0.22844176" />
       <window_info id="Structure" order="1" sideWeight="0.50161815" side_tool="true" weight="0.26093873" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -645,7 +644,8 @@
     <MESSAGE value="product edit and update image and helpers asset method (w - 12)" />
     <MESSAGE value="product delete function and script (w - 13)" />
     <MESSAGE value="product attributes (w - 15)" />
-    <option name="LAST_COMMIT_MESSAGE" value="product attributes (w - 15)" />
+    <MESSAGE value="product add attributes fields(w - 16)" />
+    <option name="LAST_COMMIT_MESSAGE" value="product add attributes fields(w - 16)" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Auth/LoginController.php">
@@ -920,13 +920,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/routes/admin.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="393">
-          <caret line="39" column="123" selection-start-line="39" selection-start-column="109" selection-end-line="39" selection-end-column="123" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/js/backend_js/matrix.form_validation.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="459">
@@ -950,32 +943,33 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/admin/products/view_products.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
+        <state relative-caret-position="850">
           <caret line="50" column="125" selection-start-line="50" selection-start-column="125" selection-end-line="50" selection-end-column="125" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/admin/ProductsController.php">
+    <entry file="file://$PROJECT_DIR$/routes/admin.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="379">
-          <caret line="151" column="30" selection-start-line="151" selection-start-column="30" selection-end-line="151" selection-end-column="30" />
-          <folding>
-            <element signature="e#46#63#0#PHP" expanded="true" />
-            <element signature="e#2901#5208#0#PHP" />
-            <element signature="e#5423#6277#0#PHP" />
-          </folding>
+        <state relative-caret-position="393">
+          <caret line="39" column="123" selection-start-line="39" selection-start-column="109" selection-end-line="39" selection-end-column="123" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/admin/products/add_attributes.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="413">
-          <caret line="45" column="40" lean-forward="true" selection-start-line="45" selection-start-column="40" selection-end-line="45" selection-end-column="40" />
+        <state relative-caret-position="226">
+          <caret line="22" column="139" selection-start-line="22" selection-start-column="110" selection-end-line="22" selection-end-column="139" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/admin/ProductsController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="260">
+          <caret line="164" column="130" selection-start-line="164" selection-start-column="130" selection-end-line="164" selection-end-column="130" />
           <folding>
-            <element signature="e#2646#2664#0#HTML" expanded="true" />
-            <element signature="e#2773#2791#0#HTML" expanded="true" />
-            <element signature="e#2903#2921#0#HTML" expanded="true" />
-            <element signature="e#3033#3051#0#HTML" expanded="true" />
+            <element signature="e#46#63#0#PHP" expanded="true" />
+            <element signature="e#2901#5208#0#PHP" />
+            <element signature="e#5423#6277#0#PHP" />
           </folding>
         </state>
       </provider>
