@@ -200,7 +200,7 @@ $(document).ready(function(){
 
 	//delete product alarm
 	$('.deleteProduct').click(function () {
-		var product_id = $(this).data('pid');
+		// var product_id = $(this).data('pid');
 		var pd_link = $(this).data('link');
 		// alert(pd_link);
 		swal({
@@ -213,15 +213,33 @@ $(document).ready(function(){
 			confirmButtonColor: '#00b0ff',
 			cancelButtonText: 'انصراف',
 			confirmButtonText: 'ادامه و حذف'
-		},
-			function () {
-				window.location.href=pd_link;
-			}
-		);
-		/*if(confirm('are you sure for delete this product?')){
-			return true;
 		}
-		return false;*/
+		).then(function(){
+			// console.log(pd_link);
+			window.location.href=pd_link;
+		});
+
+	});
+
+	$('.delete-attribute').click(function () {
+		// var attribute_id = $(this).data('pid');
+		var pd_link = $(this).data('link');
+
+		swal({
+				title: 'are you sure?',
+				text: 'you done',
+				type: 'warning',
+				showCloseButton: false,
+				showCancelButton: true,
+				focusConfirm: false,
+				confirmButtonColor: '#00b0ff',
+				cancelButtonText: 'انصراف',
+				confirmButtonText: 'ادامه و حذف'
+			}
+		).then(function(){
+			// console.log(pd_link);
+			window.location.href=pd_link;
+		});
 	});
 
 	$(document).ready(function(){

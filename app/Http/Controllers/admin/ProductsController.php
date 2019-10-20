@@ -176,4 +176,12 @@ class ProductsController extends Controller
         return redirect()->back();
 
     }
+
+    public function deleteAttribute($id =null){
+        if($id!= null){
+            ProductsAttribute::destroy($id);
+            return redirect()->back()->with('flash_message_success','attribute deleted successfully');
+        }
+        return redirect()->back()->with('flash_message_error','attribute not deleted');
+    }
 }

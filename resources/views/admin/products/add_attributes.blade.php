@@ -81,8 +81,8 @@
                                     <td>{{$attribute->price}}</td>
                                     <td>{{$attribute->stock}}</td>
                                     <td class="center">
-                                        <a data-pid="{{$attribute->id}}" data-link="{{route('admin.delete_product', ['id'=>$attribute->id])}}"
-                                           data-confirm="ahmad" href="javascript:" class="btn btn-danger btn-mini deleteProduct">Delete</a>
+                                        <a data-pid="{{$attribute->id}}" data-link="{{route('admin.delete_product_attribute', ['id'=>$attribute->id])}}"
+                                           data-confirm="ahmad" href="javascript:" class="btn btn-danger btn-mini delete-attribute">Delete</a>
                                     </td>
                                 </tr>
                             @endforeach
