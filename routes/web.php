@@ -11,10 +11,6 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 
 Route::get('/d','admin\AdminController@login');
 Auth::routes();
@@ -22,3 +18,6 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 Route::match(['get','post'],'/login','HomeController@login')->name('login');
 Route::get('logout','HomeController@logout')->name('logout');
+
+//user guest
+Route::get('/', 'IndexController@index')->name('index');
