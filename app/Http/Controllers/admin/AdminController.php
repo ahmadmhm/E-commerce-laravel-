@@ -23,7 +23,7 @@ class AdminController extends Controller
             }
 
         }
-
+//        return Hash::make("ahmad2775");
         return view('admin.admin_login');
 
     }

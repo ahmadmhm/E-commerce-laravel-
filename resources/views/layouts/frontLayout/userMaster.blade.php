@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="fa">
-@include('layouts.frontLayout.adminHead')
+@include('layouts.frontLayout.userHead')
 @yield('css')
 <body>
-@include('layouts.frontLayout.adminHeader')
-@include('layouts.frontLayout.adminSidebar')
+@include('layouts.frontLayout.userHeader')
 
 @yield('content')
 
-@include('layouts.frontLayout.adminTail')
+@include('layouts.frontLayout.userTail')
+@include('layouts.frontLayout.userFooter')
 @yield('js')
 <script type="text/javascript">
     // This function is called from the pop-up menus to transfer to
