@@ -21,6 +21,21 @@ class Helpers
         return $menu;
     }
 
+    public static function make_category_simple_dropdown_menu($categories){
+        foreach ($categories as $category){
+            if($category->parent_id == 0){
+                $sub_menu=[];
+                foreach ($categories as $sub_cat){
+                    if($sub_cat->parent_id == $category->id)
+                        $sub_menu[]=$sub_cat;
+                }
+                $category->sub_menu = $sub_menu;
+                $cats[] = $category;
+            }
+        }
+        return $categories;
+    }
+
     public static function make_product_dropdown_menu($categories , $id){
         $menu ="<option value='' selected disabled>Select</option>";
         foreach ($categories as $category){
