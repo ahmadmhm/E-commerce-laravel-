@@ -100,6 +100,7 @@
                             </div>
                                 @endif
                             @endforeach
+
                         </div><!--/category-products-->
 
                         <div class="brands_products"><!--brands_products-->
@@ -134,7 +135,7 @@
 
                 <div class="col-sm-9 padding-right">
                     <div class="features_items"><!--features_items-->
-                        <h2 class="title text-center">All Items</h2>
+                        <h2 class="title text-center">{{$category_name}}</h2>
                         @foreach($products as $product)
                         <div class="col-sm-4">
                             <div class="product-image-wrapper">

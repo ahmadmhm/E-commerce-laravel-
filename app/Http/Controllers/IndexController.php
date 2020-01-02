@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 
 class IndexController extends Controller
 {
-    //
+
     public function index(){
 //        $products = Product::orderBy('id','DESC')->get();
         $categories = Category::all();

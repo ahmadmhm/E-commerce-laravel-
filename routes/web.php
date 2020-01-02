@@ -20,4 +20,10 @@ Route::match(['get','post'],'/login','HomeController@login')->name('login');
 Route::get('logout','HomeController@logout')->name('logout');
 
 //user guest
+
+//index page
 Route::get('/', 'IndexController@index')->name('index');
+
+//products
+
+Route::get('products/{url}','admin\ProductsController@products')->name('categorize_products');

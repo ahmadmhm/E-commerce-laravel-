@@ -184,4 +184,21 @@ class ProductsController extends Controller
         }
         return redirect()->back()->with('flash_message_error','attribute not deleted');
     }
+
+    //user functions
+
+    public function products($url =null){
+        if($url){
+//            $categoryIDs = Category::where('url','LIKE','%'.$url.'%')->with('Products')->pluck('id');
+            $categories = Category::all();
+            $categoryID = Category::where('url',$url)->first();
+
+            $products = Product::where('category_id',$categoryID->id)->get();
+//            dd($products);
+            return view('user.categorize_products')->with(['category_name'=>$url,'products'=> $products,'categories'=>$categories]);
+
+        }
+
+        dd($url);
+    }
 }
