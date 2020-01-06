@@ -36,14 +36,15 @@ class ProductsController extends Controller
             $file = null;
             if($request->product_image!=Null)
                 $file = $request->file('product_image');
-//            dd(public_path());
+
             if($file){
                 if ($file->isValid()) {
+
                     $fileName = time() . '_' . $product->id .'_'. $file->getClientOriginalName();
                     $large_destinationPath = public_path() . '/images/products/large/'.$fileName;
                     $medium_destinationPath = public_path() . '/images/products/medium/'.$fileName;
                     $small_destinationPath = public_path() . '/images/products/small/'.$fileName;
-
+                    //dd($fileName);
 //                    $file->move($large_destinationPath, $fileName);
 //                    $uploaded_file_dir = 'images/products/'.$fileName;
 //                    dd(public_path());
@@ -192,8 +193,17 @@ class ProductsController extends Controller
 //            $categoryIDs = Category::where('url','LIKE','%'.$url.'%')->with('Products')->pluck('id');
             $categories = Category::all();
             $categoryID = Category::where('url',$url)->first();
-
-            $products = Product::where('category_id',$categoryID->id)->get();
+            $products = null;
+            if($categoryID->parent_id == 0){
+                $ids =[];
+                foreach ($categories as $cat){
+                    if($cat->parent_id == $categoryID->id)
+                        $ids[] = $cat->id;
+                }
+                $products = Product::whereIn('category_id',$ids)->get();
+            }else{
+                $products = Product::where('category_id',$categoryID->id)->get();
+            }
 //            dd($products);
             return view('user.categorize_products')->with(['category_name'=>$url,'products'=> $products,'categories'=>$categories]);
 
