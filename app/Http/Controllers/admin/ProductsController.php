@@ -194,15 +194,19 @@ class ProductsController extends Controller
             $categories = Category::all();
             $categoryID = Category::where('url',$url)->first();
             $products = null;
-            if($categoryID->parent_id == 0){
-                $ids =[];
-                foreach ($categories as $cat){
-                    if($cat->parent_id == $categoryID->id)
-                        $ids[] = $cat->id;
+            if(!$categoryID)
+                return view('common.404');
+            else{
+                if($categoryID->parent_id == 0){
+                    $ids =[];
+                    foreach ($categories as $cat){
+                        if($cat->parent_id == $categoryID->id)
+                            $ids[] = $cat->id;
+                    }
+                    $products = Product::whereIn('category_id',$ids)->get();
+                }else{
+                    $products = Product::where('category_id',$categoryID->id)->get();
                 }
-                $products = Product::whereIn('category_id',$ids)->get();
-            }else{
-                $products = Product::where('category_id',$categoryID->id)->get();
             }
 //            dd($products);
             return view('user.categorize_products')->with(['category_name'=>$url,'products'=> $products,'categories'=>$categories]);
