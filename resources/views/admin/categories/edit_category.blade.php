@@ -49,6 +49,12 @@
                                         <input type="text" value="{{ old('url',isset($category->url) ? $category->url : '') }}" name="url" id="url">
                                     </div>
                                 </div>
+                                <div class="control-group">
+                                    <label class="control-label">Enable</label>
+                                    <div class="controls"><?php  ?>
+                                        <input type="checkbox" {{ old('status',(isset($category->status) and $category->status == 1) ? 'checked' : '') }} name="status" id="status">
+                                    </div>
+                                </div>
                                 <div class="form-actions">
                                     <input type="submit" value="Update Category" class="btn btn-success">
                                 </div>

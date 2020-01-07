@@ -75,7 +75,7 @@
                         <h2>Category</h2>
                         <div class="panel-group category-products" id="accordian"><!--category-productsr-->
                             @foreach($categories as $category)
-                                @if($category->parent_id == '0')
+                                @if($category->parent_id == '0' and $category->status == 1)
                             <div class="panel panel-default">
                                 <div class="panel-heading">
                                     <h4 class="panel-title">
@@ -89,7 +89,7 @@
                                     <div class="panel-body">
                                         <ul>
                                             @foreach($categories as $categoryIn)
-                                                @if($categoryIn->parent_id == $category->id)
+                                                @if($categoryIn->parent_id == $category->id and $categoryIn->status == 1)
                                                     <li><a href="{{route('categorize_products',['url'=>$categoryIn->url])}}">{{$categoryIn->name}} </a></li>
                                                 @endif
 

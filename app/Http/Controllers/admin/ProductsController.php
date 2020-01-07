@@ -194,7 +194,7 @@ class ProductsController extends Controller
             $categories = Category::all();
             $categoryID = Category::where('url',$url)->first();
             $products = null;
-            if(!$categoryID)
+            if(!$categoryID or $categoryID->status == 0)
                 return view('common.404');
             else{
                 if($categoryID->parent_id == 0){

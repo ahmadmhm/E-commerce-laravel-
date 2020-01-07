@@ -17,7 +17,10 @@ class CategoryController extends Controller
             $category->parent_id = $request->parent_id;
             $category->description = $request->description;
             $category->url = $request->url;
-            $category->status = 1;
+            if($request->status == "on")
+                $category->status = 1;
+            else
+                $category->status = 0;
             $category->save() ;
 
             return redirect()->route('admin.view_categories')->with('flash_message_success','category added successfully');
@@ -41,6 +44,10 @@ class CategoryController extends Controller
             $category->name = $request->category_name;
             $category->description = $request->description;
             $category->url = $request->url;
+            if($request->status == "on")
+                $category->status = 1;
+            else
+                $category->status = 0;
             $category->update() ;
 
             return redirect()->route('admin.view_categories')->with('flash_message_success','category updated successfully');
