@@ -75,7 +75,6 @@ class ProductsController extends Controller
         }else{
             return 'error';
         }
-
     }
 
     public function editProduct(Request $request,$id =null)
@@ -93,7 +92,6 @@ class ProductsController extends Controller
                 $product->product_color = $request->product_color;
                 $product->description = $request->description;
                 $product->price = $request->price;
-
 
                 //saving the image
                 $file = null;
@@ -117,7 +115,7 @@ class ProductsController extends Controller
                     }
                 }
                 $product->update();
-                return redirect()->route('admin.view_products')->with('flash_message_success', 'product updated successfully');
+                return redirect()->route('admin.edit_product', ['id'=>$product->id])->with('flash_message_success', 'product updated successfully');
             }
             if ($product) {
                 $levels = Helpers::make_product_dropdown_menu($levels, $product->category_id);
@@ -137,12 +135,15 @@ class ProductsController extends Controller
         if($id != null){
             $product = Product::where('id', $id)->first();
             if($product){
-//                if(file_exists(Helpers::product_medium_image_asset($product->product_image))) {
-//                    unlink(Helpers::product_medium_image_asset($product->product_image));
-//                }
-//                Storage::disk('public')->delete('/images/products/small/'.$product->product_image);
-//                Storage::delete(Helpers::product_medium_image_asset($product->product_image));
-//                Storage::delete(Helpers::product_large_image_asset($product->product_image));
+                if(file_exists(public_path().'/images/products/small/'.$product->product_image)) {
+                    unlink(public_path().'/images/products/small/'.$product->product_image);
+                }
+                if(file_exists(public_path().'/images/products/medium/'.$product->product_image)) {
+                    unlink(public_path().'/images/products/medium/'.$product->product_image);
+                }
+                if(file_exists(public_path().'/images/products/large/'.$product->product_image)) {
+                    unlink(public_path().'/images/products/large/'.$product->product_image);
+                }
                 $product ->update(['product_image' => '']);
             }
         }
@@ -173,9 +174,7 @@ class ProductsController extends Controller
                 return view('admin.products.add_attributes', compact('productDetails'));
             }
         }
-
         return redirect()->back();
-
     }
 
     public function deleteAttribute($id =null){
