@@ -27,3 +27,5 @@ Route::get('/', 'IndexController@index')->name('index');
 //products
 
 Route::get('products/{url}','admin\ProductsController@products')->name('categorize_products');
+Route::get('product/{id}','admin\ProductsController@product')->name('product');
+Route::post('product/attribute','admin\ProductsController@getProductAttributes')->name('get_product_attribute');

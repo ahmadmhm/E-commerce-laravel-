@@ -5,17 +5,14 @@ namespace App\Http\Controllers\admin;
 use App\Category;
 use App\Helpers\Helpers;
 use App\Product;
-use App\ProductImage;
 use App\ProductsAttribute;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Facades\Image;
 
 class ProductsController extends Controller
 {
     //
-
     public function addProduct(Request $request){
 
         $levels = Category::all();
@@ -104,9 +101,7 @@ class ProductsController extends Controller
                         $medium_destinationPath = public_path() . '/images/products/medium/' . $fileName;
                         $small_destinationPath = public_path() . '/images/products/small/' . $fileName;
 
-//                    $file->move($large_destinationPath, $fileName);
-//                    $uploaded_file_dir = 'images/products/'.$fileName;
-//                    dd(public_path());
+
                         Image::make($file)->save($large_destinationPath);
                         Image::make($file)->resize(600, 600)->save($medium_destinationPath);
                         Image::make($file)->resize(300, 300)->save($small_destinationPath);
@@ -213,5 +208,31 @@ class ProductsController extends Controller
         }
 
         dd($url);
+    }
+
+    public function product($id = null){
+        if($id){
+            $product = Product::where('id',$id)->with('Attributes')->first();
+//            dd($product);
+            if($product){
+                $categories = Category::all();
+                return view('user.product_detail',compact('product','categories'));
+            }else{
+                return redirect()->back();
+//                return redirect()->route('index');
+            }
+        }else{
+            return redirect()->back();
+        }
+    }
+
+    public function getProductAttributes(Request $request){
+        if($request->isMethod('post')){
+            if(isset($request->attribute_id)){
+                $attribute = ProductsAttribute::where('id', $request->attribute_id)->first();
+                return response()->json($attribute);
+            }
+            return response()->json('error');
+        }
     }
 }
