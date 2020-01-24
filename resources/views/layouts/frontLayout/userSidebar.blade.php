@@ -1,19 +1,37 @@
 <!--sidebar-menu-->
-<div id="sidebar"><a href="#" class="visible-phone"><i class="icon icon-home"></i> Dashboard</a>
-    <ul>
-        <li class="active"><a href="{{route('admin.dashboard')}}"><i class="icon icon-home"></i> <span>Dashboard</span></a> </li>
-        <li class="submenu"> <a href="#"><i class="icon icon-th-list"></i> <span>Categories</span> <span class="label label-important">2</span></a>
-            <ul>
-                <li><a href="{{route('admin.add_category')}}">Add Category</a></li>
-                <li><a href="{{route('admin.view_categories')}}">View Categories</a></li>
-            </ul>
-        </li>
-        <li class="submenu"> <a href="#"><i class="icon icon-th-list"></i> <span>Products</span> <span class="label label-important">2</span></a>
-            <ul>
-                <li><a href="{{route('admin.add_product')}}">Add Product</a></li>
-                <li><a href="{{route('admin.view_products')}}">View products</a></li>
-            </ul>
-        </li>
-    </ul>
+<div class="col-sm-3">
+    <div class="left-sidebar">
+        <h2>Category</h2>
+        <div class="panel-group category-products" id="accordian"><!--category-productsr-->
+            @foreach($categories as $category)
+                @if($category->parent_id == '0' and $category->status == 1)
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a data-toggle="collapse" data-parent="#accordian" href="#{{$category->id}}">
+                                    <span class="badge pull-right"><i class="fa fa-plus"></i></span>
+                                    {{$category->name}}
+                                </a>
+                            </h4>
+                        </div>
+                        <div id="{{$category->id}}" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                <ul>
+                                    @foreach($categories as $categoryIn)
+                                        @if($categoryIn->parent_id == $category->id and $categoryIn->status == 1)
+                                            <li><a href="{{route('categorize_products',['url'=>$categoryIn->url])}}">{{$categoryIn->name}} </a></li>
+                                        @endif
+
+                                    @endforeach
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                @endif
+            @endforeach
+
+        </div><!--/category-products-->
+
+    </div>
 </div>
 <!--sidebar-menu-->

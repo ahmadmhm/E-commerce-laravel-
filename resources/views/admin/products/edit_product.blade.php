@@ -56,6 +56,12 @@
                                     </div>
                                 </div>
                                 <div class="control-group">
+                                    <label class="control-label">Material & Care</label>
+                                    <div class="controls">
+                                        <textarea type="text" name="care" id="description">{{ old('care',isset($product->care) ? $product->care : '') }}</textarea>
+                                    </div>
+                                </div>
+                                <div class="control-group">
                                     <label class="control-label">Price</label>
                                     <div class="controls">
                                         <input value="{{ old('price',isset($product->price) ? $product->price : '') }}" type="text" name="price" id="price">

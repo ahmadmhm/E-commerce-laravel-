@@ -25,6 +25,7 @@ class ProductsController extends Controller
             $product->product_code = $request->product_code;
             $product->product_color = $request->product_color;
             $product->description = $request->description;
+            $product->care = $request->care;
             $product->price = $request->price;
             $product->product_image = '';
 
@@ -88,6 +89,7 @@ class ProductsController extends Controller
                 $product->product_code = $request->product_code;
                 $product->product_color = $request->product_color;
                 $product->description = $request->description;
+                $product->care = $request->care;
                 $product->price = $request->price;
 
                 //saving the image
