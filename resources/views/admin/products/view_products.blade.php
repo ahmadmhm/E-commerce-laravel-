@@ -46,10 +46,11 @@
                             <img style="width: 100px" src="{{ $product->product_image? \App\Helpers\Helpers::product_small_image_asset($product->product_image):''}}">
                         </th>
                         <td class="center">
-                            <a href="#myModal" data-toggle="modal" data-id="{{$product->id}}" class="btn btn-success btn-mini viewProduct">View</a>
-                            <a href="{{route('admin.edit_product', ['id'=>$product->id])}}" class="btn btn-primary btn-mini">Edit</a>
-                            <a href="{{route('admin.add_attributes', ['id'=>$product->id])}}" class="btn btn-success btn-mini">Add</a>
-                            <a data-pid="{{$product->id}}" data-link="{{route('admin.delete_product', ['id'=>$product->id])}}" data-confirm="ahmad" href="javascript:" <?php /*href="{{route('admin.delete_product', ['id'=>$product->id])}}"*/?>
+                            <a href="#myModal" data-toggle="modal" data-id="{{$product->id}}" class="btn btn-success btn-mini viewProduct" title="View Details">View</a>
+                            <a href="{{route('admin.edit_product', ['id'=>$product->id])}}" class="btn btn-primary btn-mini" title="Edit Product">Edit</a>
+                            <a href="{{route('admin.add_attributes', ['id'=>$product->id])}}" class="btn btn-success btn-mini" title="Add Attributes">Add</a>
+                            <a href="{{route('admin.add_attributes', ['id'=>$product->id])}}" class="btn btn-info btn-mini" title="Add Image">Add</a>
+                            <a data-pid="{{$product->id}}" data-link="{{route('admin.delete_product', ['id'=>$product->id])}}" title="Delete Product" data-confirm="ahmad" href="javascript:" <?php /*href="{{route('admin.delete_product', ['id'=>$product->id])}}"*/?>
 
                             class="btn btn-danger btn-mini deleteProduct">Delete</a></td>
                     </tr>

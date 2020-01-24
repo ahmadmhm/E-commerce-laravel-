@@ -54,7 +54,7 @@
                                 <p>Code: {{$product->product_code}}</p>
                                 <p>
                                     <select name="size" id="attribute">
-                                        <option value="" style="width: 20%">Select</option>
+                                        <option value="" style="width: 20%">Select Size</option>
                                         @foreach($product->Attributes as $attribute)
                                         <option value="{{$attribute->id}}">{{$attribute->size}}</option>
                                         @endforeach

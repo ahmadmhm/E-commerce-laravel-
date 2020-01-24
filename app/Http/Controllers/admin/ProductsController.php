@@ -182,6 +182,10 @@ class ProductsController extends Controller
         return redirect()->back()->with('flash_message_error','attribute not deleted');
     }
 
+    public function addImages(Request $request, $id = null){
+
+    }
+
     //user functions
 
     public function products($url =null){
