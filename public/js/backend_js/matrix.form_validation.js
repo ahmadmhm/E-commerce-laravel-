@@ -222,6 +222,28 @@ $(document).ready(function(){
 	});
 
 	$('.delete-attribute').click(function () {
+		// var attribute_id = $(this).data('pid')
+		var pd_link = $(this).data('link');
+
+		swal({
+				title: 'are you sure?',
+				text: 'you done',
+				type: 'warning',
+				showCloseButton: false,
+				showCancelButton: true,
+				focusConfirm: false,
+				confirmButtonColor: '#00b0ff',
+				cancelButtonText: 'انصراف',
+				confirmButtonText: 'ادامه و حذف'
+			}
+		).then((result) => {
+			if (result.value) {
+				window.location.href=pd_link;
+			}
+		});
+	});
+
+	$('.delete-image').click(function () {
 		// var attribute_id = $(this).data('pid');
 		var pd_link = $(this).data('link');
 
@@ -236,9 +258,10 @@ $(document).ready(function(){
 				cancelButtonText: 'انصراف',
 				confirmButtonText: 'ادامه و حذف'
 			}
-		).then(function(){
-			// console.log(pd_link);
-			window.location.href=pd_link;
+		).then((result) => {
+			if (result.value) {
+				window.location.href=pd_link;
+			}
 		});
 	});
 

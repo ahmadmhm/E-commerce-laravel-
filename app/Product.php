@@ -20,4 +20,8 @@ class Product extends Model
     public function Attributes(){
         return $this->hasMany(ProductsAttribute::class,'product_id');
     }
+
+    public function Images(){
+        return $this->hasMany(ProductsImage::class,'product_id');
+    }
 }

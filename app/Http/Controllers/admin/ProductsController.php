@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\admin;
 
+use App\ProductsImage;
+use Validator;
 use App\Category;
 use App\Helpers\Helpers;
 use App\Product;
@@ -183,7 +185,56 @@ class ProductsController extends Controller
     }
 
     public function addImages(Request $request, $id = null){
+        if ($id){
+            $productDetails = Product::with('Images')->where(['id'=>$id])->first();
+            if($productDetails){
+                if ($request->isMethod('post')){
+                    if($request->hasFile('product_image')){
+                        foreach ($request->product_image as $image){
+                            $fileName = time() . '_' . $productDetails->id .'_'. $image->getClientOriginalName();
+                            $large_destinationPath = public_path() . '/images/products/large/'.$fileName;
+                            $medium_destinationPath = public_path() . '/images/products/medium/'.$fileName;
+                            $small_destinationPath = public_path() . '/images/products/small/'.$fileName;
 
+                            Image::make($image)->save($large_destinationPath);
+                            Image::make($image)->resize(600,600)->save($medium_destinationPath);
+                            Image::make($image)->resize(300,300)->save($small_destinationPath);
+
+                            $product_image = new ProductsImage();
+                            $product_image->product_id = $productDetails->id;
+                            $product_image->image = $fileName;
+                            $product_image->save();
+                        }
+                        return redirect()->route('admin.add_images', ['id'=>$id])->with('flash_message_success', 'product images added successfully');
+                    }
+                }elseif ($request->isMethod('get')){
+                    return view('admin.products.add_images', compact('productDetails'));
+                }
+            }else{
+                return redirect()->back();
+            }
+        }else{
+            return redirect()->back();
+        }
+    }
+
+    public function deleteProductImages($id =null){
+        if($id != null){
+            $productImage = ProductsImage::where('id', $id)->first();
+            if($productImage){
+                if(file_exists(public_path().'/images/products/small/'.$productImage->image)) {
+                    unlink(public_path().'/images/products/small/'.$productImage->image);
+                }
+                if(file_exists(public_path().'/images/products/medium/'.$productImage->image)) {
+                    unlink(public_path().'/images/products/medium/'.$productImage->image);
+                }
+                if(file_exists(public_path().'/images/products/large/'.$productImage->image)) {
+                    unlink(public_path().'/images/products/large/'.$productImage->image);
+                }
+                ProductsImage::destroy($id);
+            }
+        }
+        return redirect()->back()->with('flash_message_success','product image deleted successfully');
     }
 
     //user functions

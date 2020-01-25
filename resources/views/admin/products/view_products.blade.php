@@ -49,7 +49,7 @@
                             <a href="#myModal" data-toggle="modal" data-id="{{$product->id}}" class="btn btn-success btn-mini viewProduct" title="View Details">View</a>
                             <a href="{{route('admin.edit_product', ['id'=>$product->id])}}" class="btn btn-primary btn-mini" title="Edit Product">Edit</a>
                             <a href="{{route('admin.add_attributes', ['id'=>$product->id])}}" class="btn btn-success btn-mini" title="Add Attributes">Add</a>
-                            <a href="{{route('admin.add_attributes', ['id'=>$product->id])}}" class="btn btn-info btn-mini" title="Add Image">Add</a>
+                            <a href="{{route('admin.add_images', ['id'=>$product->id])}}" class="btn btn-info btn-mini" title="Add Image">Add</a>
                             <a data-pid="{{$product->id}}" data-link="{{route('admin.delete_product', ['id'=>$product->id])}}" title="Delete Product" data-confirm="ahmad" href="javascript:" <?php /*href="{{route('admin.delete_product', ['id'=>$product->id])}}"*/?>
 
                             class="btn btn-danger btn-mini deleteProduct">Delete</a></td>
