@@ -269,7 +269,7 @@ class ProductsController extends Controller
 
     public function product($id = null){
         if($id){
-            $product = Product::where('id',$id)->with('Attributes')->first();
+            $product = Product::where('id',$id)->with('Attributes')->with('Images')->first();
 //            dd($product);
             if($product){
                 $categories = Category::all();

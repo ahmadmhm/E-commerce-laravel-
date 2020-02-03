@@ -13,6 +13,9 @@ class AdminController extends Controller
     //
     public function login(Request $request){
 
+        if(Auth::user()->user_type == '1'){
+            return redirect()->route('admin.dashboard');
+        }
         if($request->isMethod('post')){
 //            $data = $request->input();
             if(Auth::attempt(['email'=>$request->email,'password'=>$request->password ,'user_type'=>1])){

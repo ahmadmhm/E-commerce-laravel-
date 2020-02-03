@@ -1,4 +1,6 @@
-
+@section('css')
+    <link rel="stylesheet" href="{{asset('css/frontend_css/easyzoom.css')}}" />
+@endsection
 @extends('layouts.frontLayout.userMaster')
 
 @section('content')
@@ -11,30 +13,23 @@
                 <div class="col-sm-9 padding-right">
                     <div class="product-details"><!--product-details-->
                         <div class="col-sm-5">
-                            <div class="view-product">
-                                <img src="{{\App\Helpers\Helpers::product_medium_image_asset($product->product_image)}}" alt="" />
-                                <h3>ZOOM</h3>
+                            <div class="easyzoom easyzoom--overlay easyzoom--with-thumbnails">
+                                <a href="{{\App\Helpers\Helpers::product_large_image_asset($product->product_image)}}">
+                                <img style="width: 90%" class="mainImage" src="{{\App\Helpers\Helpers::product_small_image_asset($product->product_image)}}" alt="" />
+                                </a>
+                                    <h3>ZOOM</h3>
                             </div>
                             <div id="similar-product" class="carousel slide" data-ride="carousel">
 
                                 <!-- Wrapper for slides -->
                                 <div class="carousel-inner">
-                                    <div class="item active">
-                                        <a href=""><img src="images/product-details/similar1.jpg" alt=""></a>
-                                        <a href=""><img src="images/product-details/similar2.jpg" alt=""></a>
-                                        <a href=""><img src="images/product-details/similar3.jpg" alt=""></a>
+                                    <div class="item active thumbnails">
+                                        @foreach($product->Images as $image)
+                                            <a href="{{\App\Helpers\Helpers::product_large_image_asset($image->image)}}" data-standard="{{\App\Helpers\Helpers::product_large_image_asset($image->image)}}">
+                                                <img class="changeImage" width="80px" src="{{\App\Helpers\Helpers::product_small_image_asset($image->image)}}" alt="">
+                                            </a>
+                                        @endforeach
                                     </div>
-                                    <div class="item">
-                                        <a href=""><img src="images/product-details/similar1.jpg" alt=""></a>
-                                        <a href=""><img src="images/product-details/similar2.jpg" alt=""></a>
-                                        <a href=""><img src="images/product-details/similar3.jpg" alt=""></a>
-                                    </div>
-                                    <div class="item">
-                                        <a href=""><img src="images/product-details/similar1.jpg" alt=""></a>
-                                        <a href=""><img src="images/product-details/similar2.jpg" alt=""></a>
-                                        <a href=""><img src="images/product-details/similar3.jpg" alt=""></a>
-                                    </div>
-
                                 </div>
 
                                 <!-- Controls -->
@@ -117,6 +112,7 @@
 
 @endsection
 @section('js')
+<script src="{{asset('js/frontend_js/easyzoom.js')}}"></script>
 <script>
         $(document).on('change', '#attribute', function (e) {
             var id = $("#attribute").val() || null;
