@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="4d23e414-c951-4cb6-9755-629d89c1ae0d" name="Default Changelist" comment="product adding alternate images (w - 34,35)">
-      <change beforePath="$PROJECT_DIR$/.idea/E-commerce.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/E-commerce.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+    <list default="true" id="4d23e414-c951-4cb6-9755-629d89c1ae0d" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/admin/ProductsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/admin/ProductsController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/user/product_detail.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/user/product_detail.blade.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -44,10 +43,11 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/admin/ProductsController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="580">
-              <caret line="178" column="65" selection-start-line="178" selection-start-column="65" selection-end-line="178" selection-end-column="65" />
+            <state relative-caret-position="223">
+              <caret line="298" column="32" selection-start-line="298" selection-start-column="16" selection-end-line="298" selection-end-column="32" />
               <folding>
                 <element signature="e#46#68#0#PHP" expanded="true" />
+                <element signature="e#2952#5145#0#PHP" />
                 <element signature="e#5151#5354#0#PHP" />
                 <element signature="e#5360#6341#0#PHP" />
                 <element signature="e#6347#7517#0#PHP" />
@@ -64,10 +64,12 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/resources/views/user/product_detail.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="135" column="85" selection-start-line="135" selection-start-column="85" selection-end-line="135" selection-end-column="85" />
+            <state relative-caret-position="463">
+              <caret line="139" column="90" selection-start-line="139" selection-start-column="90" selection-end-line="139" selection-end-column="90" />
               <folding>
                 <element signature="e#2954#2975#0#HTML" expanded="true" />
+                <element signature="e#7016#7037#0#HTML" expanded="true" />
+                <element signature="e#8442#8463#0#HTML" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -345,11 +347,6 @@
               <item name="views" type="462c0819:PsiDirectoryNode" />
               <item name="user" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="E-commerce" type="b2602c69:ProjectViewProjectNode" />
-              <item name="E-commerce" type="462c0819:PsiDirectoryNode" />
-              <item name="routes" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
@@ -495,7 +492,7 @@
       <workItem from="1582982850923" duration="1545000" />
       <workItem from="1583079833760" duration="1628000" />
       <workItem from="1583171926507" duration="1193000" />
-      <workItem from="1583245872866" duration="5835000" />
+      <workItem from="1583245872866" duration="9432000" />
     </task>
     <task id="LOCAL-00001" summary="first initial for running">
       <created>1560535490318</created>
@@ -777,11 +774,18 @@
       <option name="project" value="LOCAL" />
       <updated>1583250295748</updated>
     </task>
-    <option name="localTasksCounter" value="41" />
+    <task id="LOCAL-00041" summary="product detail page stocks function (w - 39)">
+      <created>1583262579878</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1583262579878</updated>
+    </task>
+    <option name="localTasksCounter" value="42" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="313983000" />
+    <option name="totallyTimeSpent" value="317580000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -813,7 +817,6 @@
     <option name="version" value="1" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="add product images and change their size (w - 8)" />
     <MESSAGE value="add product view (w - 9)" />
     <MESSAGE value="add product detail model view (w - 10)" />
     <MESSAGE value="add product edit page and edit helpers dropdown method (w - 11)" />
@@ -838,7 +841,8 @@
     <MESSAGE value="product adding alternate images (w - 34,35)" />
     <MESSAGE value="product details adding easy zoom (w - 36,37)" />
     <MESSAGE value="product updating attributes in add attribute page (w - 38)" />
-    <option name="LAST_COMMIT_MESSAGE" value="product updating attributes in add attribute page (w - 38)" />
+    <MESSAGE value="product detail page stocks function (w - 39)" />
+    <option name="LAST_COMMIT_MESSAGE" value="product detail page stocks function (w - 39)" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Auth/RegisterController.php">
@@ -1205,10 +1209,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/admin/ProductsController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="580">
-          <caret line="178" column="65" selection-start-line="178" selection-start-column="65" selection-end-line="178" selection-end-column="65" />
+        <state relative-caret-position="223">
+          <caret line="298" column="32" selection-start-line="298" selection-start-column="16" selection-end-line="298" selection-end-column="32" />
           <folding>
             <element signature="e#46#68#0#PHP" expanded="true" />
+            <element signature="e#2952#5145#0#PHP" />
             <element signature="e#5151#5354#0#PHP" />
             <element signature="e#5360#6341#0#PHP" />
             <element signature="e#6347#7517#0#PHP" />
@@ -1223,10 +1228,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/user/product_detail.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="135" column="85" selection-start-line="135" selection-start-column="85" selection-end-line="135" selection-end-column="85" />
+        <state relative-caret-position="463">
+          <caret line="139" column="90" selection-start-line="139" selection-start-column="90" selection-end-line="139" selection-end-column="90" />
           <folding>
             <element signature="e#2954#2975#0#HTML" expanded="true" />
+            <element signature="e#7016#7037#0#HTML" expanded="true" />
+            <element signature="e#8442#8463#0#HTML" expanded="true" />
           </folding>
         </state>
       </provider>

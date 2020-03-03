@@ -296,10 +296,10 @@ class ProductsController extends Controller
 //            dd($product);
             if($product){
                 $categories = Category::all();
-                return view('user.product_detail',compact('product','categories'));
+                $relatedProducts = Product::where('id','<>',$id)->where('category_id',$product->category_id)->get();
+                return view('user.product_detail',compact('product','categories','relatedProducts'));
             }else{
                 return redirect()->back();
-//                return redirect()->route('index');
             }
         }else{
             return redirect()->back();

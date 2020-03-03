@@ -105,6 +105,59 @@
                             </div>
                         </div>
                     </div><!--/category-tab-->
+                    <div class="recommended_items"><!--recommended_items-->
+                        <h2 class="title text-center">recommended items</h2>
+
+                        <div id="recommended-item-carousel" class="carousel slide" data-ride="carousel">
+                            <div class="carousel-inner">
+                                <?php $s = 1; ?>
+                                @foreach($relatedProducts->chunk(3) as $pack)
+                                    @if($s == 1)
+                                       <div class="item active">
+                                           <?php $s=0; ?>
+                                           @foreach($pack as $item)
+                                               <div class="col-sm-4">
+                                                    <div class="product-image-wrapper">
+                                                            <div class="single-products">
+                                                                <div class="productinfo text-center">
+                                                                    <img style="width: 230px;" src="{{\App\Helpers\Helpers::product_small_image_asset($item->product_image)}}" alt="" />
+                                                                    <h2>${{$item->price}}</h2>
+                                                                    <p>Easy Polo Black Edition</p>
+                                                                    <a href="{{route('product',['id'=>$item->id])}}" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                               </div>
+                                           @endforeach
+                                       </div>
+                                    @else
+                                        <div class="item">
+                                            @foreach($pack as $item)
+                                                <div class="col-sm-4">
+                                                    <div class="product-image-wrapper">
+                                                        <div class="single-products">
+                                                            <div class="productinfo text-center">
+                                                                <img style="width: 230px;" src="{{\App\Helpers\Helpers::product_small_image_asset($item->product_image)}}"alt="" />
+                                                                <h2>${{$item->price}}</h2>
+                                                                <p>Easy Polo Black Edition</p>
+                                                                <a href="{{route('product',['id'=>$item->id])}}" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            @endforeach
+                                        </div>
+                                    @endif
+                                @endforeach
+                            </div>
+                            <a class="left recommended-item-control" href="#recommended-item-carousel" data-slide="prev">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                            <a class="right recommended-item-control" href="#recommended-item-carousel" data-slide="next">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
