@@ -61,6 +61,9 @@
                         <h5>View Attributes</h5>
                     </div>
                     <div class="widget-content nopadding">
+                        <form class="" method="post" action="{{route('admin.edit_attributes', ['id'=>$productDetails->id])}}"
+                              name="edit_attribute" id="edit_attribute" enctype="multipart/form-data">
+                            @csrf
                         <table class="table table-bordered data-table">
                             <thead>
                             <tr>
@@ -75,12 +78,13 @@
                             <tbody>@php @endphp
                             @foreach($productDetails->Attributes as $attribute)
                                 <tr class="gradeX">
-                                    <td>{{$attribute->id}}</td>
+                                    <td><input type="hidden" name="attribute_id[]" value="{{$attribute->id}}">{{$attribute->id}}</td>
                                     <td>{{$attribute->sku}}</td>
                                     <td>{{$attribute->size}}</td>
-                                    <td>{{$attribute->price}}</td>
-                                    <td>{{$attribute->stock}}</td>
+                                    <td><input type="text" name="attribute_price[]" value="{{$attribute->price}}"></td>
+                                    <td><input type="text" name="attribute_stock[]" value="{{$attribute->stock}}"></td>
                                     <td class="center">
+                                        <input type="submit" value="Update" class="btn btn-primary btn-mini">
                                         <a data-pid="{{$attribute->id}}" data-link="{{route('admin.delete_product_attribute', ['id'=>$attribute->id])}}"
                                            data-confirm="ahmad" href="javascript:" class="btn btn-danger btn-mini delete-attribute">Delete</a>
                                     </td>
@@ -88,6 +92,7 @@
                             @endforeach
                             </tbody>
                         </table>
+                        </form>
                     </div>
                 </div>
             </div>

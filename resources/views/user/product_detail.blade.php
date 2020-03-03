@@ -20,7 +20,6 @@
                                     <h3>ZOOM</h3>
                             </div>
                             <div id="similar-product" class="carousel slide" data-ride="carousel">
-
                                 <!-- Wrapper for slides -->
                                 <div class="carousel-inner">
                                     <div class="item active thumbnails">

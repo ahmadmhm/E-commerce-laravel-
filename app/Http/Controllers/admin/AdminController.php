@@ -13,7 +13,7 @@ class AdminController extends Controller
     //
     public function login(Request $request){
 
-        if(Auth::user()->user_type == '1'){
+        if(isset(Auth::user()->user_type) and Auth::user()->user_type == '1'){
             return redirect()->route('admin.dashboard');
         }
         if($request->isMethod('post')){

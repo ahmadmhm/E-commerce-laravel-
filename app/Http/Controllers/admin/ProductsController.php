@@ -176,6 +176,29 @@ class ProductsController extends Controller
         return redirect()->back();
     }
 
+    public function editAttributes(Request $request, $id = null){
+        $productDetails = null;
+        if($id != null){
+            $productDetails = Product::with('Attributes')->where(['id'=>$id])->first();
+        }
+
+        if($request->isMethod('post')){
+            $data = $request->all();
+            foreach ($data['attribute_id'] as $key => $value){
+                if(!empty($value) and $id != null){
+                    ProductsAttribute::where('id',$data['attribute_id'][$key])
+                        ->update(['price'=> $data['attribute_price'][$key],'stock'=> $data['attribute_stock'][$key]]);
+                }
+            }
+            return redirect()->route('admin.add_attributes', ['id'=>$id])->with('flash_message_success', 'product attributes updated successfully');
+        }else{
+            if($productDetails != null){
+                return view('admin.products.add_attributes', compact('productDetails'));
+            }
+        }
+        return redirect()->back();
+    }
+
     public function deleteAttribute($id =null){
         if($id!= null){
             ProductsAttribute::destroy($id);
