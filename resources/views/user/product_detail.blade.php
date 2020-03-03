@@ -23,6 +23,7 @@
                                 <!-- Wrapper for slides -->
                                 <div class="carousel-inner">
                                     <div class="item active thumbnails">
+
                                         @foreach($product->Images as $image)
                                             <a href="{{\App\Helpers\Helpers::product_large_image_asset($image->image)}}" data-standard="{{\App\Helpers\Helpers::product_large_image_asset($image->image)}}">
                                                 <img class="changeImage" width="80px" src="{{\App\Helpers\Helpers::product_small_image_asset($image->image)}}" alt="">
@@ -47,7 +48,7 @@
                                 <h2>{{$product->product_name}}</h2>
                                 <p>Code: {{$product->product_code}}</p>
                                 <p>
-                                    <select name="size" id="attribute">
+                                    <select style="width: 150px;" name="size" id="attribute">
                                         <option value="" style="width: 20%">Select Size</option>
                                         @foreach($product->Attributes as $attribute)
                                         <option value="{{$attribute->id}}">{{$attribute->size}}</option>
@@ -58,13 +59,13 @@
                                 <span>
 									<span id="price">US ${{$product->price}}</span>
 									<label>Quantity:</label>
-									<input type="text" value="3" />
+									<input type="text" value="1" />
 									<button type="button" class="btn btn-fefault cart">
 										<i class="fa fa-shopping-cart"></i>
 										Add to cart
 									</button>
 								</span>
-                                <p><b>Availability:</b> In Stock</p>
+                                <p id="availability"><b>Availability:</b> In Stock</p>
                                 <p><b>Condition:</b> New</p>
                                 <p><b>Brand:</b> Ahmad</p>
                                 <a href=""><img src="images/product-details/share.png" class="share img-responsive"  alt="" /></a>
@@ -130,6 +131,13 @@
                         if(response != 'error'){
                             console.log(response.price);
                             $("#price").html("US $"+response.price);
+                            if(response.stock == 0){
+                                $(".cart").hide();
+                                $("#availability").html('<b>Availability:</b> Out Of Stock');
+                            }else {
+                                $(".cart").show();
+                                $("#availability").html('<b>Availability:</b> In Stock');
+                            }
                         }
                     },
                     error: function (data) {
