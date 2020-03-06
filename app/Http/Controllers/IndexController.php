@@ -16,7 +16,7 @@ class IndexController extends Controller
 //        $categories = Category::with('subCategories')->where('parent_id',0)->get();
 //        dd($categories);
 
-        $products = Product::inRandomOrder()->get();
+        $products = Product::where('status',1)->inRandomOrder()->get();
         return view('user.index')->with(['products'=> $products,'categories'=>$categories]);
     }
 }

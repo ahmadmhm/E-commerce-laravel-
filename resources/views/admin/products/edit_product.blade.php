@@ -75,6 +75,12 @@
                                         | <a href="{{route('admin.delete_product_image',['id'=>$product->id])}}">Delete</a>
                                     </div>
                                 </div>
+                                <div class="control-group">
+                                    <label class="control-label">Enable</label>
+                                    <div class="controls">
+                                        <input type="checkbox" {{ old('status',(isset($product->status) and $product->status == 1) ? 'checked' : '') }} name="status" id="status">
+                                    </div>
+                                </div>
 
                                 <div class="form-actions">
                                     <input type="submit" value="Udate Product" class="btn btn-success">

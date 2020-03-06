@@ -29,6 +29,10 @@ class ProductsController extends Controller
             $product->description = $request->description;
             $product->care = $request->care;
             $product->price = $request->price;
+            if($request->status == "on")
+                $product->status = 1;
+            else
+                $product->status = 0;
             $product->product_image = '';
 
 
@@ -93,6 +97,10 @@ class ProductsController extends Controller
                 $product->description = $request->description;
                 $product->care = $request->care;
                 $product->price = $request->price;
+                if($request->status == "on")
+                    $product->status = 1;
+                else
+                    $product->status = 0;
 
                 //saving the image
                 $file = null;
@@ -277,9 +285,9 @@ class ProductsController extends Controller
                         if($cat->parent_id == $categoryID->id)
                             $ids[] = $cat->id;
                     }
-                    $products = Product::whereIn('category_id',$ids)->get();
+                    $products = Product::where('status',1)->whereIn('category_id',$ids)->get();
                 }else{
-                    $products = Product::where('category_id',$categoryID->id)->get();
+                    $products = Product::where('status',1)->where('category_id',$categoryID->id)->get();
                 }
             }
 //            dd($products);
@@ -292,7 +300,7 @@ class ProductsController extends Controller
 
     public function product($id = null){
         if($id){
-            $product = Product::where('id',$id)->with('Attributes')->with('Images')->first();
+            $product = Product::where('status',1)->where('id',$id)->with('Attributes')->with('Images')->first();
 //            dd($product);
             if($product){
                 $categories = Category::all();
