@@ -1,5 +1,6 @@
 @section('css')
     <link rel="stylesheet" href="{{asset('css/frontend_css/easyzoom.css')}}" />
+    <link rel="stylesheet" href="{{asset('css/frontend_css/sweetalert2.min.css')}}" />
 @endsection
 @extends('layouts.frontLayout.userMaster')
 
@@ -43,34 +44,42 @@
 
                         </div>
                         <div class="col-sm-7">
-                            <div class="product-information"><!--/product-information-->
-                                <img src="images/product-details/rating.png" class="newarrival" alt="" />
-                                <h2>{{$product->product_name}}</h2>
-                                <p>Code: {{$product->product_code}}</p>
-                                <p>
-                                    <select style="width: 150px;" name="size" id="attribute">
-                                        <option value="" style="width: 20%">Select Size</option>
-                                        @foreach($product->Attributes as $attribute)
-                                        <option value="{{$attribute->id}}">{{$attribute->size}}</option>
-                                        @endforeach
-                                    </select>
-                                </p>
-                                <img src="images/product-details/rating.png" alt="" />
-                                <span>
+                            <form id="addtocart" name="addtocart" action="{{route('addToCart')}}" method="post">
+                                @csrf
+                                <input type="hidden" name="product_id" value="{{$product->id}}">
+                                <input type="hidden" name="product_attribute_id" value="0">
+                                <div class="product-information"><!--/product-information-->
+                                    <img src="images/product-details/rating.png" class="newarrival" alt="" />
+                                    <h2>{{$product->product_name}}</h2>
+                                    <p>Code: {{$product->product_code}}</p>
+                                    <p>
+                                        <select style="width: 150px;" name="" id="attribute">
+                                            <option value="" style="width: 20%">Select Size</option>
+                                            @foreach($product->Attributes as $attribute)
+                                                <option value="{{$attribute->id}}">{{$attribute->size}}</option>
+                                            @endforeach
+                                        </select>
+                                    </p>
+                                    <img src="images/product-details/rating.png" alt="" />
+                                    <span>
 									<span id="price">US ${{$product->price}}</span>
 									<label>Quantity:</label>
-									<input type="text" value="1" />
-									<button type="button" class="btn btn-fefault cart">
+									<input type="text" name="quantity" value="1" />
+									<button type="submit" class="btn btn-fefault cart">
 										<i class="fa fa-shopping-cart"></i>
 										Add to cart
 									</button>
 								</span>
-                                <p id="availability"><b>Availability:</b> In Stock</p>
-                                <p><b>Condition:</b> New</p>
-                                <p><b>Brand:</b> Ahmad</p>
-                                <a href=""><img src="images/product-details/share.png" class="share img-responsive"  alt="" /></a>
-                            </div><!--/product-information-->
+                                    <p id="availability"><b>Availability:</b> In Stock</p>
+                                    <p><b>Condition:</b> New</p>
+                                    <p><b>Brand:</b> Ahmad</p>
+                                    <a href=""><img src="images/product-details/share.png" class="share img-responsive"  alt="" /></a>
+                                </div><!--/product-information-->
+
+                            </form>
                         </div>
+
+
                     </div><!--/product-details-->
 
                     <div class="category-tab shop-details-tab"><!--category-tab-->
@@ -166,6 +175,7 @@
 @endsection
 @section('js')
 <script src="{{asset('js/frontend_js/easyzoom.js')}}"></script>
+<script src="{{asset('js/frontend_js/sweetalert2.min.js')}}"></script>
 <script>
         $(document).on('change', '#attribute', function (e) {
             var id = $("#attribute").val() || null;
@@ -182,8 +192,9 @@
                     success: function (response) {
                         // console.log(response.price);
                         if(response != 'error'){
-                            console.log(response.price);
+                            //console.log(response.price);
                             $("#price").html("US $"+response.price);
+                            $('input[name=product_attribute_id]').val(response.id);
                             if(response.stock == 0){
                                 $(".cart").hide();
                                 $("#availability").html('<b>Availability:</b> Out Of Stock');
