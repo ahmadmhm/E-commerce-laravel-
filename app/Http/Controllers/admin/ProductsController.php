@@ -340,10 +340,10 @@ class ProductsController extends Controller
                 if($userCart = DB::table('cart')->where(['product_id'=>$porduct->id,'product_color'=>$porduct->product_color, 'size'=>$porductAtrribute->size, 'session_id'=>$session_id])->count() > 0){
                     return redirect()->back()->with('flash_message_error','product already exists in cart');
                 }else{
-                    DB::table('cart')->insert(['product_id'=>$porduct->id ,'product_name'=>$porduct->product_name, 'product_code'=>$porduct->product_code ,
+                    DB::table('cart')->insert(['product_id'=>$porduct->id ,'product_name'=>$porduct->product_name, 'product_code'=>$porductAtrribute->sku ,
                         'product_color'=>$porduct->product_color, 'size'=>$porductAtrribute->size, 'price'=>$porductAtrribute->price,
                         'quantity'=>$request->quantity, 'user_email'=>(Auth::user() == null)?'':Auth::user()->email
-                        , 'session_id'=>$session_id, 'image'=>$porduct->image]);
+                        , 'session_id'=>$session_id, 'image'=>$porduct->product_image]);
 
                     return redirect()->route('showCart')->with('flash_message_success','product added to cart successfully');
                 }
@@ -354,6 +354,7 @@ class ProductsController extends Controller
     public function showCart(){
         $session_id = Session::get('session_id');
         $userCart = DB::table('cart')->where('session_id',$session_id)->get();
+
         return view('user.cart', compact('userCart'));
     }
 
@@ -367,8 +368,15 @@ class ProductsController extends Controller
 
     public function updateCartProductQuantity($id = null , $quantity = null){
         if($id and $quantity){
-            DB::table('cart')->where('id',$id)->increment('quantity',$quantity);
-            return redirect()->back()->with('flash_message_success','product quantity updated');
+            $cart = DB::table('cart')->where('id',$id)->first();
+            $getStock = ProductsAttribute::select('stock')->where('sku', $cart->product_code)->where('product_id', $cart->product_id)->first();
+
+            if($getStock->stock >= $cart->quantity + $quantity){
+                DB::table('cart')->where('id',$id)->increment('quantity',$quantity);
+                return redirect()->back()->with('flash_message_success','product quantity updated');
+            }else{
+                return redirect()->back()->with('flash_message_error','product quantity not available');
+            }
         }
         return redirect()->back()->with('flash_message_error','nothing be updated');
     }

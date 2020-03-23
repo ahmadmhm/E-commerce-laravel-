@@ -130,7 +130,7 @@
                 <div class="col-sm-6">
                     <div class="total_area">
                         <ul>
-                            <li>Cart Sub Total <span>$59</span></li>
+                            <li>Cart Sub Total <span id="total">$59</span></li>
                             <li>Eco Tax <span>$2</span></li>
                             <li>Shipping Cost <span>Free</span></li>
                             <li>Total <span>$61</span></li>
@@ -146,4 +146,14 @@
 @section('js')
     <script src="{{asset('js/frontend_js/easyzoom.js')}}"></script>
     <script src="{{asset('js/frontend_js/sweetalert2.min.js')}}"></script>
+
+    <script>
+        var total =0;
+        $('.cart_total_price').each(function () {
+            var currentCol = $(this).closest("td").find("p:eq(0)").text();
+            total += parseInt(currentCol.substring(1));
+        });
+        $('#total').html('$' + total);
+        console.log(total);
+    </script>
 @endsection
