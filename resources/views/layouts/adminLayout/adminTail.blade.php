@@ -1,6 +1,6 @@
 {{--<script src="{{asset('js/backend_js/excanvas.min.js')}}"></script>--}}
 <script src="{{asset('js/backend_js/jquery.min.js')}}"></script>
-<script src="{{asset('js/backend_js/jquery.ui.custom.js')}}"></script>
+
 <script src="{{asset('js/backend_js/bootstrap.min.js')}}"></script>
 <script src="{{asset('js/backend_js/jquery.flot.min.js')}}"></script>
 <script src="{{asset('js/backend_js/jquery.flot.resize.min.js')}}"></script>
