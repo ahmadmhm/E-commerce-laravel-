@@ -30,8 +30,13 @@ class CouponController extends Controller
                 $coupon->status = 0;
             }
             $coupon->save();
-            return redirect()->route('admin.add_coupon')->with('flash_message_success','coupon added successfully');
+            return redirect()->route('admin.view_coupons')->with('flash_message_success','coupon added successfully');
         }
         return view('admin.coupons.add_coupon');
+    }
+
+    public function viewCoupons(){
+        $coupons =  Coupon::where('id','<>', null)->get();
+        return view('admin.coupons.view_coupons',compact('coupons'));
     }
 }

@@ -1,14 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="4d23e414-c951-4cb6-9755-629d89c1ae0d" name="Default Changelist" comment="product status functionality (w - 41)">
-      <change afterPath="$PROJECT_DIR$/app/Coupon.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/admin/CouponController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/2020_03_23_121043_create_coupons_table.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/admin/coupons/add_coupon.blade.php" afterDir="false" />
+    <list default="true" id="4d23e414-c951-4cb6-9755-629d89c1ae0d" name="Default Changelist" comment="coupon adding functionality (w - 47,48)">
+      <change afterPath="$PROJECT_DIR$/resources/views/admin/coupons/view_coupons.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/adminLayout/adminSidebar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/adminLayout/adminSidebar.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/adminLayout/adminTail.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/adminLayout/adminTail.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/admin/CouponController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/admin/CouponController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/admin.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/admin.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -39,10 +35,11 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/admin/ProductsController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="65" column="138" lean-forward="true" selection-start-line="65" selection-start-column="12" selection-end-line="65" selection-end-column="138" />
+            <state relative-caret-position="220">
+              <caret line="74" column="72" lean-forward="true" selection-start-line="74" selection-start-column="8" selection-end-line="74" selection-end-column="72" />
               <folding>
                 <element signature="e#46#68#0#PHP" expanded="true" />
+                <element signature="e#445#2712#0#PHP" />
               </folding>
             </state>
           </provider>
@@ -61,7 +58,16 @@
         <entry file="file://$PROJECT_DIR$/routes/admin.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="342">
-              <caret line="47" column="109" selection-start-line="47" selection-start-column="97" selection-end-line="47" selection-end-column="109" />
+              <caret line="47" column="82" selection-start-line="47" selection-start-column="82" selection-end-line="47" selection-end-column="82" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/resources/views/admin/coupons/view_coupons.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="192">
+              <caret line="38" column="114" selection-start-line="38" selection-start-column="114" selection-end-line="38" selection-end-column="114" />
             </state>
           </provider>
         </entry>
@@ -69,20 +75,11 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/admin/CouponController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="189">
-              <caret line="21" column="36" selection-start-line="21" selection-start-column="36" selection-end-line="21" selection-end-column="36" />
+            <state relative-caret-position="410">
+              <caret line="38" column="16" selection-start-line="38" selection-start-column="8" selection-end-line="38" selection-end-column="16" />
               <folding>
                 <element signature="e#47#62#0#PHP" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/resources/views/admin/coupons/add_coupon.blade.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="345">
-              <caret line="74" column="20" selection-start-line="74" selection-start-column="20" selection-end-line="74" selection-end-column="20" />
             </state>
           </provider>
         </entry>
@@ -91,7 +88,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>envelope</find>
       <find>logo</find>
       <find>envelop</find>
       <find>en</find>
@@ -106,7 +102,6 @@
       <find>data-</find>
       <find>category</find>
       <find>categories</find>
-      <find>Product</find>
       <find>with</find>
       <find>ha</find>
       <find>feat</find>
@@ -121,11 +116,15 @@
       <find>url</find>
       <find>cart_total_price</find>
       <find>datep</find>
+      <find>$product</find>
+      <find>Product</find>
     </findStrings>
     <replaceStrings>
       <replace>Product</replace>
       <replace>Products</replace>
       <replace>product</replace>
+      <replace>$coupon</replace>
+      <replace>Coupon</replace>
     </replaceStrings>
     <dirStrings>
       <dir>$PROJECT_DIR$</dir>
@@ -140,7 +139,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" />
         <option value="$PROJECT_DIR$/resources/views/layouts/adminLayout/adminMaster.blade.php" />
         <option value="$PROJECT_DIR$/database/migrations/2019_10_02_182627_create_products_attributes_table.php" />
         <option value="$PROJECT_DIR$/app/ProductsAttribute.php" />
@@ -186,11 +184,12 @@
         <option value="$PROJECT_DIR$/resources/views/user/cart.blade.php" />
         <option value="$PROJECT_DIR$/database/migrations/2020_03_23_121043_create_coupons_table.php" />
         <option value="$PROJECT_DIR$/resources/views/admin/add_coupon.blade.php" />
-        <option value="$PROJECT_DIR$/routes/admin.php" />
         <option value="$PROJECT_DIR$/resources/views/layouts/adminLayout/adminSidebar.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/layouts/adminLayout/adminTail.blade.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/admin/CouponController.php" />
         <option value="$PROJECT_DIR$/resources/views/admin/coupons/add_coupon.blade.php" />
+        <option value="$PROJECT_DIR$/routes/admin.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/admin/CouponController.php" />
+        <option value="$PROJECT_DIR$/resources/views/admin/coupons/view_coupons.blade.php" />
       </list>
     </option>
   </component>
@@ -365,15 +364,8 @@
               <item name="E-commerce" type="462c0819:PsiDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
               <item name="views" type="462c0819:PsiDirectoryNode" />
-              <item name="layouts" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="E-commerce" type="b2602c69:ProjectViewProjectNode" />
-              <item name="E-commerce" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-              <item name="layouts" type="462c0819:PsiDirectoryNode" />
-              <item name="adminLayout" type="462c0819:PsiDirectoryNode" />
+              <item name="admin" type="462c0819:PsiDirectoryNode" />
+              <item name="coupons" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -391,16 +383,16 @@
     <property name="settings.editor.selected.configurable" value="vcs.Git" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="D:\xampp\htdocs\first\E-commerce\resources\views\admin\coupons" />
-      <recent name="$PROJECT_DIR$/resources/views/admin" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\xampp\htdocs\first\E-commerce\resources\views\admin\coupons" />
       <recent name="D:\xampp\htdocs\first\E-commerce\public\js\frontend_js" />
       <recent name="D:\xampp\htdocs\first\E-commerce\public\css\frontend_css" />
       <recent name="D:\xampp\htdocs\first\E-commerce\app" />
       <recent name="D:\xampp\htdocs\first\E-commerce\resources\views\admin\products" />
-      <recent name="D:\xampp\htdocs\first\E-commerce\resources\views" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\xampp\htdocs\first\E-commerce\resources\views\admin\coupons" />
+      <recent name="$PROJECT_DIR$/resources/views/admin" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -533,7 +525,8 @@
       <workItem from="1584706214567" duration="593000" />
       <workItem from="1584767204942" duration="9247000" />
       <workItem from="1584938055273" duration="6631000" />
-      <workItem from="1584962654909" duration="7632000" />
+      <workItem from="1584962654909" duration="7744000" />
+      <workItem from="1585146442747" duration="3552000" />
     </task>
     <task id="LOCAL-00001" summary="first initial for running">
       <created>1560535490318</created>
@@ -843,17 +836,24 @@
       <option name="project" value="LOCAL" />
       <updated>1584777950750</updated>
     </task>
-    <option name="localTasksCounter" value="45" />
+    <task id="LOCAL-00045" summary="coupon adding functionality (w - 47,48)">
+      <created>1584985933803</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1584985933803</updated>
+    </task>
+    <option name="localTasksCounter" value="46" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="358449000" />
+    <option name="totallyTimeSpent" value="362113000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49838188" visible="true" weight="0.24508321" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49838188" visible="true" weight="0.24886535" />
       <window_info id="Structure" order="1" sideWeight="0.50161815" side_tool="true" weight="0.26093873" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -879,7 +879,6 @@
     <option name="version" value="1" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="product edit and update image and helpers asset method (w - 12)" />
     <MESSAGE value="product delete function and script (w - 13)" />
     <MESSAGE value="product attributes (w - 15)" />
     <MESSAGE value="product add attributes fields(w - 16)" />
@@ -904,23 +903,10 @@
     <MESSAGE value="product detail page recommended items (w - 40)" />
     <MESSAGE value="product status functionality (w - 41)" />
     <MESSAGE value="user cart, incrementing, prevent duplicate products (w - 43,44,45)" />
-    <option name="LAST_COMMIT_MESSAGE" value="user cart, incrementing, prevent duplicate products (w - 43,44,45)" />
+    <MESSAGE value="coupon adding functionality (w - 47,48)" />
+    <option name="LAST_COMMIT_MESSAGE" value="coupon adding functionality (w - 47,48)" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/ProductsImage.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="39" selection-start-line="9" selection-start-column="39" selection-end-line="9" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Product.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="23" column="26" selection-start-line="23" selection-start-column="20" selection-end-line="23" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/js/backend_js/matrix.dashboard.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1970" />
@@ -1148,13 +1134,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/user/cart.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="68" column="27" selection-start-line="68" selection-start-column="27" selection-end-line="68" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/admin/categories/add_category.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
@@ -1180,27 +1159,6 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/admin/layouts/head.blade.php">
       <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/routes/admin.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="342">
-          <caret line="47" column="109" selection-start-line="47" selection-start-column="97" selection-end-line="47" selection-end-column="109" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/layouts/adminLayout/adminSidebar.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="19" column="56" selection-start-line="19" selection-start-column="56" selection-end-line="19" selection-end-column="56" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/layouts/adminLayout/adminHeader.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="20" selection-start-line="9" selection-start-column="20" selection-end-line="9" selection-end-column="20" />
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/public/js/backend_js/jquery.ui.custom.js">
       <provider selected="true" editor-type-id="text-editor">
@@ -1256,20 +1214,52 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/layouts/adminLayout/adminHeader.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="17" column="17" lean-forward="true" selection-start-line="17" selection-start-column="17" selection-end-line="17" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/layouts/adminLayout/adminHead.blade.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/layouts/adminLayout/adminSidebar.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="19" column="56" selection-start-line="19" selection-start-column="56" selection-end-line="19" selection-end-column="56" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/user/cart.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="68" column="27" selection-start-line="68" selection-start-column="27" selection-end-line="68" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/admin.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="342">
+          <caret line="47" column="82" selection-start-line="47" selection-start-column="82" selection-end-line="47" selection-end-column="82" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/admin/ProductsController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="65" column="138" lean-forward="true" selection-start-line="65" selection-start-column="12" selection-end-line="65" selection-end-column="138" />
+        <state relative-caret-position="220">
+          <caret line="74" column="72" lean-forward="true" selection-start-line="74" selection-start-column="8" selection-end-line="74" selection-end-column="72" />
           <folding>
             <element signature="e#46#68#0#PHP" expanded="true" />
+            <element signature="e#445#2712#0#PHP" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/admin/CouponController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="21" column="36" selection-start-line="21" selection-start-column="36" selection-end-line="21" selection-end-column="36" />
+        <state relative-caret-position="410">
+          <caret line="38" column="16" selection-start-line="38" selection-start-column="8" selection-end-line="38" selection-end-column="16" />
           <folding>
             <element signature="e#47#62#0#PHP" expanded="true" />
           </folding>
@@ -1278,8 +1268,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/admin/coupons/add_coupon.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
+        <state relative-caret-position="827">
           <caret line="74" column="20" selection-start-line="74" selection-start-column="20" selection-end-line="74" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/admin/coupons/view_coupons.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="192">
+          <caret line="38" column="114" selection-start-line="38" selection-start-column="114" selection-end-line="38" selection-end-column="114" />
         </state>
       </provider>
     </entry>
