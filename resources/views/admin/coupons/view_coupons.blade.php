@@ -42,13 +42,10 @@
                         <td>{{date_format($coupon->created_at,"Y-m-d")}}</td>
                         <td>{{($coupon->status == 1)?'Active':'Inactive'}}</td>
                         <td class="center">
-                            <a href="#myModal" data-toggle="modal" data-id="{{$coupon->id}}" class="btn btn-success btn-mini viewCoupon" title="View Details">View</a>
-                            <a href="{{route('admin.edit_product', ['id'=>$coupon->id])}}" class="btn btn-primary btn-mini" title="Edit Coupon">Edit</a>
-                            <a href="{{route('admin.add_attributes', ['id'=>$coupon->id])}}" class="btn btn-success btn-mini" title="Add Attributes">Add</a>
-                            <a href="{{route('admin.add_images', ['id'=>$coupon->id])}}" class="btn btn-info btn-mini" title="Add Image">Add</a>
+                            <a href="{{route('admin.edit_coupon', ['id'=>$coupon->id])}}" class="btn btn-primary btn-mini" title="Edit Coupon">Edit</a>
                             <a data-pid="{{$coupon->id}}" data-link="" title="Delete Coupon" data-confirm="ahmad" href="javascript:"
                                class="btn btn-danger btn-mini deleteProduct">Delete</a> <?php /*href="{{route('admin.delete_product', ['id'=>$coupon->id])}}"*/?>
-                            <a data-pid="{{$coupon->id}}" data-link="" title="Delete Coupon" data-confirm="ahmad" href="javascript:"></a>
+                            <a class="btn btn-info btn-mini active-coupon" data-pid="{{$coupon->id}}" data-link="" title="Active or Deactive Coupon" data-confirm="ahmad" href="javascript:">Act/Deact</a>
                             </td>
                     </tr>
                     @endforeach
