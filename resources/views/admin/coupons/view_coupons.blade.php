@@ -36,11 +36,11 @@
                     <tr class="gradeX">
                         <td>{{$coupon->id}}</td>
                         <td>{{$coupon->coupon_code}}</td>
-                        <td>{{($coupon->amount_type == 2)?"$ ".number_format($coupon->amount):$coupon->amount. " %"}}</td>
-                        <td>{{($coupon->amount_type == 1)?'Percentage':'Fixed'}}</td>
+                        <td class="amount" data-amount="{{$coupon->amount}}"></td>
+                        <td class="" data-type="{{$coupon->amount_type}}"></td>
                         <td>{{$coupon->expire_date}}</td>
-                        <td>{{date_format($coupon->created_at,"Y-m-d")}}</td>
-                        <td>{{($coupon->status == 1)?'Active':'Inactive'}}</td>
+                        <td class="create-date" data-date="{{$coupon->created_at}}"></td>
+                        <td class="activate" data-status="{{$coupon->status}}"></td>
                         <td class="center">
                             <a href="{{route('admin.edit_coupon', ['id'=>$coupon->id])}}" class="btn btn-primary btn-mini" title="Edit Coupon">Edit</a>
                             <a data-pid="{{$coupon->id}}" data-link="" title="Delete Coupon" data-confirm="ahmad" href="javascript:"
@@ -112,6 +112,7 @@
             }
         });
 
+
     function resetModal() {
         $("#title").html('');
         $("#pid").html("Coupon ID :");
@@ -123,5 +124,30 @@
         $("#pdes").html("Coupon Description :");
         $("#pprice").html("Coupon Price :");
     }
+        $(document).ready(function() {
+            //table formatting
+            $('.amount').each(function () {
+                // console.log($(this).closest('tr').children().find("td:nth-child(3)").text());
+                // console.log($(this).parent().find("td.create-date").data('date'));
+                var d = $(this).parent().find("td.create-date").data('date');
+                var parts = d.split(" ");
+                var times = parts[1].split(":");
+                var dates = parts[0].split("-");
+                $(this).parent().find("td.create-date").html(dates[0]+"-"+dates[1]+"-"+dates[2] +" "+ times[0] +":"+ times[1]);
+
+                if($(this).parent().find("td.activate").data('status') == "1"){
+                    $(this).parent().find("td.activate").html('Active');
+                }else if($(this).parent().find("td.activate").data('status') == "0"){
+                    $(this).parent().find("td.activate").html('Inactive');
+                }
+                if($(this).next('td').data('type') == "1"){
+                    $(this).html("% " + $(this).data('amount'));
+                    $(this).next('td').html('Percentage');
+                }else if ($(this).next('td').data('type') == "2"){
+                    $(this).html("$ " + $(this).data('amount').toLocaleString() );
+                    $(this).next('td').html('Fixed');
+                }
+            });
+        });
     </script>
 @endsection
