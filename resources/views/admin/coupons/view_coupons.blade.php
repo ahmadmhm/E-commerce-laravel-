@@ -43,10 +43,10 @@
                         <td class="activate" data-status="{{$coupon->status}}"></td>
                         <td class="center">
                             <a href="{{route('admin.edit_coupon', ['id'=>$coupon->id])}}" class="btn btn-primary btn-mini" title="Edit Coupon">Edit</a>
-                            <a data-pid="{{$coupon->id}}" data-link="" title="Delete Coupon" data-confirm="ahmad" href="javascript:"
-                               class="btn btn-danger btn-mini deleteProduct">Delete</a> <?php /*href="{{route('admin.delete_product', ['id'=>$coupon->id])}}"*/?>
+                            <a data-pid="{{$coupon->id}}" title="Delete Coupon" data-confirm="ahmad" href="javascript:"
+                               data-link="{{route('admin.delete_coupon', ['id'=>$coupon->id])}}" class="btn btn-danger btn-mini deleteCoupon">Delete</a>
                             <a class="btn btn-info btn-mini active-coupon" data-pid="{{$coupon->id}}" data-link="" title="Active or Deactive Coupon" data-confirm="ahmad" href="javascript:">Act/Deact</a>
-                            </td>
+                            </td> <?php /*href="{{route('admin.delete_product', ['id'=>$coupon->id])}}"*/?>
                     </tr>
                     @endforeach
                     </tbody>

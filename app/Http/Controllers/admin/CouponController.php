@@ -69,4 +69,10 @@ class CouponController extends Controller
         }
         return redirect()->back();
     }
+
+    public function deleteCoupon($id =null){
+        if($id != null)
+            Coupon::destroy($id);
+        return redirect()->back()->with('flash_message_success','coupon deleted successfully');
+    }
 }

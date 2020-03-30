@@ -214,9 +214,10 @@ $(document).ready(function(){
 			cancelButtonText: 'انصراف',
 			confirmButtonText: 'ادامه و حذف'
 		}
-		).then(function(){
-			// console.log(pd_link);
-			window.location.href=pd_link;
+		).then((willDelete) => {
+			if (willDelete.value == true) {
+				window.location.href=pd_link;
+			}
 		});
 
 	});
@@ -263,6 +264,29 @@ $(document).ready(function(){
 				window.location.href=pd_link;
 			}
 		});
+	});
+
+	$('.deleteCoupon').click(function () {
+		// var product_id = $(this).data('pid');
+		var coupon_link = $(this).data('link');
+		// alert(coupon_link);
+		swal({
+				title: 'are you sure?',
+				text: 'you done',
+				type: 'warning',
+				showCloseButton: false,
+				showCancelButton: true,
+				focusConfirm: false,
+				confirmButtonColor: '#00b0ff',
+				cancelButtonText: 'انصراف',
+				confirmButtonText: 'ادامه و حذف'
+
+		}).then((willDelete) => {
+			if (willDelete.value == true) {
+				window.location.href=coupon_link;
+			}
+		});
+
 	});
 
 	$(document).ready(function(){
