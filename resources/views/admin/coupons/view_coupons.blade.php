@@ -43,9 +43,9 @@
                         <td class="activate" data-status="{{$coupon->status}}"></td>
                         <td class="center">
                             <a href="{{route('admin.edit_coupon', ['id'=>$coupon->id])}}" class="btn btn-primary btn-mini" title="Edit Coupon">Edit</a>
-                            <a data-pid="{{$coupon->id}}" title="Delete Coupon" data-confirm="ahmad" href="javascript:"
+                            <a title="Delete Coupon" data-confirm="ahmad" href="javascript:"
                                data-link="{{route('admin.delete_coupon', ['id'=>$coupon->id])}}" class="btn btn-danger btn-mini deleteCoupon">Delete</a>
-                            <a class="btn btn-info btn-mini active-coupon" data-pid="{{$coupon->id}}" data-link="" title="Active or Deactive Coupon" data-confirm="ahmad" href="javascript:">Act/Deact</a>
+                            <a class="btn btn-info btn-mini active-coupon" data-id="{{$coupon->id}}" data-link="" title="Active or Deactive Coupon" data-confirm="ahmad" href="javascript:"></a>
                             </td> <?php /*href="{{route('admin.delete_product', ['id'=>$coupon->id])}}"*/?>
                     </tr>
                     @endforeach
@@ -54,76 +54,50 @@
             </div>
         </div>
     </div>
-    <div id="myModal" class="modal hide">
-        <div class="modal-header">
-            <button data-dismiss="modal" class="close" type="button">×</button>
-            <h3 id="title"></h3>
-        </div>
-        <div class="modal-body">
-            <p id="pid"></p>
-            <p id="catid"></p>
-            <p id="catname"></p>
-            <p id="pcode"></p>
-            <p id="pcolor"></p>
-            <p id="pdes"></p>
-            <p id="pprice"></p>
-        </div>
-    </div>
-
 @endsection
 @section('js')
     <script src="{{asset('js/backend_js/jquery.validate.js')}}"></script>
     <script src="{{asset('js/backend_js/matrix.popover.js')}}"></script>
     <script src="{{asset('js/frontend_js/sweetalert2.min.js')}}"></script>
     <script>
-        //ajax for checking current password
-        $(".viewCoupon").bind('click',function () {
-            var coupon_id = $(this).data('id');
 
+        $(".active-coupon").bind('click',function () {
+            var coupon_id = $(this).data('id');
+            var clicked = $(this);
+            //console.log($(this).parent().parent().find("td.activate").data('status'));
             if (coupon_id.length != 0) {
                 $.ajax({
                     headers: {
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                     },
                     type: "get",
-                    url: '',
+                    url: '{{route('admin.activate_coupon')}}',
                     data: {id: coupon_id},
                     dataType: 'json',
                     success: function (response) {
-
                         if(response != 'error'){
-                            // console.log(response.category);
-                            // resetModal();
-                            $("#title").html(response.product_name);
-                            $("#pid").html("Product ID :"+response.id);
-                            $("#catid").html("Category ID :"+response.category.id);
-                            $("#catname").html("Category Name :"+response.category.name);
-                            $("#pcode").html("Product Code :"+response.product_code);
-                            $("#pcolor").html("Product Color :"+response.product_color);
-
-                            $("#pdes").html("Product Description :"+ (response.description != null?response.description:''));
-                            $("#pprice").html("Product Price :"+response.price);
+                            changeTexts(clicked,response.status);
                         }
                     },
                     error: function (data) {
-                        // console.log(data);
+                        console.log(data);
                     }
                 });
             }
         });
-
-
-    function resetModal() {
-        $("#title").html('');
-        $("#pid").html("Coupon ID :");
-        $("#catid").html("Category ID :");
-        $("#catname").html("Category Name :");
-        $("#pcode").html("Coupon Code :");
-        $("#pcolor").html("Coupon Color :");
-
-        $("#pdes").html("Coupon Description :");
-        $("#pprice").html("Coupon Price :");
-    }
+        function changeTexts(clicked , status){
+            if(status == 1){
+                // console.log($("a[data-id='" + coupon_id +"']").text());
+                clicked.parent().parent().find("td.activate").html('Inactive');
+                clicked.text('Active');
+                // $("a.active-coupon[data-id='" + coupon_id +"']").text('Active');
+            }
+            else if(status == 0){
+                clicked.parent().parent().find("td.activate").html('Active');
+                clicked.text('Inactive');
+                // $("a.active-coupon[data-id='" + coupon_id +"']").text('Inactive');
+            }
+        }
         $(document).ready(function() {
             //table formatting
             $('.amount').each(function () {
@@ -137,8 +111,10 @@
 
                 if($(this).parent().find("td.activate").data('status') == "1"){
                     $(this).parent().find("td.activate").html('Active');
+                    $(this).parent().find("a.active-coupon").text('Inactive');
                 }else if($(this).parent().find("td.activate").data('status') == "0"){
                     $(this).parent().find("td.activate").html('Inactive');
+                    $(this).parent().find("a.active-coupon").text('Active');
                 }
                 if($(this).next('td').data('type') == "1"){
                     $(this).html("% " + $(this).data('amount'));

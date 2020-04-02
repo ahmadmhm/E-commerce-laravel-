@@ -26,13 +26,15 @@ Route::get('/', 'IndexController@index')->name('index');
 
 //products
 
-Route::get('products/{url}','admin\ProductsController@products')->name('categorize_products');
-Route::get('product/{id}','admin\ProductsController@product')->name('product');
-Route::post('product/attribute','admin\ProductsController@getProductAttributes')->name('get_product_attribute');
+Route::get('products/{url}','user\ProductsController@products')->name('categorize_products');
+Route::get('product/{id}','user\ProductsController@product')->name('product');
+Route::post('product/attribute','user\ProductsController@getProductAttributes')->name('get_product_attribute');
 
 //cart
-Route::match(['get','post'],'/add-to-cart','admin\ProductsController@addToCart')->name('addToCart');
-Route::match(['get','post'],'/user-cart','admin\ProductsController@showCart')->name('showCart');
-Route::get('/user-cart/delete-cart-product/{id}','admin\ProductsController@deleteCartProduct')->name('delete_cart_product');
+Route::match(['get','post'],'/add-to-cart','user\ProductsController@addToCart')->name('addToCart');
+Route::match(['get','post'],'/user-cart','user\ProductsController@showCart')->name('showCart');
+Route::get('/user-cart/delete-cart-product/{id}','user\ProductsController@deleteCartProduct')->name('delete_cart_product');
 Route::get('/user-cart/update-cart-product-quantity/{id}/{quantity}',
-    'admin\ProductsController@updateCartProductQuantity')->name('update_cart_product_quantity');
+    'user\ProductsController@updateCartProductQuantity')->name('update_cart_product_quantity');
+
+Route::post('/user-cart/apply-coupon','user\ProductsController@applyCoupon')->name('apply_coupon');

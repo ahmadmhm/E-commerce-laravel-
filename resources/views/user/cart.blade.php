@@ -70,23 +70,19 @@
         <div class="container">
             <div class="heading">
                 <h3>What would you like to do next?</h3>
-                <p>Choose if you have a discount code or reward points you want to use or would like to estimate your delivery cost.</p>
+                <p>Choose if you have a coupon code you want to use.</p>
             </div>
             <div class="row">
                 <div class="col-sm-6">
                     <div class="chose_area">
                         <ul class="user_option">
                             <li>
-                                <input type="checkbox">
+                                <form action="{{route('apply_coupon')}}" method="post">
+                                    @csrf
                                 <label>Use Coupon Code</label>
-                            </li>
-                            <li>
-                                <input type="checkbox">
-                                <label>Use Gift Voucher</label>
-                            </li>
-                            <li>
-                                <input type="checkbox">
-                                <label>Estimate Shipping & Taxes</label>
+                                <input type="text" name="coupon_code">
+                                <input type="submit" value="Apply" class="btn btn-default">
+                                </form>
                             </li>
                         </ul>
                         <ul class="user_info">
@@ -130,10 +126,13 @@
                 <div class="col-sm-6">
                     <div class="total_area">
                         <ul>
-                            <li>Cart Sub Total <span id="total">$59</span></li>
-                            <li>Eco Tax <span>$2</span></li>
-                            <li>Shipping Cost <span>Free</span></li>
-                            <li>Total <span>$61</span></li>
+                            @if(!empty(\Illuminate\Support\Facades\Session::get('Coupon_amount')) and !empty(\Illuminate\Support\Facades\Session::get('Coupon_code')))
+                                <li>Sub Total <span id="">$ {{\Illuminate\Support\Facades\Session::get('total')}}</span></li>
+                                <li>Coupon Discount <span id="">$ {{\Illuminate\Support\Facades\Session::get('Coupon_amount')}}</span></li>
+                                <li>Grand Total <span id="">$ {{\Illuminate\Support\Facades\Session::get('total') - \Illuminate\Support\Facades\Session::get('Coupon_amount')}}</span></li>
+                            @else
+                                <li>Total <span id="total"></span></li>
+                            @endif
                         </ul>
                         <a class="btn btn-default update" href="">Update</a>
                         <a class="btn btn-default check_out" href="">Check Out</a>
@@ -154,6 +153,6 @@
             total += parseInt(currentCol.substring(1));
         });
         $('#total').html('$' + total);
-        console.log(total);
+        //console.log(total);
     </script>
 @endsection

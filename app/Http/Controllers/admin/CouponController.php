@@ -75,4 +75,15 @@ class CouponController extends Controller
             Coupon::destroy($id);
         return redirect()->back()->with('flash_message_success','coupon deleted successfully');
     }
+
+    public function activateCoupon(Request $request){
+        if($request->ajax()){
+            if(isset($request->id)){
+                $coupon = Coupon::where('id',$request->id)->first();
+                $coupon->toggleStatus()->save();
+                return response()->json(['status'=>$coupon->status]);
+            }
+        }
+        return response()->json(['error']);
+    }
 }
