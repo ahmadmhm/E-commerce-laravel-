@@ -34,10 +34,10 @@
                     @foreach($userCart as $item)
                     <tr>
                         <td class="cart_product">
-                            <a href=""><img width="30%" src="{{\App\Helpers\Helpers::product_small_image_asset($item->image)}}" alt=""></a>
+                            <a href="{{route('product',['id'=>$item->product_id])}}"><img width="30%" src="{{\App\Helpers\Helpers::product_small_image_asset($item->image)}}" alt=""></a>
                         </td>
                         <td class="cart_description">
-                            <h4><a href="">{{$item->product_name}}</a></h4>
+                            <h4><a href="{{route('product',['id'=>$item->product_id])}}">{{$item->product_name}}</a></h4>
                             <p>{{$item->product_code}} | {{$item->size}}</p>
                         </td>
                         <td class="cart_price">
@@ -127,11 +127,11 @@
                     <div class="total_area">
                         <ul>
                             @if(!empty(\Illuminate\Support\Facades\Session::get('Coupon_amount')) and !empty(\Illuminate\Support\Facades\Session::get('Coupon_code')))
-                                <li>Sub Total <span id="">$ {{\Illuminate\Support\Facades\Session::get('total')}}</span></li>
+                                <li>Sub Total <span id="total"></span></li>
                                 <li>Coupon Discount <span id="">$ {{\Illuminate\Support\Facades\Session::get('Coupon_amount')}}</span></li>
-                                <li>Grand Total <span id="">$ {{\Illuminate\Support\Facades\Session::get('total') - \Illuminate\Support\Facades\Session::get('Coupon_amount')}}</span></li>
+                                <li>Grand Total <span id="Gtotal"></span></li>
                             @else
-                                <li>Total <span id="total"></span></li>
+                                <li>Grand Total <span id="total"></span></li>
                             @endif
                         </ul>
                         <a class="btn btn-default update" href="">Update</a>
@@ -153,6 +153,11 @@
             total += parseInt(currentCol.substring(1));
         });
         $('#total').html('$' + total);
-        //console.log(total);
-    </script>
+        console.log(total );
+
+    @if(!empty(\Illuminate\Support\Facades\Session::get('Coupon_amount')))
+        $('#Gtotal').html('$' + (total - {{\Illuminate\Support\Facades\Session::get('Coupon_amount')}}));
+    @endif
+
+</script>
 @endsection

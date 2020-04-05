@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Banner;
 use App\Category;
 use App\Helpers\Helpers;
 use App\Product;
@@ -17,6 +18,7 @@ class IndexController extends Controller
 //        dd($categories);
 
         $products = Product::where('status',1)->inRandomOrder()->get();
-        return view('user.index')->with(['products'=> $products,'categories'=>$categories]);
+        $banners = Banner::where('status',1)->inRandomOrder()->get();
+        return view('user.index')->with(['products'=> $products,'categories'=>$categories, 'banners'=>$banners]);
     }
 }

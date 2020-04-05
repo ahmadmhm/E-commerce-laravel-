@@ -90,7 +90,9 @@ class ProductsController extends Controller
                         'product_color'=>$porduct->product_color, 'size'=>$porductAtrribute->size, 'price'=>$porductAtrribute->price,
                         'quantity'=>$request->quantity, 'user_email'=>(Auth::user() == null)?'':Auth::user()->email
                         , 'session_id'=>$session_id, 'image'=>$porduct->product_image]);
-
+                    Session::forget('Coupon_amount' );
+                    Session::forget('Coupon_code' );
+                    Session::forget('total' );
                     return redirect()->route('showCart')->with('flash_message_success','product added to cart successfully');
                 }
             }
@@ -106,6 +108,9 @@ class ProductsController extends Controller
 
     public function deleteCartProduct($id = null){
         if($id){
+            Session::forget('Coupon_amount' );
+            Session::forget('Coupon_code' );
+            Session::forget('total' );
             DB::table('cart')->where('id',$id)->delete();
             return redirect()->back()->with('flash_message_success','product deleted successfully');
         }
@@ -119,6 +124,9 @@ class ProductsController extends Controller
 
             if($getStock->stock >= $cart->quantity + $quantity){
                 DB::table('cart')->where('id',$id)->increment('quantity',$quantity);
+                Session::forget('Coupon_amount' );
+                Session::forget('Coupon_code' );
+                Session::forget('total' );
                 return redirect()->back()->with('flash_message_success','product quantity updated');
             }else{
                 return redirect()->back()->with('flash_message_error','product quantity not available');

@@ -72,4 +72,8 @@ class Helpers
         return 'http://localhost/first/E-commerce/public/images/products/large/'.$image_name;
 //        return public_path().'/images/products/small/'.$image_name;
     }
+    public static function banner_asset($image_name){
+        return 'http://localhost/first/E-commerce/public/images/frontend_images/banner/'.$image_name;
+//        return public_path().'/images/products/small/'.$image_name;
+    }
 }

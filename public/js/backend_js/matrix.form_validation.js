@@ -289,6 +289,29 @@ $(document).ready(function(){
 
 	});
 
+	$('.deleteBanner').click(function () {
+		// var product_id = $(this).data('pid');
+		var coupon_link = $(this).data('link');
+		// alert(coupon_link);
+		swal({
+			title: 'are you sure??',
+			text: 'you done',
+			type: 'warning',
+			showCloseButton: false,
+			showCancelButton: true,
+			focusConfirm: false,
+			confirmButtonColor: '#00b0ff',
+			cancelButtonText: 'انصراف',
+			confirmButtonText: 'ادامه و حذف'
+
+		}).then((willDelete) => {
+			if (willDelete.value == true) {
+				window.location.href=coupon_link;
+			}
+		});
+
+	});
+
 	$(document).ready(function(){
 		var maxField = 20; //Input fields increment limitation
 		var addButton = $('.add_button'); //Add button selector
