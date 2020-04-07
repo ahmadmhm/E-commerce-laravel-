@@ -24,6 +24,10 @@ Route::get('logout','HomeController@logout')->name('logout');
 //index page
 Route::get('/', 'IndexController@index')->name('index');
 
+//user login and register
+Route::match(['get', 'post'], 'login-register', 'user\UserController@Register')->name('user.register');
+Route::match(['get', 'post'], 'check-email', 'user\UserController@checkEmail')->name('user.check_email');
+
 //products
 
 Route::get('products/{url}','user\ProductsController@products')->name('categorize_products');

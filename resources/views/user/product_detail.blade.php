@@ -175,6 +175,7 @@
 @endsection
 @section('js')
 <script src="{{asset('js/frontend_js/easyzoom.js')}}"></script>
+<script src="{{asset('js/frontend_js/main.js')}}"></script>
 <script src="{{asset('js/frontend_js/sweetalert2.min.js')}}"></script>
 <script>
         $(document).on('change', '#attribute', function (e) {

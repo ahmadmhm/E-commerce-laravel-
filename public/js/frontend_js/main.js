@@ -63,5 +63,40 @@ $(document).ready(function(){
         }
     });
 
+    $('#registerForm').validate({
+		rules:{
+			email:{
+				required:true,
+				email: true,
+				remote: 'check-email',
+			},
+			name:{
+				required:true,
+				minlength:3,
+				accept:"[a-zA-Z]+"
+			},
+			password:{
+				required:true,
+				minlength:6,
+			}
+		},
+		messages:{
+			name:{
+				required:"Please enter your name",
+				minlength:"too little name",
+				accept:"enter only letters",
+			},
+			password:{
+				required:"Please enter your password",
+				minlength:"too little password",
+			},
+			email:{
+				required:"Please enter your email",
+				email:"enter valid email",
+				remote:"email already exists!!",
+			},
+		}
+	});
+
 
 });
