@@ -8,6 +8,7 @@
 //Route::group(['prefix' => 'admin', 'middleware'=>['auth','web']], function(){
 
 Route::match(['get' , 'post'],'/', 'admin\AdminController@login')->name('admin.login');
+Route::get('admin-logout','HomeController@logout')->name('admin.logout');
 
 Route::middleware(['auth'])->group(function () {
 

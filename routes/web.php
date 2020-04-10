@@ -17,7 +17,7 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::match(['get','post'],'/login','HomeController@login')->name('login');
-Route::get('logout','HomeController@logout')->name('logout');
+Route::get('user-logout','user\UserController@logout')->name('user.logout');
 
 //user guest
 
@@ -25,7 +25,8 @@ Route::get('logout','HomeController@logout')->name('logout');
 Route::get('/', 'IndexController@index')->name('index');
 
 //user login and register
-Route::match(['get', 'post'], 'login-register', 'user\UserController@Register')->name('user.register');
+Route::get( 'login-register', 'user\UserController@userLoginRegister')->name('user.userLoginRegister');
+Route::post( 'user-register', 'user\UserController@register')->name('user.register');
 Route::match(['get', 'post'], 'check-email', 'user\UserController@checkEmail')->name('user.check_email');
 
 //products

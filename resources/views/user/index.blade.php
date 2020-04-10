@@ -1,4 +1,10 @@
+@section('css')
 
+    <link rel="stylesheet" href="{{asset('css/frontend_css/sweetalert2.min.css')}}" />
+    <style>
+
+    </style>
+@endsection
 @extends('layouts.frontLayout.userMaster')
 
 @section('content')
@@ -468,6 +474,7 @@
 
 @endsection
 @section('js')
+    <script src="{{asset('js/frontend_js/sweetalert2.min.js')}}"></script>
     <script>
 
         $(document).ready(function() {

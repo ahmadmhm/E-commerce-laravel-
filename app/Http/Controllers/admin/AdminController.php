@@ -16,6 +16,7 @@ class AdminController extends Controller
         if(isset(Auth::user()->user_type) and Auth::user()->user_type == '1'){
             return redirect()->route('admin.dashboard');
         }
+
         if($request->isMethod('post')){
 //            $data = $request->input();
             if(Auth::attempt(['email'=>$request->email,'password'=>$request->password ,'user_type'=>1])){
@@ -29,6 +30,12 @@ class AdminController extends Controller
 //        return Hash::make("ahmad2775");
         return view('admin.admin_login');
 
+    }
+
+    public function logout()
+    {
+            Auth::logout();
+            return  redirect()->route('admin.login')->with('flash_message_success','logged out successful');
     }
 
     public function dashboard(){
