@@ -1,6 +1,7 @@
 @section('css')
 
     <link rel="stylesheet" href="{{asset('css/frontend_css/sweetalert2.min.css')}}" />
+    <link rel="stylesheet" href="{{asset('css/frontend_css/passtrength.css')}}" />
     <style>
 
     </style>
@@ -35,7 +36,7 @@
                             @csrf
                             <input name="name" type="text" placeholder="Name"/>
                             <input name="email" type="email" placeholder="Email Address"/>
-                            <input name="password" type="password" placeholder="Password"/>
+                            <input id="password" name="password" type="password" placeholder="Password"/>
                             <button type="submit" class="btn btn-default">Signup</button>
                         </form>
                     </div><!--/sign up form-->
@@ -49,8 +50,19 @@
     <script src="{{asset('js/frontend_js/jquery.validate.js')}}"></script>
     <script src="{{asset('js/frontend_js/easyzoom.js')}}"></script>
     <script src="{{asset('js/frontend_js/main.js')}}"></script>
+    <script src="{{asset('js/frontend_js/passtrength.js')}}"></script>
     <script>
-
-
+        $(document).ready(function($) {
+            $('#password').passtrength({
+                minChars: 6,
+                passwordToggle: true,
+                eyeImg: "{!! asset('images/frontend_images/eye.svg') !!}",
+                tooltip: true,
+                textWeak:"Weak",
+                textMedium:"Medium",
+                textStrong:"Strong",
+                textVeryStrong:"Very Strong",
+            });
+        });
     </script>
 @endsection
