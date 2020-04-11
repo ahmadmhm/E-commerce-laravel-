@@ -70,7 +70,7 @@ $mainCategories = Controller::mainCategories();
                             <li><a href="checkout.html"><i class="fa fa-crosshairs"></i> Checkout</a></li>
                             <li><a href="{{route('showCart')}}"><i class="fa fa-shopping-cart"></i> Cart</a></li>
                             @if(\Illuminate\Support\Facades\Auth::check())
-                                <li><a href="{{route('user.userLoginRegister')}}"><i class="fa fa-lock"></i> Account</a></li>
+                                <li><a href="{{route('user.account')}}"><i class="fa fa-lock"></i> Account</a></li>
                                 <li><a href="{{route('user.logout')}}"><i class="fa fa-lock"></i> Logout</a></li>
                             @else
                                 <li><a href="{{route('user.userLoginRegister')}}"><i class="fa fa-lock"></i> Login</a></li>

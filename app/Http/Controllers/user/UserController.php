@@ -62,4 +62,8 @@ class UserController
         return "true";
     }
 
+    public function account(){
+//        dd(response()->view('user.login_register'));
+        return view('user.account');
+    }
 }

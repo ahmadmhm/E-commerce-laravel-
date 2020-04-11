@@ -6,9 +6,6 @@
 
     </style>
 @endsection
-@section('title')
-    <title>Login Or Register</title>
-@endsection
 @extends('layouts.frontLayout.userMaster')
 
 @section('content')
@@ -17,15 +14,12 @@
             <div class="row">
                 <div class="col-sm-4 col-sm-offset-1">
                     <div class="login-form"><!--login form-->
-                        <h2>Login to your account</h2>
-                        <form action="{{route('user.login')}}" method="post" id="loginForm" name="loginForm">
+                        <h2>Update Account</h2>
+                        <form action="{{route('user.login')}}" method="post" id="" name="">
                             @csrf
                             <input name="email" type="email" placeholder="Email" />
                             <input id="login_password" name="password" type="password" placeholder="password" />
-                            <span>
-								<input type="checkbox" class="checkbox">
-								Keep me signed in
-							</span>
+
                             <button type="submit" class="btn btn-default">Login</button>
                         </form>
                     </div><!--/login form-->
@@ -35,7 +29,7 @@
                 </div>
                 <div class="col-sm-4">
                     <div class="signup-form"><!--sign up form-->
-                        <h2>New User Signup!</h2>
+                        <h2>Update Password</h2>
                         <form action="{{route('user.register')}}" id="registerForm" name="register" method="post" autocomplete="off">
                             @csrf
                             <input name="name" type="text" placeholder="Name"/>

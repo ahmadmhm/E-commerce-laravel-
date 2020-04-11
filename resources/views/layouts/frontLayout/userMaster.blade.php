@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="fa">
+@yield('title')
 @include('layouts.frontLayout.userHead')
+
 @yield('css')
 <body>
 @include('layouts.frontLayout.userHeader')

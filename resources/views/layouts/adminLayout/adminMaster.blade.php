@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="fa">
+@yield('title')
 @include('layouts.adminLayout.adminHead')
 @yield('css')
 <body>

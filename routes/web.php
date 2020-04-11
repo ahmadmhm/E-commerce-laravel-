@@ -30,6 +30,12 @@ Route::post( 'user-register', 'user\UserController@register')->name('user.regist
 Route::post( 'user-login', 'user\UserController@login')->name('user.login');
 Route::match(['get', 'post'], 'check-email', 'user\UserController@checkEmail')->name('user.check_email');
 
+//user account settings
+Route::middleware(['userLogin'])->group(function () {
+    Route::get( 'user-account', 'user\UserController@account')->name('user.account');
+});
+
+
 //products
 
 Route::get('products/{url}','user\ProductsController@products')->name('categorize_products');
