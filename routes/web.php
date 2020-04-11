@@ -27,6 +27,7 @@ Route::get('/', 'IndexController@index')->name('index');
 //user login and register
 Route::get( 'login-register', 'user\UserController@userLoginRegister')->name('user.userLoginRegister');
 Route::post( 'user-register', 'user\UserController@register')->name('user.register');
+Route::post( 'user-login', 'user\UserController@login')->name('user.login');
 Route::match(['get', 'post'], 'check-email', 'user\UserController@checkEmail')->name('user.check_email');
 
 //products

@@ -15,9 +15,10 @@
                 <div class="col-sm-4 col-sm-offset-1">
                     <div class="login-form"><!--login form-->
                         <h2>Login to your account</h2>
-                        <form action="#">
-                            <input type="text" placeholder="Name" />
-                            <input type="email" placeholder="Email Address" />
+                        <form action="{{route('user.login')}}" method="post" id="loginForm" name="loginForm">
+                            @csrf
+                            <input name="email" type="email" placeholder="Email" />
+                            <input id="login_password" name="password" type="password" placeholder="password" />
                             <span>
 								<input type="checkbox" class="checkbox">
 								Keep me signed in
@@ -36,7 +37,7 @@
                             @csrf
                             <input name="name" type="text" placeholder="Name"/>
                             <input name="email" type="email" placeholder="Email Address"/>
-                            <input id="password" name="password" type="password" placeholder="Password"/>
+                            <input id="register_password" name="password" type="password" placeholder="Password"/>
                             <button type="submit" class="btn btn-default">Signup</button>
                         </form>
                     </div><!--/sign up form-->
@@ -53,7 +54,7 @@
     <script src="{{asset('js/frontend_js/passtrength.js')}}"></script>
     <script>
         $(document).ready(function($) {
-            $('#password').passtrength({
+            $('#register_password').passtrength({
                 minChars: 6,
                 passwordToggle: true,
                 eyeImg: "{!! asset('images/frontend_images/eye.svg') !!}",
@@ -62,6 +63,12 @@
                 textMedium:"Medium",
                 textStrong:"Strong",
                 textVeryStrong:"Very Strong",
+            });
+            $('#login_password').passtrength({
+                minChars: 6,
+                passwordToggle: true,
+                eyeImg: "{!! asset('images/frontend_images/eye.svg') !!}",
+                tooltip: false,
             });
         });
     </script>

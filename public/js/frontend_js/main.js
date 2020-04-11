@@ -98,5 +98,24 @@ $(document).ready(function(){
 		}
 	});
 
-
+	$('#loginForm').validate({
+		rules:{
+			email:{
+				required:true,
+				email: true,
+			},
+			password:{
+				required:true,
+			}
+		},
+		messages:{
+			password:{
+				required:"Please enter your password",
+			},
+			email:{
+				required:"Please enter your email",
+				email:"enter valid email",
+			},
+		}
+	});
 });

@@ -8,6 +8,7 @@ use App\User;
 use http\Client\Response;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class UserController
 {
@@ -33,6 +34,18 @@ class UserController
             }
         }
         return response()->view('user.login_register');
+    }
+
+    public function login(Request $request)
+    {
+        if($request->isMethod('post')){
+            //dd(Hash::make($request->password));
+            if(Auth::attempt(['email'=>$request->email,'password'=>$request->password ,'user_type'=>2])){
+                return redirect()->route('showCart')->with('flash_message_success','@@Welcome@@');
+            }else{
+                return back()->with('flash_message_error','Invalid username and password');
+            }
+        }
     }
 
     public function logout()
