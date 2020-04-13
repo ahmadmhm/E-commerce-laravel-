@@ -4,7 +4,9 @@
 namespace App\Http\Controllers\user;
 
 
+use App\Country;
 use App\User;
+use App\UserInfo;
 use http\Client\Response;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -46,8 +48,8 @@ class UserController
                 return back()->with('flash_message_error','Invalid username and password');
             }
         }
+        return back()->with('flash_message_error','Invalid username and password');
     }
-
     public function logout()
     {
         Auth::logout();
@@ -62,8 +64,52 @@ class UserController
         return "true";
     }
 
-    public function account(){
-//        dd(response()->view('user.login_register'));
-        return view('user.account');
+    public function account(Request $request){
+
+        $user = Auth::user();
+        $information = $user->Information;
+        $countries = Country::all();
+        if($request->isMethod('post')){
+            try{
+                $request->validate([
+                    'name' => 'required',
+                    'address' => 'required',
+                    'city' => 'required',
+                    'state' => 'required',
+                    'country' => 'required',
+                    'mobile' => 'required',
+                    'pincode' => 'required',
+                ],
+                [
+                    'state.required' => 'یکی از استان ها را انتخاب کنید',
+                ]
+                );
+
+                $user->name = $request->name;
+                $user->update();
+
+                $information = UserInfo::where('user_id',$user->id)->first();
+                $information->address = $request->address;
+                $information->city = $request->city;
+                $information->state = $request->state;
+
+                $result = $countries->where('id', $request->country);
+                if ($result->isEmpty()){
+                    return back()->with('flash_message_error','selected country is incorrect');
+                }
+                $information->country = $request->country;
+                $information->mobile = $request->mobile;
+                $information->pincode = $request->pincode;
+                //dd($information->save());
+                $information->save();
+                return redirect()->back()->with('flash_message_success','profile updated successfully');
+            }
+            catch(\Exception $e){
+//                die($e->getMessage()) ;   // insert query
+            }
+
+
+        }
+        return view('user.account', compact('user', 'information' , 'countries'));
     }
 }

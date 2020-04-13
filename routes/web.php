@@ -32,7 +32,7 @@ Route::match(['get', 'post'], 'check-email', 'user\UserController@checkEmail')->
 
 //user account settings
 Route::middleware(['userLogin'])->group(function () {
-    Route::get( 'user-account', 'user\UserController@account')->name('user.account');
+    Route::match(['get','post'], 'user-account', 'user\UserController@account')->name('user.account');
 });
 
 

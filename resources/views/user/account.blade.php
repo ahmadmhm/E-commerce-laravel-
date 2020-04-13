@@ -7,7 +7,9 @@
     </style>
 @endsection
 @extends('layouts.frontLayout.userMaster')
-
+@section('title')
+    <title> E-Shopper | Account</title>
+@endsection
 @section('content')
     <section id="form" style="margin-top: 25px;"><!--form-->
         <div class="container">
@@ -15,12 +17,21 @@
                 <div class="col-sm-4 col-sm-offset-1">
                     <div class="login-form"><!--login form-->
                         <h2>Update Account</h2>
-                        <form action="{{route('user.login')}}" method="post" id="" name="">
+                        <form action="{{route('user.account')}}" method="post" id="updateAccount" name="updateAccount">
                             @csrf
-                            <input name="email" type="email" placeholder="Email" />
-                            <input id="login_password" name="password" type="password" placeholder="password" />
-
-                            <button type="submit" class="btn btn-default">Login</button>
+                            <input name="name" type="text" value="{{old('name',$user->name)}}" placeholder="Name" />
+                            <input name="address" type="text" value="{{old('address',$information->address)}}" placeholder="address" />
+                            <input name="city" type="text" value="{{old('city',$information->city)}}" placeholder="city" />
+                            <input name="state" type="text" value="{{old('state',$information->state)}}" placeholder="state" />
+                            <select name="country" id="country_select">
+                                <option>Select a country</option>
+                                @foreach($countries as $country)
+                                <option value="{{$country->id}}">{{$country->country_name}}</option>
+                                @endforeach
+                            </select>
+                            <input style="margin-top: 10px;" name="pincode" type="text" value="{{old('pincode',$information->pincode)}}" placeholder="pincode" />
+                            <input name="mobile" type="text" value="{{old('mobile',$information->mobile)}}" placeholder="mobile" />
+                            <button type="submit" class="btn btn-default">Update</button>
                         </form>
                     </div><!--/login form-->
                 </div>
@@ -33,7 +44,6 @@
                         <form action="{{route('user.register')}}" id="registerForm" name="register" method="post" autocomplete="off">
                             @csrf
                             <input name="name" type="text" placeholder="Name"/>
-                            <input name="email" type="email" placeholder="Email Address"/>
                             <input id="register_password" name="password" type="password" placeholder="Password"/>
                             <button type="submit" class="btn btn-default">Signup</button>
                         </form>
@@ -51,6 +61,8 @@
     <script src="{{asset('js/frontend_js/passtrength.js')}}"></script>
     <script>
         $(document).ready(function($) {
+            $("#country_select").val({!! $information->country !!});
+
             $('#register_password').passtrength({
                 minChars: 6,
                 passwordToggle: true,
