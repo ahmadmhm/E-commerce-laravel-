@@ -14,11 +14,10 @@
     </script>
 @elseif($errors->any())
     <?php $text =''; ?>
-    <?php print_r($errors->all());die(); ?>
     {{--<div class="alert alert-danger" style="font-size: 0.7em;">--}}
     {{--</div>--}}
     @foreach($errors->all() as $error)
-        <?php $text.='<br/>'.$error.'.'; ?>
+        <?php $text.='<br/>'.$error; ?>
     @endforeach
 
     <script>

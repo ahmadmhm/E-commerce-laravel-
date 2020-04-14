@@ -17,7 +17,7 @@
                 <div class="col-sm-4 col-sm-offset-1">
                     <div class="login-form"><!--login form-->
                         <h2>Update Account</h2>
-                        <form action="{{route('user.account')}}" method="post" id="updateAccount" name="updateAccount">
+                        <form action="{{route('user.account')}}" method="post" id="updateAccountForm" name="updateAccount">
                             @csrf
                             <input name="name" type="text" value="{{old('name',$user->name)}}" placeholder="Name" />
                             <input name="address" type="text" value="{{old('address',$information->address)}}" placeholder="address" />

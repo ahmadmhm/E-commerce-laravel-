@@ -11,6 +11,7 @@ use http\Client\Response;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
 
 class UserController
 {
@@ -71,7 +72,7 @@ class UserController
         $countries = Country::all();
         if($request->isMethod('post')){
             try{
-                $request->validate([
+                $validator = Validator::make($request->all(),[
                     'name' => 'required',
                     'address' => 'required',
                     'city' => 'required',
@@ -81,34 +82,40 @@ class UserController
                     'pincode' => 'required',
                 ],
                 [
-                    'state.required' => 'یکی از استان ها را انتخاب کنید',
+                    'name.required' => 'write a name',
+                    'address.required' => 'write an address',
+                    'city.required' => 'write city name',
+                    'state.required' => 'choose a state',
                 ]
                 );
 
+                if ($validator->fails()) {
+                    return redirect()->back()
+                        ->withErrors($validator)
+                        ->withInput();
+                }
+
                 $user->name = $request->name;
                 $user->update();
-
-                $information = UserInfo::where('user_id',$user->id)->first();
-                $information->address = $request->address;
-                $information->city = $request->city;
-                $information->state = $request->state;
 
                 $result = $countries->where('id', $request->country);
                 if ($result->isEmpty()){
                     return back()->with('flash_message_error','selected country is incorrect');
                 }
-                $information->country = $request->country;
-                $information->mobile = $request->mobile;
-                $information->pincode = $request->pincode;
-                //dd($information->save());
-                $information->save();
+                $user->Information()->update([
+                    'address'=>$request->address,
+                    'city'=>$request->city,
+                    'state'=>$request->state,
+                    'country'=>$request->country,
+                    'mobile'=>$request->mobile,
+                    'pincode'=>$request->pincode,
+                ]);
+
                 return redirect()->back()->with('flash_message_success','profile updated successfully');
             }
             catch(\Exception $e){
 //                die($e->getMessage()) ;   // insert query
             }
-
-
         }
         return view('user.account', compact('user', 'information' , 'countries'));
     }

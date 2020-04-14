@@ -118,4 +118,72 @@ $(document).ready(function(){
 			},
 		}
 	});
+
+	$('#updateAccountForm').validate({
+		rules:{
+			name:{
+				required:true,
+				minlength:3,
+				accept:"[a-zA-Z]+"
+			},
+			address:{
+				required:true,
+				minlength:10,
+			},
+			city:{
+				required:true,
+				minlength:4,
+			},
+			state:{
+				required:true,
+				minlength:5,
+			},
+			country:{
+				required:true,
+			},
+			pincode:{
+				required:true,
+				minlength:2,
+				accept:"[0-9]+"
+			},
+			mobile:{
+				required:true,
+				minlength:10,
+				accept:"[0-9]+"
+			},
+
+		},
+		messages:{
+			name:{
+				required:"Please enter your name",
+				minlength:"too little name",
+				accept:"enter only letters",
+			},
+			address:{
+				required:"Please enter your address",
+				minlength:"too little address",
+			},
+			city:{
+				required:"Please enter your city",
+				minlength:"too little city",
+			},
+			state:{
+				required:"Please enter your state",
+				minlength:"too little state",
+			},
+			country:{
+				required:"Please select a country",
+			},
+			pincode:{
+				required:"Please enter your state",
+				minlength:"too little pincode",
+				accept:"enter only numbers",
+			},
+			mobile:{
+				required:"Please enter your state",
+				minlength:"too little mobile number",
+				accept:"enter only numbers",
+			},
+		}
+	});
 });
