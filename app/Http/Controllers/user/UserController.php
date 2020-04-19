@@ -119,4 +119,56 @@ class UserController
         }
         return view('user.account', compact('user', 'information' , 'countries'));
     }
+
+    public function checkPassword(Request $request){
+        if($request->ajax()){
+            if(isset($request->current_password)){
+                $user = User::where('id',Auth::user()->id)->first();
+                if($user){
+                    return response()->json(['status'=>Hash::check($request->current_password, $user->password)]);
+                }
+                return response()->json(['error']);
+            }
+        }
+        return response()->json(['error']);
+    }
+
+    public function updatePassword(Request $request){
+        if($request->isMethod('post')){
+            try{
+                $validator = Validator::make($request->all(),[
+                    'current_password' => 'required',
+                    'new_password' => 'required',
+                    'confirm_password' => 'required|same:new_password',
+                ],
+                    [
+                        'current_password.required' => 'current password is required',
+                        'new_password.required' => 'new password is required',
+                        'confirm_password.required' => 'confirm password is required',
+                        'confirm_password.same' => 'confirm password not equal to new password',
+                    ]
+                );
+
+                if ($validator->fails()) {
+                    return redirect()->back()
+                        ->withErrors($validator)
+                        ->withInput();
+                }
+                $user = Auth::user();
+
+                if(!Hash::check($request->current_password, $user->password)){
+                    return redirect()->back()->with('flash_message_error','current password is Incorrect');
+                }
+                if(Hash::check($request->new_password, $user->password)){
+                    return redirect()->back()->with('flash_message_error','new password must no equal to old password');
+                }
+                $user->update(['password'=>bcrypt($request->new_password)]);
+                return redirect()->back()->with('flash_message_success','password updated successfully');
+            }
+            catch(\Exception $e){
+//                die($e->getMessage()) ;   // insert query
+            }
+        }
+        return view('user.account', compact('user', 'information' , 'countries'));
+    }
 }

@@ -33,6 +33,8 @@ Route::match(['get', 'post'], 'check-email', 'user\UserController@checkEmail')->
 //user account settings
 Route::middleware(['userLogin'])->group(function () {
     Route::match(['get','post'], 'user-account', 'user\UserController@account')->name('user.account');
+    Route::match(['get','post'],'check-password', 'user\UserController@checkPassword')->name('user.check_password');
+    Route::post('update-password', 'user\UserController@updatePassword')->name('user.update_password');
 });
 
 

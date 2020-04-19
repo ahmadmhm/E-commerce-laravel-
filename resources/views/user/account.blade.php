@@ -30,7 +30,7 @@
                                 @endforeach
                             </select>
                             <input style="margin-top: 10px;" name="pincode" type="text" value="{{old('pincode',$information->pincode)}}" placeholder="pincode" />
-                            <input name="mobile" type="text" value="{{old('mobile',$information->mobile)}}" placeholder="mobile" />
+                            <input name="mobile" type="text" value="{{old('mobile',$information->mobile)}}" placeholder="9199191919" />
                             <button type="submit" class="btn btn-default">Update</button>
                         </form>
                     </div><!--/login form-->
@@ -41,11 +41,13 @@
                 <div class="col-sm-4">
                     <div class="signup-form"><!--sign up form-->
                         <h2>Update Password</h2>
-                        <form action="{{route('user.register')}}" id="registerForm" name="register" method="post" autocomplete="off">
+                        <form action="{{route('user.update_password')}}" id="passwordForm" name="passwordForm" method="post">
                             @csrf
-                            <input name="name" type="text" placeholder="Name"/>
-                            <input id="register_password" name="password" type="password" placeholder="Password"/>
-                            <button type="submit" class="btn btn-default">Signup</button>
+                            <input name="current_password" id="current_password" type="password" data-link="{{route('user.check_password')}}" placeholder="Current Password"/>
+                            <p id="for_current_password"></p>
+                            <input name="new_password" id="new_password" type="password" placeholder="New Password"/>
+                            <input name="confirm_password" id="confirm_password" type="password" placeholder="Confirm Password"/>
+                            <button type="submit" class="btn btn-default">Update</button>
                         </form>
                     </div><!--/sign up form-->
                 </div>

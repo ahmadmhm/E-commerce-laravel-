@@ -186,4 +186,78 @@ $(document).ready(function(){
 			},
 		}
 	});
+
+	$("#passwordForm").validate({
+		rules:{
+			current_password:{
+				required: true,
+				minlength:6,
+				maxlength:20
+			},
+			new_password:{
+				required: true,
+				minlength:6,
+				maxlength:20
+			},
+			confirm_password:{
+				required: true,
+				minlength:6,
+				maxlength:20,
+				equalTo:"#new_password"
+			},
+			messages:{
+				current_password:{
+					required:"Please enter your current password",
+					minlength:"too little for current password",
+					maxlength:"too big for current password",
+				},
+				new_password:{
+					required:"Please enter your new password",
+					minlength:"too little for new password",
+					maxlength:"too big for new password",
+				},
+				confirm_password:{
+					required:"Please enter your confirm password",
+					minlength:"too little for confirm password",
+					maxlength:"too big for confirm password",
+					EqualTo:"confirm password must be equal to new password",
+				},
+			}
+		},
+		errorClass: "help-inline",
+		errorElement: "span",
+		highlight:function(element, errorClass, validClass) {
+			$(element).parents('.control-group').addClass('error');
+		},
+		unhighlight: function(element, errorClass, validClass) {
+			$(element).parents('.control-group').removeClass('error');
+			$(element).parents('.control-group').addClass('success');
+		}
+	});
+    
+    $("#current_password").focusout(function () {
+        var current_password = $(this).val();
+        var link = $(this).data('link');
+
+        $.ajax({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            type: "post",
+            url: link,
+            data: {current_password: current_password },
+            dataType: 'json',
+            success: function (response) {
+
+                if(response.status == false){
+                    $("#for_current_password").html('<span style="color: red">the password is Incorrect</span>');
+                }else if(response.status == true){
+                    $("#for_current_password").html('<span style="color: green">the password is correct</span>');
+                }
+            },
+            error: function (data) {
+                console.log(data);
+            }
+        });
+    });
 });
