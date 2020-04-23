@@ -80,16 +80,20 @@ class ProductsController extends Controller
             if($porduct and isset($request->product_attribute_id) and $request->product_attribute_id != 0){
                 $porductAtrribute = ProductsAttribute::where('id',$request->product_attribute_id)->first();
 
-                $session_id = Session::get('session_id');
-                if(empty($session_id))
-                    Session::put('session_id',$session_id = microtime(true));
-                if($userCart = DB::table('cart')->where(['product_id'=>$porduct->id,'product_color'=>$porduct->product_color, 'size'=>$porductAtrribute->size, 'session_id'=>$session_id])->count() > 0){
+                $user = Auth::user();
+                //dd($user->session_id_status );
+                if($user->session_id_status == 0){
+
+                    $user->session_id = bcrypt($user->id . $user->email);
+                    $user->toggleSessionStatus()->update();
+                }
+                if($userCart = DB::table('cart')->where(['product_id'=>$porduct->id,'product_color'=>$porduct->product_color, 'size'=>$porductAtrribute->size, 'session_id'=>$user->session_id])->count() > 0){
                     return redirect()->back()->with('flash_message_error','product already exists in cart');
                 }else{
                     DB::table('cart')->insert(['product_id'=>$porduct->id ,'product_name'=>$porduct->product_name, 'product_code'=>$porductAtrribute->sku ,
                         'product_color'=>$porduct->product_color, 'size'=>$porductAtrribute->size, 'price'=>$porductAtrribute->price,
-                        'quantity'=>$request->quantity, 'user_email'=>(Auth::user() == null)?'':Auth::user()->email
-                        , 'session_id'=>$session_id, 'image'=>$porduct->product_image]);
+                        'quantity'=>$request->quantity, 'user_email'=>(Auth::user() == null)?'':$user->email
+                        , 'session_id'=>$user->session_id, 'image'=>$porduct->product_image]);
                     Session::forget('Coupon_amount' );
                     Session::forget('Coupon_code' );
                     Session::forget('total' );
@@ -100,9 +104,11 @@ class ProductsController extends Controller
     }
 
     public function showCart(){
-        $session_id = Session::get('session_id');
+        $session_id = 0;
+        if(Auth::user()->session_id_status == 1){
+            $session_id = Auth::user()->session_id;
+        }
         $userCart = DB::table('cart')->where('session_id',$session_id)->get();
-
         return view('user.cart', compact('userCart'));
     }
 

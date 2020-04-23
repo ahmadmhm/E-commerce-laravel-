@@ -41,4 +41,11 @@ class User extends Authenticatable
 {
     return $this->hasOne('App\UserInfo', 'user_id', 'id');
 }
+
+    public function toggleSessionStatus()
+    {
+        $this->session_id_status = !$this->session_id_status;
+        return $this;
+    }
+
 }
