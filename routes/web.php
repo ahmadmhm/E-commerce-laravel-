@@ -35,6 +35,7 @@ Route::middleware(['userLogin'])->group(function () {
     Route::match(['get','post'], 'user-account', 'user\UserController@account')->name('user.account');
     Route::match(['get','post'],'check-password', 'user\UserController@checkPassword')->name('user.check_password');
     Route::post('update-password', 'user\UserController@updatePassword')->name('user.update_password');
+    Route::match(['get','post'],'check-out', 'user\ProductsController@checkOut')->name('user.check_out');
 });
 
 

@@ -7,6 +7,9 @@
         }
     </style>
 @endsection
+@section('title')
+    <title>Cart</title>
+@endsection
 @extends('layouts.frontLayout.userMaster')
 
 @section('content')
@@ -135,7 +138,7 @@
                             @endif
                         </ul>
                         <a class="btn btn-default update" href="">Update</a>
-                        <a class="btn btn-default check_out" href="">Check Out</a>
+                        <a class="btn btn-default check_out" href="{{route('user.check_out')}}">Check Out</a>
                     </div>
                 </div>
             </div>
@@ -153,7 +156,7 @@
             total += parseInt(currentCol.substring(1));
         });
         $('#total').html('$' + total);
-        console.log(total );
+        // console.log(total );
 
     @if(!empty(\Illuminate\Support\Facades\Session::get('Coupon_amount')))
         $('#Gtotal').html('$' + (total - {{\Illuminate\Support\Facades\Session::get('Coupon_amount')}}));

@@ -3,16 +3,18 @@
 namespace App\Http\Controllers\user;
 
 use App\Coupon;
+use App\DeliveryAddress;
 use App\ProductsImage;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
-use Validator;
 use App\Category;
+use App\Country;
 use App\Helpers\Helpers;
 use App\Product;
 use App\ProductsAttribute;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 use App\Http\Controllers\Controller;
 use Intervention\Image\Facades\Image;
 
@@ -44,7 +46,7 @@ class ProductsController extends Controller
 
         }
 
-        dd($url);
+        return redirect()->back();
     }
 
     public function product($id = null){
@@ -176,6 +178,66 @@ class ProductsController extends Controller
                 }
             }
         }
-        dd($request->all());
+        return redirect()->back()->with('flash_message_error','This coupon does not exists!!');
+    }
+
+    public function checkOut(Request $request){
+        $user = Auth::user();
+        $countries = Country::all();
+        $shipping = DeliveryAddress::where('user_id', $user->id)->first();
+        if($request->isMethod('post')){
+            try {
+                foreach ($request->except('_token') as $data => $value) {
+                    $valids[$data] = "required";
+                }
+
+                $validator = validator($request->all(), $valids);
+                if ($validator->fails()) {
+                    foreach ($validator->messages()->getMessages() as $key => $val) {
+                        $response["$key"] = $val;
+                    }
+                    return redirect()->back()
+                        ->withErrors($response)
+                        ->withInput();
+                }
+
+                $result = $countries->where('id', $request->billing_country);
+                $result1 = $countries->where('id', $request->shipping_country);
+                if ($result->isEmpty() or $result1->isEmpty()){
+                    return back()->with('flash_message_error','selected country is incorrect');
+                }
+
+                if(!$shipping){
+                    $shipping = new DeliveryAddress();
+                    $shipping->user_id = $user->id;
+                    $shipping->user_email = $user->email;
+                    $shipping->name = $request->shipping_name;
+                    $shipping->address = $request->shipping_address;
+                    $shipping->city = $request->shipping_city;
+                    $shipping->state = $request->shipping_state;
+                    $shipping->country = $request->shipping_country;
+                    $shipping->pincode = $request->shipping_pincode;
+                    $shipping->mobile = $request->shipping_mobile;
+                    $shipping->save();
+                }else{
+                    DeliveryAddress::where('user_id', $user->id)->update([
+                        'user_id'=> $user->id,
+                        'user_email'=> $user->email,
+                        'name'=> $request->shipping_name,
+                        'address'=> $request->shipping_address,
+                        'city'=> $request->shipping_city,
+                        'state'=> $request->shipping_state,
+                        'country'=> $request->shipping_country,
+                        'pincode'=> $request->shipping_pincode,
+                        'mobile'=> $request->shipping_mobile
+                    ]);
+                }
+                return redirect()->back()->with('flash_message_success','profile updated successfully');
+            }
+            catch(\Exception $e){
+                die($e->getMessage()) ;   // insert query
+            }
+        }
+        return view('user.check_out')->with(['user'=>$user, 'countries'=>$countries, 'shipping'=>$shipping]);
     }
 }
