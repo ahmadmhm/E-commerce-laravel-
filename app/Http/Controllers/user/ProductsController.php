@@ -106,10 +106,11 @@ class ProductsController extends Controller
     }
 
     public function showCart(){
-        $session_id = 0;
+        $session_id = -1;
         if(Auth::user()->session_id_status == 1){
             $session_id = Auth::user()->session_id;
         }
+//        dd($session_id);
         $userCart = DB::table('cart')->where('session_id',$session_id)->get();
         return view('user.cart', compact('userCart'));
     }

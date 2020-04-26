@@ -5,16 +5,20 @@ namespace App\Http\Controllers\user;
 
 
 use App\Country;
+use App\Mail\VerifyMail;
 use App\User;
 use App\UserInfo;
+use App\VerifyUser;
 use http\Client\Response;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
 
 class UserController
 {
+
     public function userLoginRegister(){
         return response()->view('user.login_register');
     }
@@ -27,16 +31,47 @@ class UserController
                     $user->name = $request->name;
                     $user->email = $request->email;
                     $user->user_type = 2;
-                    $user->password = bcrypt($request->name);
+                    $user->verified = 0;
+                    $user->password = bcrypt($request->password);
                     $user->save();
-                    Auth::loginUsingId($user->id);
-                    return redirect()->route('showCart')->with('flash_message_success','@@Welcome@@');
+
+                    if(!$user->verifyUser){
+                        $user->verifyUser()->create(['token'=>sha1($user->id . time())]);
+                    }else{
+                        $user->verifyUser()->update(['token'=>sha1($user->id . time())]);
+                    }
+
+                    Mail::to($user->email)->send(new VerifyMail($user));
+
+                    return redirect()->back()->with('flash_message_success','We sent you an activation code. Check your email and click on the link to verify.');
+//                    return redirect()->route('showCart')->with('flash_message_success','@@Welcome@@');
                 }else{
                     return redirect()->back()->with('flash_message_error','the email has exists!!');
                 }
             }
         }
         return response()->view('user.login_register');
+    }
+
+    public function verifyUser($token)
+    {
+        if($token){
+            $verifyUser = VerifyUser::where('token', $token)->first();
+            if(isset($verifyUser) ){
+                $user = $verifyUser->user;
+                if(!$user->verified) {
+                    $verifyUser->user->verified = 1;
+                    $verifyUser->user->save();
+                    Auth::login($user);
+                    return redirect()->route('showCart')->with('flash_message_success','Your email is Verified  @@welcome@@');
+                } else {
+                    return redirect()->route('user.userLoginRegister')->with('flash_message_success', 'Your e-mail is already verified. You can now login.');
+                }
+            } else {
+                return redirect()->route('user.userLoginRegister')->with('warning', "Sorry your email cannot be identified.");
+            }
+
+        }
     }
 
     public function login(Request $request)
@@ -51,9 +86,10 @@ class UserController
         }
         return back()->with('flash_message_error','Invalid username and password');
     }
+
     public function logout()
     {
-        Auth::logout();
+        Auth::guard()->logout();
         return  redirect()->route('index')->with('flash_message_success','logged out successful');
     }
 
@@ -66,7 +102,6 @@ class UserController
     }
 
     public function account(Request $request){
-
         $user = Auth::user();
         $information = $user->Information;
         $countries = Country::all();

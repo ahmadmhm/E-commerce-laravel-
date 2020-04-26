@@ -30,12 +30,26 @@ Route::post( 'user-register', 'user\UserController@register')->name('user.regist
 Route::post( 'user-login', 'user\UserController@login')->name('user.login');
 Route::match(['get', 'post'], 'check-email', 'user\UserController@checkEmail')->name('user.check_email');
 
+Route::get('/user/verify/{token}', 'user\UserController@verifyUser')->name('verify');
+
+Auth::routes(['verify' => true]);
 //user account settings
 Route::middleware(['userLogin'])->group(function () {
-    Route::match(['get','post'], 'user-account', 'user\UserController@account')->name('user.account');
+    Route::match(['get','post'], 'user-account', 'user\UserController@account')->name('user.account')->middleware('verified');
     Route::match(['get','post'],'check-password', 'user\UserController@checkPassword')->name('user.check_password');
     Route::post('update-password', 'user\UserController@updatePassword')->name('user.update_password');
     Route::match(['get','post'],'check-out', 'user\ProductsController@checkOut')->name('user.check_out');
+
+
+    //cart
+    Route::match(['get','post'],'/add-to-cart','user\ProductsController@addToCart')->name('addToCart');
+    Route::match(['get','post'],'/user-cart','user\ProductsController@showCart')->name('showCart');
+    Route::get('/user-cart/delete-cart-product/{id}','user\ProductsController@deleteCartProduct')->name('delete_cart_product');
+    Route::get('/user-cart/update-cart-product-quantity/{id}/{quantity}',
+        'user\ProductsController@updateCartProductQuantity')->name('update_cart_product_quantity');
+
+
+    Route::post('/user-cart/apply-coupon','user\ProductsController@applyCoupon')->name('apply_coupon');
 });
 
 
@@ -45,11 +59,3 @@ Route::get('products/{url}','user\ProductsController@products')->name('categoriz
 Route::get('product/{id}','user\ProductsController@product')->name('product');
 Route::post('product/attribute','user\ProductsController@getProductAttributes')->name('get_product_attribute');
 
-//cart
-Route::match(['get','post'],'/add-to-cart','user\ProductsController@addToCart')->name('addToCart');
-Route::match(['get','post'],'/user-cart','user\ProductsController@showCart')->name('showCart');
-Route::get('/user-cart/delete-cart-product/{id}','user\ProductsController@deleteCartProduct')->name('delete_cart_product');
-Route::get('/user-cart/update-cart-product-quantity/{id}/{quantity}',
-    'user\ProductsController@updateCartProductQuantity')->name('update_cart_product_quantity');
-
-Route::post('/user-cart/apply-coupon','user\ProductsController@applyCoupon')->name('apply_coupon');
