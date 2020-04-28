@@ -78,26 +78,29 @@ class ProductsController extends Controller
     }
 
     public function addToCart(Request $request){
-       // dd($request->all());
+//        dd($request->all());
         if(isset($request->product_id)){
             $porduct = Product::where('id',$request->product_id)->first();
+
             if($porduct and isset($request->product_attribute_id) and $request->product_attribute_id != 0){
+
                 $porductAtrribute = ProductsAttribute::where('id',$request->product_attribute_id)->first();
 
                 $user = Auth::user();
-                //dd($user->session_id_status );
+//                dd($user->session_id_status );
                 if($user->session_id_status == 0){
 
-                    $user->session_id = bcrypt($user->id . $user->email);
+                    $user->session_id = bcrypt($user->id . $user->email . time());
                     $user->toggleSessionStatus()->update();
                 }
+//                dd($user);
                 if($userCart = DB::table('cart')->where(['product_id'=>$porduct->id,'product_color'=>$porduct->product_color, 'size'=>$porductAtrribute->size, 'session_id'=>$user->session_id])->count() > 0){
                     return redirect()->back()->with('flash_message_error','product already exists in cart');
                 }else{
                     DB::table('cart')->insert(['product_id'=>$porduct->id ,'product_name'=>$porduct->product_name, 'product_code'=>$porductAtrribute->sku ,
                         'product_color'=>$porduct->product_color, 'size'=>$porductAtrribute->size, 'price'=>$porductAtrribute->price,
                         'quantity'=>$request->quantity, 'user_email'=>(Auth::user() == null)?'':$user->email
-                        , 'session_id'=>$user->session_id, 'image'=>$porduct->product_image]);
+                        , 'session_id'=>$user->session_id, 'image'=>$porduct->product_image,'created_at'=>now()]);
                     Session::forget('Coupon_amount' );
                     Session::forget('Coupon_code' );
                     Session::forget('total' );
@@ -160,8 +163,8 @@ class ProductsController extends Controller
                     if ($coupon->expire_date < date('Y-m-d')){
                         return redirect()->back()->with('flash_message_error','This coupon is expired!!');
                     }
-                    $session_id = Session::get('session_id');
-                    $userCart = DB::table('cart')->where('session_id',$session_id)->get();
+
+                    $userCart = DB::table('cart')->where('session_id',Auth::user()->session_id)->get();
                     $total = 0;
                     foreach ($userCart as $item){
                         $total += $item->price * $item->quantity;
@@ -172,6 +175,7 @@ class ProductsController extends Controller
                     }elseif ($coupon->amount_type == 2){//Fixed
                         $coupon_amount = $coupon->amount ;
                     }
+                    //dd( $total * ($coupon->amount / 100));
                     Session::put('Coupon_amount' , $coupon_amount);
                     Session::put('Coupon_code' , $coupon->coupon_code);
                     Session::put('total' , $total);
@@ -319,7 +323,7 @@ class ProductsController extends Controller
                     Session::put('order_id' , $order->id);
                     Session::put('grand_total', $total - $order->coupon_amount);
                     Session::put('payment_method',$order->payment_method);
-                    $user->toggleSessionStatus()->save();
+                    $user->toggleSessionStatus()->update();
 
                     return redirect()->route('user.thank')->with('flash_message_success','thanks for your order');
                 }else{
@@ -335,10 +339,11 @@ class ProductsController extends Controller
         return view('user.thank');
 
     }
+
     public function userOrders(){
-        $user = Auth::user()->Orders;
-        dd(Auth::user()->Orders);
-        return view('user.thank');
+        $userOrders = Auth::user()->Orders()->with('Products')->get();
+//        dd($userOrders);
+        return view('user.user_orders')->with(['orders'=>$userOrders]);
 
     }
 }
