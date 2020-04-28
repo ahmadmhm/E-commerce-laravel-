@@ -34,7 +34,6 @@
                         <th>Payment Method</th>
                         <th>Grand total</th>
                         <th>Created On</th>
-                        <th>Actions</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -43,25 +42,22 @@
                         <td>{{$order->id}}</td>
                         <td>
                             @foreach($order->Products as $product)
-                                {{$product->product_code}}<br>
+                                <a href="{{route('user.order_details',['id'=>$order->id])}}">{{$product->product_code}}</a><br>
                             @endforeach
                         </td>
                         <td>{{$order->payment_method}}</td>
                         <td class="grand_total" data-total="{{$order->grand_total}}" data-coupon-amount="{{$order->coupon_amount}}"></td>
                         <td class="create-date" data-date="{{$order->created_at}}"></td>
-                        <td>{{$order->created_at}}</td>
-
                     </tr>
                     @endforeach
                     </tbody>
                     <tfoot>
                     <tr>
-                        <th>Name</th>
-                        <th>Position</th>
-                        <th>Office</th>
-                        <th>Age</th>
-                        <th>Start date</th>
-                        <th>Salary</th>
+                        <th>Order ID</th>
+                        <th>Order Products</th>
+                        <th>Payment Method</th>
+                        <th>Grand total</th>
+                        <th>Created On</th>
                     </tr>
                     </tfoot>
                 </table>
@@ -74,7 +70,6 @@
     <script src="{{asset('js/frontend_js/sweetalert2.min.js')}}"></script>
     <script src="{{asset('js/frontend_js/jquery.dataTables.min.js')}}"></script>
     <script src="{{asset('js/frontend_js/dataTables.bootstrap4.min.js')}}"></script>
-
 
     <script>
         $(document).ready(function() {

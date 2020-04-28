@@ -44,6 +44,7 @@ Route::middleware(['userLogin'])->group(function () {
     Route::match(['get','post'],'thanks', 'user\ProductsController@thanks')->name('user.thank');
 
     Route::match(['get','post'],'user-orders', 'user\ProductsController@userOrders')->name('user.orders');
+    Route::match(['get','post'],'order/{id}', 'user\ProductsController@orderDetails')->name('user.order_details');
 
 
     //cart

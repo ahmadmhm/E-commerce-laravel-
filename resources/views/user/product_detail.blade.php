@@ -2,6 +2,9 @@
     <link rel="stylesheet" href="{{asset('css/frontend_css/easyzoom.css')}}" />
     <link rel="stylesheet" href="{{asset('css/frontend_css/sweetalert2.min.css')}}" />
 @endsection
+@section('title')
+    <title>Product Detail</title>
+@endsection
 @extends('layouts.frontLayout.userMaster')
 
 @section('content')

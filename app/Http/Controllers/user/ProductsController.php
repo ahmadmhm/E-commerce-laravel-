@@ -343,7 +343,14 @@ class ProductsController extends Controller
     public function userOrders(){
         $userOrders = Auth::user()->Orders()->with('Products')->get();
 //        dd($userOrders);
-        return view('user.user_orders')->with(['orders'=>$userOrders]);
+        return view('user.orders.user_orders')->with(['orders'=>$userOrders]);
+
+    }
+
+    public function orderDetails($orderID){
+        $userOrder = Auth::user()->Orders()->where('id', $orderID)->with('Products')->first();
+//        dd($userOrder);
+        return view('user.orders.order_details')->with(['order'=>$userOrder]);
 
     }
 }
