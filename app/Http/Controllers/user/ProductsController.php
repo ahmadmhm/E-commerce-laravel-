@@ -4,6 +4,8 @@ namespace App\Http\Controllers\user;
 
 use App\Coupon;
 use App\DeliveryAddress;
+use App\Order;
+use App\OrderProducts;
 use App\ProductsImage;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -233,12 +235,110 @@ class ProductsController extends Controller
                         'mobile'=> $request->shipping_mobile
                     ]);
                 }
-                return redirect()->back()->with('flash_message_success','profile updated successfully');
+                return redirect()->action('user\ProductsController@orderReview');
             }
             catch(\Exception $e){
                 die($e->getMessage()) ;   // insert query
             }
         }
         return view('user.check_out')->with(['user'=>$user, 'countries'=>$countries, 'shipping'=>$shipping]);
+    }
+
+    public function orderReview(){
+        $user = Auth::user();
+        $session_id = -1;
+        if($user->session_id_status == 1){
+            $session_id = $user->session_id;
+        }
+        $userCart = DB::table('cart')->where('session_id',$session_id)->get();
+        $shipping = DeliveryAddress::where('user_id', $user->id)->first();
+        return view('user.order_review')->with(['user'=>$user, 'userCart'=>$userCart, 'shipping'=>$shipping]);
+    }
+
+    public function placeorder(Request $request){
+        if($request->isMethod('post')){
+            if(isset($request->payment_method)){
+                //recording the Order
+                $order = new Order();//new order
+
+                //get user information
+                $user = Auth::user();
+                $order->user_id = $user->id;
+                $order->user_email = $user->email;
+
+                //get shipping details
+                $shipping = DeliveryAddress::where('user_id', $user->id)->first();
+                if($shipping){
+                    $order->name = $shipping->name;
+                    $order->address = $shipping->address;
+                    $order->city = $shipping->city;
+                    $order->state = $shipping->state;
+                    $order->country = $shipping->country;
+                    $order->pincode = $shipping->pincode;
+                    $order->mobile = $shipping->mobile;
+
+                    //checing the coupon
+                    $total = 0;
+                    if(!empty(Session::get('Coupon_amount')) and !empty(Session::get('Coupon_code')) ){
+                        $order->coupon_code = Session::get('Coupon_code');
+                        $order->coupon_amount = Session::get('Coupon_amount');
+                    }else{
+                        $order->coupon_code = '---';
+                        $order->coupon_amount = 0;
+                    }
+                    $session_id = -1;
+                    if($user->session_id_status == 1){
+                        $session_id = Auth::user()->session_id;
+                    }else{
+                        return redirect()->action('user\ProductsController@showCart');
+                    }
+                    $userCart = DB::table('cart')->where('session_id',$session_id)->get();
+                    foreach ($userCart as $item){
+                        $total += $item->price * $item->quantity;
+                    }
+                    $order->grand_total = $total;
+
+                    //other setting
+                    $order->order_status = 'New';
+                    $order->payment_method = $request->payment_method;
+
+                    $order->save();
+                    foreach ($userCart as $item){
+                        $order_product = new OrderProducts();
+                        $order_product->order_id = $order->id;
+                        $order_product->user_id = $user->id;
+                        $order_product->product_id = $item->product_id;
+                        $order_product->product_code = $item->product_code;
+                        $order_product->product_name = $item->product_name;
+                        $order_product->product_color = $item->product_color;
+                        $order_product->product_size = $item->size;
+                        $order_product->product_price = $item->price;
+                        $order_product->product_quntity = $item->quantity;
+                        $order->Products()->save($order_product);
+                    }
+                    Session::put('order_id' , $order->id);
+                    Session::put('grand_total', $total - $order->coupon_amount);
+                    Session::put('payment_method',$order->payment_method);
+                    $user->toggleSessionStatus()->save();
+
+                    return redirect()->route('user.thank')->with('flash_message_success','thanks for your order');
+                }else{
+                    return redirect()->action('user\ProductsController@checkOut');
+                }
+            }
+            return redirect()->back()->with('flash_message_error','payment method not selected');
+        }
+        return redirect()->back();
+    }
+
+    public function thanks(){
+        return view('user.thank');
+
+    }
+    public function userOrders(){
+        $user = Auth::user()->Orders;
+        dd(Auth::user()->Orders);
+        return view('user.thank');
+
     }
 }

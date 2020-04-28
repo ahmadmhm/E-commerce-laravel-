@@ -38,9 +38,14 @@ class User extends Authenticatable implements MustVerifyEmail
     ];
 
     public function Information()
-{
-    return $this->hasOne('App\UserInfo', 'user_id', 'id');
-}
+    {
+        return $this->hasOne('App\UserInfo', 'user_id', 'id');
+    }
+
+    public function Orders()
+    {
+        return $this->hasMany(Order::class, 'user_id', 'id');
+    }
 
     public function toggleSessionStatus()
     {

@@ -17,7 +17,7 @@
         <div class="container">
             <div class="breadcrumbs">
                 <ol class="breadcrumb">
-                    <li><a href="#">Home</a></li>
+                    <li><a href="{{route('index')}}">Home</a></li>
                     <li class="active">Shopping Cart</li>
                 </ol>
             </div>
@@ -26,7 +26,7 @@
                     <thead>
                     <tr class="cart_menu">
                         <td class="image">Item</td>
-                        <td class="description"></td>
+                        <td class="description">Name</td>
                         <td class="price">Price</td>
                         <td class="quantity">Quantity</td>
                         <td class="total">Total</td>
@@ -44,7 +44,7 @@
                             <p>{{$item->product_code}} | {{$item->size}}</p>
                         </td>
                         <td class="cart_price">
-                            <p>${{$item->price}}</p>
+                            <p class="p_price">${{$item->price}}</p>
                         </td>
                         <td class="cart_quantity">
                             <div class="cart_quantity_button">
@@ -131,7 +131,7 @@
                         <ul>
                             @if(!empty(\Illuminate\Support\Facades\Session::get('Coupon_amount')) and !empty(\Illuminate\Support\Facades\Session::get('Coupon_code')))
                                 <li>Sub Total <span id="total"></span></li>
-                                <li>Coupon Discount <span id="">$ {{\Illuminate\Support\Facades\Session::get('Coupon_amount')}}</span></li>
+                                <li>Coupon Discount (-) <span id="c_amount">$ {{\Illuminate\Support\Facades\Session::get('Coupon_amount')}}</span></li>
                                 <li>Grand Total <span id="Gtotal"></span></li>
                             @else
                                 <li>Grand Total <span id="total"></span></li>
@@ -154,13 +154,20 @@
         $('.cart_total_price').each(function () {
             var currentCol = $(this).closest("td").find("p:eq(0)").text();
             total += parseInt(currentCol.substring(1));
+            $(this).text('$' + parseInt($(this).text().substring(1)).toLocaleString());
         });
-        $('#total').html('$' + total);
+        $('#total').html('$' + total.toLocaleString());
         // console.log(total );
+        $("#c_amount").text('$' + parseInt($("#c_amount").text().substring(1)).toLocaleString());
 
     @if(!empty(\Illuminate\Support\Facades\Session::get('Coupon_amount')))
-        $('#Gtotal').html('$' + (total - {{\Illuminate\Support\Facades\Session::get('Coupon_amount')}}));
+        $('#Gtotal').html('$' + (total - {{\Illuminate\Support\Facades\Session::get('Coupon_amount')}}).toLocaleString());
     @endif
+    $(document).ready(function() {
+        $('.p_price').each(function () {
+            $(this).text('$' + parseInt($(this).text().substring(1)).toLocaleString());
+        });
+    });
 
 </script>
 @endsection
