@@ -99,7 +99,7 @@ class ProductsController extends Controller
                 }else{
                     DB::table('cart')->insert(['product_id'=>$porduct->id ,'product_name'=>$porduct->product_name, 'product_code'=>$porductAtrribute->sku ,
                         'product_color'=>$porduct->product_color, 'size'=>$porductAtrribute->size, 'price'=>$porductAtrribute->price,
-                        'quantity'=>$request->quantity, 'user_email'=>(Auth::user() == null)?'':$user->email
+                        'quantity'=>$request->quantity, 'user_email'=>(Auth::user() == null)?'':$user->email, 'user_id'=>(Auth::user() == null)?'':$user->id
                         , 'session_id'=>$user->session_id, 'image'=>$porduct->product_image,'created_at'=>now()]);
                     Session::forget('Coupon_amount' );
                     Session::forget('Coupon_code' );
@@ -117,7 +117,7 @@ class ProductsController extends Controller
         }
 //        dd($session_id);
         $userCart = DB::table('cart')->where('session_id',$session_id)->get();
-        return view('user.cart', compact('userCart'));
+        return view('user.orders.cart', compact('userCart'));
     }
 
     public function deleteCartProduct($id = null){
@@ -245,7 +245,7 @@ class ProductsController extends Controller
                 die($e->getMessage()) ;   // insert query
             }
         }
-        return view('user.check_out')->with(['user'=>$user, 'countries'=>$countries, 'shipping'=>$shipping]);
+        return view('user.orders.check_out')->with(['user'=>$user, 'countries'=>$countries, 'shipping'=>$shipping]);
     }
 
     public function orderReview(){
@@ -256,7 +256,7 @@ class ProductsController extends Controller
         }
         $userCart = DB::table('cart')->where('session_id',$session_id)->get();
         $shipping = DeliveryAddress::where('user_id', $user->id)->first();
-        return view('user.order_review')->with(['user'=>$user, 'userCart'=>$userCart, 'shipping'=>$shipping]);
+        return view('user.orders.order_review')->with(['user'=>$user, 'userCart'=>$userCart, 'shipping'=>$shipping]);
     }
 
     public function placeorder(Request $request){
@@ -325,7 +325,11 @@ class ProductsController extends Controller
                     Session::put('payment_method',$order->payment_method);
                     $user->toggleSessionStatus()->update();
 
-                    return redirect()->route('user.thank')->with('flash_message_success','thanks for your order');
+                    if($order->payment_method == "COD"){
+                        return redirect()->route('user.thank')->with('flash_message_success','thanks for your order');
+                    }else if($order->payment_method == "Paypal"){
+                        return redirect()->route('user.paypal');
+                    }
                 }else{
                     return redirect()->action('user\ProductsController@checkOut');
                 }
@@ -336,8 +340,12 @@ class ProductsController extends Controller
     }
 
     public function thanks(){
-        return view('user.thank');
+        DB::table('cart')->where('user_email', Auth::user()->email)->delete();
+        return view('user.orders.thank');
+    }
 
+    public function paypal(){
+        return view('user.orders.paypal');
     }
 
     public function userOrders(){

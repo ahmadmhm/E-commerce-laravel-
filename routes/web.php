@@ -41,7 +41,9 @@ Route::middleware(['userLogin'])->group(function () {
     Route::match(['get','post'],'check-out', 'user\ProductsController@checkOut')->name('user.check_out');
     Route::match(['get','post'],'order-review', 'user\ProductsController@orderReview')->name('user.order_review');
     Route::match(['get','post'],'place-order', 'user\ProductsController@placeorder')->name('user.place_order');
-    Route::match(['get','post'],'thanks', 'user\ProductsController@thanks')->name('user.thank');
+
+    Route::get('thanks', 'user\ProductsController@thanks')->name('user.thank');
+    Route::match(['get','post'],'paypal', 'user\ProductsController@paypal')->name('user.paypal');
 
     Route::match(['get','post'],'user-orders', 'user\ProductsController@userOrders')->name('user.orders');
     Route::match(['get','post'],'order/{id}', 'user\ProductsController@orderDetails')->name('user.order_details');
