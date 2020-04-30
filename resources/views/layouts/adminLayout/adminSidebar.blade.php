@@ -20,6 +20,11 @@
                 <li @php if (preg_match("/view-coupon/i" , url()->current())){ echo 'class="active"';} @endphp><a href="{{route('admin.view_coupons')}}">View Coupons</a></li>
             </ul>
         </li>
+        <li @php  if (preg_match("/order/i" , url()->current())){ echo 'style="display: block;"';} @endphp class="submenu"> <a href="#"><i class="icon icon-th-list"></i> <span>Orders</span> <span class="label label-important">1</span></a>
+            <ul>
+                <li @php if (preg_match("/view-order/i" , url()->current())){ echo 'class="active"';} @endphp><a href="{{route('admin.view_orders')}}">View Orders</a></li>
+            </ul>
+        </li>
         <li @php  if (preg_match("/banner/i" , url()->current())){ echo 'style="display: block;"';} @endphp class="submenu"> <a href="#"><i class="icon icon-th-list"></i> <span>Banners</span> <span class="label label-important">2</span></a>
             <ul>
                 <li @php if (preg_match("/add-banner/i" , url()->current())){ echo 'class="active"';} @endphp><a href="{{route('admin.add_banner')}}">Add Banner</a></li>

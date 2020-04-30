@@ -44,13 +44,16 @@ Route::middleware(['auth'])->group(function () {
     Route::match(['get','post'],'add-images/{id}','admin\ProductsController@addImages')->name('admin.add_images');
     Route::get('delete-attribute/{id}','admin\ProductsController@deleteAttribute')->name('admin.delete_product_attribute');
 
-
+    //Coupons
     Route::match(['get','post'],'add-coupon','admin\CouponController@addCoupon')->name('admin.add_coupon');
     Route::match(['get','post'],'edit-coupon/{id}','admin\CouponController@editCoupon')->name('admin.edit_coupon');
     Route::match(['get','post'],'delete-coupon/{id}','admin\CouponController@deleteCoupon')->name('admin.delete_coupon');
     Route::match(['get','post'],'activate-coupon','admin\CouponController@activateCoupon')->name('admin.activate_coupon');
     Route::match(['get','post'],'view-coupons','admin\CouponController@viewCoupons')->name('admin.view_coupons');
 
+
+    //Orders
+    Route::match(['get','post'],'view-orders','admin\OrderController@viewOrders')->name('admin.view_orders');
 
     //Banners
     Route::match(['get','post'],'add-banner','admin\BannerController@addBanner')->name('admin.add_banner');
