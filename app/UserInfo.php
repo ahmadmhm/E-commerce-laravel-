@@ -17,4 +17,9 @@ class UserInfo extends Model
     {
         return $this->hasOne('App\User', 'id', 'user_id');
     }
+
+    public function Country()
+    {
+        return $this->hasOne(Country::class, 'id', 'country');
+    }
 }

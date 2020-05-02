@@ -54,6 +54,8 @@ Route::middleware(['auth'])->group(function () {
 
     //Orders
     Route::match(['get','post'],'view-orders','admin\OrderController@viewOrders')->name('admin.view_orders');
+    Route::get('order/{id}', 'admin\OrderController@orderDetails')->name('admin.order_details');
+    Route::post('order-status/{id}', 'admin\OrderController@changeOrderStatus')->name('admin.change_order_status');
 
     //Banners
     Route::match(['get','post'],'add-banner','admin\BannerController@addBanner')->name('admin.add_banner');

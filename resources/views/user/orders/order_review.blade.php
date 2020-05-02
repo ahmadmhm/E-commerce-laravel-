@@ -108,7 +108,6 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tbody>
                         @foreach($userCart as $item)
                         <tr>
                             <td class="cart_product">
@@ -132,7 +131,7 @@
                         </tr>
                     @endforeach
                     </tbody>
-                    </tbody>
+
                 </table>
             </div>
 
