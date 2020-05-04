@@ -1,15 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="4d23e414-c951-4cb6-9755-629d89c1ae0d" name="Default Changelist" comment="admin view orders (w - 88)">
-      <change afterPath="$PROJECT_DIR$/resources/views/admin/orders/order_details.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/E-commerce.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/E-commerce.iml" afterDir="false" />
+    <list default="true" id="4d23e414-c951-4cb6-9755-629d89c1ae0d" name="Default Changelist" comment="admin view order detail and status (w - 89-&gt;91)">
+      <change afterPath="$PROJECT_DIR$/app/Http/Middleware/adminLogin.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/admin/OrderController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/admin/OrderController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Order.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Order.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/UserInfo.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/UserInfo.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/orders/view_orders.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/orders/view_orders.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/user/orders/order_review.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/user/orders/order_review.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/admin/AdminController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/admin/AdminController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/orders/order_details.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/orders/order_details.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/admin.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/admin.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -34,59 +30,6 @@
     </option>
     <expand />
     <select />
-  </component>
-  <component name="FindInProjectRecents">
-    <findStrings>
-      <find>category</find>
-      <find>categories</find>
-      <find>ha</find>
-      <find>feat</find>
-      <find>Categ</find>
-      <find>ProductImage</find>
-      <find>Category-t</find>
-      <find>category_name</find>
-      <find>view-pro</find>
-      <find>src</find>
-      <find>fa</find>
-      <find>fa.</find>
-      <find>url</find>
-      <find>datep</find>
-      <find>$product</find>
-      <find>item</find>
-      <find>Category</find>
-      <find>Coupon</find>
-      <find>$.ajax</find>
-      <find>aj</find>
-      <find>sel</find>
-      <find>Billing</find>
-      <find>‘</find>
-      <find>’</find>
-      <find>cart_total_price</find>
-      <find>DeliveryAddress</find>
-      <find>g_total</find>
-      <find>$order</find>
-      <find>with</find>
-      <find>Product</find>
-    </findStrings>
-    <replaceStrings>
-      <replace>Product</replace>
-      <replace>Products</replace>
-      <replace>product</replace>
-      <replace>$coupon</replace>
-      <replace>Coupon</replace>
-      <replace>Banner</replace>
-      <replace>banner</replace>
-      <replace>Shipping</replace>
-      <replace>'</replace>
-      <replace>$product</replace>
-      <replace>Order</replace>
-      <replace>order</replace>
-    </replaceStrings>
-    <dirStrings>
-      <dir>$PROJECT_DIR$</dir>
-      <dir>$PROJECT_DIR$/app/Exceptions</dir>
-      <dir>D:\xampp\htdocs\first\E-commerce\public\js</dir>
-    </dirStrings>
   </component>
   <component name="Git.Settings">
     <option name="UPDATE_TYPE" value="MERGE" />
@@ -192,15 +135,18 @@
     </include_path>
   </component>
   <component name="ProjectId" id="1bL6Ck0MOVtyP1YZNFkv5rdxyXo" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../../ub/web-app" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../mahdi/auction" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="yarn" />
@@ -380,13 +326,9 @@
       <workItem from="1588393881815" duration="3007000" />
       <workItem from="1588398912055" duration="29000" />
       <workItem from="1588399255196" duration="4000" />
-    </task>
-    <task id="LOCAL-00020" summary="product edit and update image and helpers asset method (w - 12)">
-      <created>1567972141793</created>
-      <option name="number" value="00020" />
-      <option name="presentableId" value="LOCAL-00020" />
-      <option name="project" value="LOCAL" />
-      <updated>1567972141793</updated>
+      <workItem from="1588484644339" duration="1195000" />
+      <workItem from="1588516115712" duration="1285000" />
+      <workItem from="1588570272729" duration="13969000" />
     </task>
     <task id="LOCAL-00021" summary="product delete function and script (w - 13)">
       <created>1568398632064</created>
@@ -724,14 +666,21 @@
       <option name="project" value="LOCAL" />
       <updated>1588238694629</updated>
     </task>
-    <option name="localTasksCounter" value="69" />
+    <task id="LOCAL-00069" summary="admin view order detail and status (w - 89-&gt;91)">
+      <created>1588434900237</created>
+      <option name="number" value="00069" />
+      <option name="presentableId" value="LOCAL-00069" />
+      <option name="project" value="LOCAL" />
+      <updated>1588434900239</updated>
+    </task>
+    <option name="localTasksCounter" value="70" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="2" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="user cart, incrementing, prevent duplicate products (w - 43,44,45)" />
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="coupon adding functionality (w - 47,48)" />
     <MESSAGE value="view coupons functionality (w - 49)" />
     <MESSAGE value="edit coupons functionality (w - 50)" />
@@ -756,13 +705,22 @@
     <MESSAGE value="user view order products (w - 83)" />
     <MESSAGE value="paypal paying (not applyed) (w - 84-&gt;87)" />
     <MESSAGE value="admin view orders (w - 88)" />
-    <option name="LAST_COMMIT_MESSAGE" value="admin view orders (w - 88)" />
+    <MESSAGE value="admin view order detail and status (w - 89-&gt;91)" />
+    <option name="LAST_COMMIT_MESSAGE" value="admin view order detail and status (w - 89-&gt;91)" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="308" y="0" key="CommitChangelistDialog2" timestamp="1588399167997">
+    <state x="413" y="117" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1588606914633">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="308" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1588399167997" />
+    <state x="413" y="117" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1366.728@0.0.1366.728" timestamp="1588606914633" />
+    <state x="308" y="0" key="CommitChangelistDialog2" timestamp="1588614003762">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="308" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1588614003762" />
+    <state x="463" y="117" key="FileChooserDialogImpl" timestamp="1588517792294">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="463" y="117" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1588517792294" />
     <state x="-13" y="0" key="SettingsEditor" timestamp="1588402527406">
       <screen x="0" y="0" width="1366" height="728" />
     </state>

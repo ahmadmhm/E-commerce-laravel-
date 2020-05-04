@@ -45,7 +45,7 @@
                                 </tr>
                                 <tr>
                                     <td class="taskDesc">Coupon Code</td>
-                                    <td class="taskStatus">{{$order->coupon_code == ' ' ?'': 'No Code'}}</td>
+                                    <td class="taskStatus">{{$order->coupon_code == '---' ?'': 'No Code'}}</td>
                                 </tr>
                                 <tr>
                                     <td class="taskDesc">Coupon Amount</td>

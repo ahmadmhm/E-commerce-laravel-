@@ -34,8 +34,8 @@ class AdminController extends Controller
 
     public function logout()
     {
-            Auth::logout();
-            return  redirect()->route('admin.login')->with('flash_message_success','logged out successful');
+        Auth::logout();
+        return  redirect()->route('admin.login')->with('flash_message_success','logged out successful');
     }
 
     public function dashboard(){
