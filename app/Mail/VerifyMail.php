@@ -11,7 +11,7 @@ class VerifyMail extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public $user;
+    public $user , $image;
     /**
      * Create a new message instance.
      *
@@ -20,6 +20,7 @@ class VerifyMail extends Mailable
     public function __construct($user)
     {
         $this->user = $user;
+        $this->image = public_path('/images/frontend_images/home/logo.png');
     }
 
     /**
@@ -33,10 +34,14 @@ class VerifyMail extends Mailable
             ->view('mail.userVerify')
             ->with(
                 [
-                    'src' => asset('images/frontend_images/home/logo.png'),
+                    'src' => 'fgj',
                     'testVarOne' => '1',
                     'testVarTwo' => '2',
-                ]);
+                ])
+            ->attach(public_path('/images/frontend_images/home/logo.png'), [
+                'as' => 'logo.png',
+                'mime' => 'image/png',
+            ]);
 
     }
 }

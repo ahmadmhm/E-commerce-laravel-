@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="4d23e414-c951-4cb6-9755-629d89c1ae0d" name="Default Changelist" comment="admin view order detail and status (w - 89-&gt;91)">
-      <change afterPath="$PROJECT_DIR$/app/Http/Middleware/adminLogin.php" afterDir="false" />
+    <list default="true" id="4d23e414-c951-4cb6-9755-629d89c1ae0d" name="Default Changelist" comment="he fucked and using old way to logins!!!! (w - 92)">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/admin/AdminController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/admin/AdminController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/orders/order_details.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/orders/order_details.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/admin.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/admin.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Mail/VerifyMail.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mail/VerifyMail.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/mail/userVerify.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mail/userVerify.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -144,6 +142,8 @@
   </component>
   <component name="PropertiesComponent">
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../../mahdi/auction" />
@@ -328,14 +328,17 @@
       <workItem from="1588399255196" duration="4000" />
       <workItem from="1588484644339" duration="1195000" />
       <workItem from="1588516115712" duration="1285000" />
-      <workItem from="1588570272729" duration="13969000" />
-    </task>
-    <task id="LOCAL-00021" summary="product delete function and script (w - 13)">
-      <created>1568398632064</created>
-      <option name="number" value="00021" />
-      <option name="presentableId" value="LOCAL-00021" />
-      <option name="project" value="LOCAL" />
-      <updated>1568398632065</updated>
+      <workItem from="1588570272729" duration="14191000" />
+      <workItem from="1588654260019" duration="6515000" />
+      <workItem from="1588741643130" duration="1118000" />
+      <workItem from="1588836692802" duration="142000" />
+      <workItem from="1588852783069" duration="6000" />
+      <workItem from="1588857643249" duration="1022000" />
+      <workItem from="1588859177008" duration="599000" />
+      <workItem from="1588913881405" duration="5727000" />
+      <workItem from="1589377441415" duration="263000" />
+      <workItem from="1589605869104" duration="734000" />
+      <workItem from="1589696011421" duration="1595000" />
     </task>
     <task id="LOCAL-00022" summary="product attributes (w - 15)">
       <created>1570042837013</created>
@@ -673,7 +676,14 @@
       <option name="project" value="LOCAL" />
       <updated>1588434900239</updated>
     </task>
-    <option name="localTasksCounter" value="70" />
+    <task id="LOCAL-00070" summary="he fucked and using old way to logins!!!! (w - 92)">
+      <created>1588614334473</created>
+      <option name="number" value="00070" />
+      <option name="presentableId" value="LOCAL-00070" />
+      <option name="project" value="LOCAL" />
+      <updated>1588614334473</updated>
+    </task>
+    <option name="localTasksCounter" value="71" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -681,7 +691,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="coupon adding functionality (w - 47,48)" />
     <MESSAGE value="view coupons functionality (w - 49)" />
     <MESSAGE value="edit coupons functionality (w - 50)" />
     <MESSAGE value="edit coupons view formatting (w - 50.1)" />
@@ -706,21 +715,22 @@
     <MESSAGE value="paypal paying (not applyed) (w - 84-&gt;87)" />
     <MESSAGE value="admin view orders (w - 88)" />
     <MESSAGE value="admin view order detail and status (w - 89-&gt;91)" />
-    <option name="LAST_COMMIT_MESSAGE" value="admin view order detail and status (w - 89-&gt;91)" />
+    <MESSAGE value="he fucked and using old way to logins!!!! (w - 92)" />
+    <option name="LAST_COMMIT_MESSAGE" value="he fucked and using old way to logins!!!! (w - 92)" />
   </component>
   <component name="WindowStateProjectService">
     <state x="413" y="117" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1588606914633">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="413" y="117" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1366.728@0.0.1366.728" timestamp="1588606914633" />
-    <state x="308" y="0" key="CommitChangelistDialog2" timestamp="1588614003762">
+    <state x="308" y="0" key="CommitChangelistDialog2" timestamp="1589700985993">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="308" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1588614003762" />
-    <state x="463" y="117" key="FileChooserDialogImpl" timestamp="1588517792294">
+    <state x="308" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1589700985993" />
+    <state x="463" y="117" key="FileChooserDialogImpl" timestamp="1588933808256">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="463" y="117" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1588517792294" />
+    <state x="463" y="117" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1588933808256" />
     <state x="-13" y="0" key="SettingsEditor" timestamp="1588402527406">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
