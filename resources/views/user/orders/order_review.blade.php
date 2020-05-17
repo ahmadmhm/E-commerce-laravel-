@@ -49,20 +49,20 @@
                             <div class="form-group">
                                 <label>{{$user->name}}</label>
                             </div>
-                            <div class="form-group">
-                                <label>{{$user->Information->address}}</label>
+                            <div class="form-group">@php @endphp
+                                <label>{{($user->Information != null)? $user->Information->address : 'no address'}}</label>
                             </div>
                             <div class="form-group">
-                                <label>{{$user->Information->city}}</label>
+                                <label>{{($user->Information != null)?$user->Information->city : 'no city'}}</label>
                             </div>
                             <div class="form-group">
-                                <label>{{$user->Information->state}}</label>
+                                <label>{{($user->Information != null)?$user->Information->state : 'no state'}}</label>
                             </div>
                             <div class="form-group">
-                                <label>{{$user->Information->pincode}}</label>
+                                <label>{{($user->Information != null)? $user->Information->pincode : 'no pincode'}}</label>
                             </div>
                             <div class="form-group">
-                                <label>{{$user->Information->mobile}}</label>
+                                <label>{{($user->Information != null)?$user->Information->mobile: 'no mobile'}}</label>
                             </div>
                         </div>
                     </div>

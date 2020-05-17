@@ -4,11 +4,14 @@ namespace App\Http\Controllers\user;
 
 use App\Coupon;
 use App\DeliveryAddress;
+use App\Mail\newOrder;
+use App\Mail\VerifyMail;
 use App\Order;
 use App\OrderProducts;
 use App\ProductsImage;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Session;
 use App\Category;
 use App\Country;
@@ -326,6 +329,7 @@ class ProductsController extends Controller
                     $user->toggleSessionStatus()->update();
 
                     if($order->payment_method == "COD"){
+                        Mail::to($user->email)->send(new newOrder($user , $order));
                         return redirect()->route('user.thank')->with('flash_message_success','thanks for your order');
                     }else if($order->payment_method == "Paypal"){
                         return redirect()->route('user.paypal');

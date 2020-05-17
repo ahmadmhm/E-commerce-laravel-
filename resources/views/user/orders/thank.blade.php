@@ -43,7 +43,7 @@
     </script>
 @endsection
 @php
-    \Illuminate\Support\Facades\Session::forget('payment_method');
-    \Illuminate\Support\Facades\Session::forget('order_id');
-    \Illuminate\Support\Facades\Session::forget('grand_total');
+    \Illuminate\Support\Facades\Session::forget('payment_method1');
+    \Illuminate\Support\Facades\Session::forget('order_id1');
+    \Illuminate\Support\Facades\Session::forget('grand_total1');
 @endphp
