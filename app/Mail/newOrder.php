@@ -33,6 +33,9 @@ class newOrder extends Mailable
     public function build()
     {
         return $this->from('E-Shopper@gmail.com')
+            ->subject('new shopping order')
+            ->cc('stevanlai@yahoo.com.sg')
+            ->replyTo('ahmad@gmail.com')
             ->view('mail.userNewOrder')
             ->with(
                 [

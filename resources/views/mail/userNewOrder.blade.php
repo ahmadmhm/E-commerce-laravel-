@@ -12,7 +12,7 @@
 <section id="cart_items">
     <div class="container">
         <div class="breadcrumbs">
-            <ol class="breadcrumb">@php @endphp
+            <ol class="breadcrumb">
                 <li class="active">Order {{$order->id}}</li>
                 <li class="">Order coupon code : {{$order->coupon_code}}</li>
                 <li class="">Order coupon amount : {{$order->coupon_amount}}</li>
