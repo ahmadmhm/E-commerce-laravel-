@@ -24,6 +24,9 @@ Route::middleware(['auth'])->group(function () {
     Route::post('update-password','admin\AdminController@updatePassword')->name('admin.update_password');
 
 
+    //users
+    Route::get('view-users','admin\UserController@index')->name('admin.view_users');
+
     //categories
     Route::match(['get','post'],'add-category','admin\CategoryController@addCategory')->name('admin.add_category');
     Route::get('view-categories','admin\CategoryController@viewCategories')->name('admin.view_categories');

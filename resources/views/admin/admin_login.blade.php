@@ -4,12 +4,14 @@
     <link rel="stylesheet" href="{{asset('css/backend_css/matrix-login.css')}}" />
     <link rel="stylesheet" href="{{asset('css/frontend_css/sweetalert2.min.css')}}" />
 @endsection
-
+@section('title')
+    E-commerce Admin login
+@endsection
 @section('content')
     <div id="loginbox">
         <form id="loginform" class="form-vertical" method="post" action="{{route('admin.login')}}">
             @csrf
-            <div class="control-group normal_text"> <h3><img src="{{asset('images/backend_images/logo.png')}}" alt="Logo" /></h3></div>
+            <div class="control-group normal_text"> <h3>E-commerce Admin</h3></div>
             <div class="control-group">
                 <div class="controls">
                     <div class="main_input_box">

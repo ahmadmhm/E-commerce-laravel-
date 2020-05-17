@@ -1,13 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="4d23e414-c951-4cb6-9755-629d89c1ae0d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/Mail/newOrder.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/mail/userNewOrder.blade.php" afterDir="false" />
+    <list default="true" id="4d23e414-c951-4cb6-9755-629d89c1ae0d" name="Default Changelist" comment=" new order sending email (w - 97-98)">
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/admin/UserController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/admin/users/view_users.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/user/ProductsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/user/ProductsController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/user/orders/order_review.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/user/orders/order_review.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/user/orders/thank.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/user/orders/thank.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/admin_login.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/admin_login.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/layouts/head.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/layouts/master.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/adminLayout/adminMaster.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/adminLayout/adminMaster.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/adminLayout/adminSimpleMaster.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/adminLayout/adminSimpleMaster.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/adminLayout/adminTail.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/adminLayout/adminTail.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/user/account.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/user/account.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/admin.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/admin.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -149,7 +154,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/mail" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/admin/users" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="yarn" />
@@ -157,11 +162,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\xampp\htdocs\first\E-commerce\resources\views\admin\users" />
       <recent name="D:\xampp\htdocs\first\E-commerce\resources\views\mail" />
       <recent name="D:\xampp\htdocs\first\E-commerce\resources\views\user\orders" />
       <recent name="D:\xampp\htdocs\first\E-commerce\public\css\frontend_css" />
       <recent name="D:\xampp\htdocs\first\E-commerce\public\js\frontend_js" />
-      <recent name="D:\xampp\htdocs\first\E-commerce\resources\views\user" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\xampp\htdocs\first\E-commerce\resources\views\user\orders" />
@@ -341,14 +346,7 @@
       <workItem from="1588913881405" duration="5727000" />
       <workItem from="1589377441415" duration="263000" />
       <workItem from="1589605869104" duration="734000" />
-      <workItem from="1589696011421" duration="4600000" />
-    </task>
-    <task id="LOCAL-00023" summary="product add attributes fields(w - 16)">
-      <created>1571257733076</created>
-      <option name="number" value="00023" />
-      <option name="presentableId" value="LOCAL-00023" />
-      <option name="project" value="LOCAL" />
-      <updated>1571257733076</updated>
+      <workItem from="1589696011421" duration="13126000" />
     </task>
     <task id="LOCAL-00024" summary="product add attributes function(w - 17)">
       <created>1571339261558</created>
@@ -686,7 +684,14 @@
       <option name="project" value="LOCAL" />
       <updated>1589702140181</updated>
     </task>
-    <option name="localTasksCounter" value="72" />
+    <task id="LOCAL-00072" summary=" new order sending email (w - 97-98)">
+      <created>1589705047381</created>
+      <option name="number" value="00072" />
+      <option name="presentableId" value="LOCAL-00072" />
+      <option name="project" value="LOCAL" />
+      <updated>1589705047381</updated>
+    </task>
+    <option name="localTasksCounter" value="73" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -694,7 +699,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="edit coupons functionality (w - 50)" />
     <MESSAGE value="edit coupons view formatting (w - 50.1)" />
     <MESSAGE value="delete coupons formatting (w - 51)" />
     <MESSAGE value="coupon applying (w - 52,53)" />
@@ -719,17 +723,18 @@
     <MESSAGE value="admin view order detail and status (w - 89-&gt;91)" />
     <MESSAGE value="he fucked and using old way to logins!!!! (w - 92)" />
     <MESSAGE value="adding logo to email verify source and file attachments" />
-    <option name="LAST_COMMIT_MESSAGE" value="adding logo to email verify source and file attachments" />
+    <MESSAGE value=" new order sending email (w - 97-98)" />
+    <option name="LAST_COMMIT_MESSAGE" value=" new order sending email (w - 97-98)" />
   </component>
   <component name="WindowStateProjectService">
     <state x="413" y="117" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1589702831175">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="413" y="117" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1366.728@0.0.1366.728" timestamp="1589702831175" />
-    <state x="308" y="0" key="CommitChangelistDialog2" timestamp="1589702135313">
+    <state x="308" y="0" key="CommitChangelistDialog2" timestamp="1589709207824">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="308" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1589702135313" />
+    <state x="308" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1589709207824" />
     <state x="463" y="117" key="FileChooserDialogImpl" timestamp="1588933808256">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -738,5 +743,9 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="-13" y="0" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1588402527406" />
+    <state x="275" y="95" key="Vcs.Push.Dialog.v2" timestamp="1589705081980">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="275" y="95" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1589705081980" />
   </component>
 </project>
